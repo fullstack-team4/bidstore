@@ -1,1 +1,19 @@
+<div class="col-xs-6">
+    <h1>
+        <%= @product.title %>
+    </h1>
+
+    <div>
+        <h4>商品详情：<%=@product.description%></h4>
+    </div>
+
+    <div>
+        <h4>商品数量：<%=@product.quantity%>个</h4>
+    </div>
+
+    <div>
+        <h4>商品价格：<%=@product.price%>元</h4>
+    </div>
+
+</div>
 <%= link_to("加入购物车", add_to_cart_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger")%>
