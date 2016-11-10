@@ -12,4 +12,4 @@
 
 # 其他
 
-* 小组内成员请登陆 [Tower](http://redmine.growthschool.com/projects/team-2-4/issues)查看组长分配的项目任务
+* 小组内成员请登陆 [Redmine](http://redmine.growthschool.com/projects/team-2-4/issues)查看组长分配的项目任务
