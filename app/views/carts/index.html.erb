@@ -16,13 +16,13 @@
         <% current_cart.cart_items.each do |cart_item| %>
           <tr>
             <td>
-              <%= link_to product_path(cart_item.product) do %>
-                <% if cart_item.product.image.present? %>
-                  <%= image_tag(cart_item.product.image.thumb.url, class: "thumbnail") %>
-                <% else %>
+              <%#= link_to product_path(cart_item.product) do %>
+                <%# if cart_item.product.image.present? %>
+                  <%#= image_tag(cart_item.product.image.thumb.url, class: "thumbnail") %>
+                <%# else %>
                   <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
-                <% end %>
-              <% end %>
+                <%# end %>
+              <%# end %>
             </td>
             <td>
               <%= link_to(cart_item.product.title, product_path(cart_item.product)) %>
@@ -52,7 +52,7 @@
     <hr>
 
     <div class="checkout clearfix">
-      <%= link_to("确认结账", "#", method: :post, class: "btn btn-lg btn-danger pull-right") %>
+      <%= link_to("确认结账", checkout_carts_path, method: :post, class: "btn btn-lg btn-danger pull-right") %>
     </div>
   </div>
 </div>
