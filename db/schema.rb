@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 20161111030619) do
     t.string   "billing_address"
     t.string   "shipping_name"
     t.string   "shipping_address"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.string   "aasm_state",       default: "order_placed"
+    t.index ["aasm_state"], name: "index_orders_on_aasm_state"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.string   "token"
