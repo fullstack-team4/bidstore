@@ -1,0 +1,6 @@
+<ul>
+  <%= current_user.orders.each do |order| %>
+
+    <li><%= link_to(order.id, account_order_path(order)) %></li>
+  <% end %>
+</ul>
