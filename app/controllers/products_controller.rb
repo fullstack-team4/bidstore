@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
     def add_to_cart
-      @product = Product.find(params[[:id]])
+      @product = Product.find(params[:id])
       current_cart.add_product_to_cart(@product)
-      redirect_to :back
+      redirect_to carts_path
     end
 
     def index
@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
     private
 
     def product_params
-      params.require(:product).permit(:title, :description, :product, :quantity, :price)
+      params.require(:product).permit(:title, :description, :product, :quantity, :price, :image)
     end
 
 end
