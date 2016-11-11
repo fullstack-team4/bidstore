@@ -15,14 +15,29 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :products
-    resources :orders
+    resources :orders do
+      member do
+        post :pay_with_wechat
+        post :pay_with_alipay
+      end
+    end
   end
 
   namespace :account do
-    resources :orders
+    resources :orders do
+      member do
+        post :pay_with_wechat
+        post :pay_with_alipay
+      end
+    end
   end
 
-  resources :orders
+  resources :orders do
+    member do
+      post :pay_with_wechat
+      post :pay_with_alipay
+    end
+  end
 
   root 'products#index'
 
