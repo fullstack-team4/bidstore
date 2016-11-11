@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 module Admin::OederHelper
   def render_order_paid_state(order)
     if order.is_paid?
@@ -7,7 +6,4 @@ module Admin::OederHelper
       "未付款"
     end
   end
-=======
-module Admin::OrdersHelper
->>>>>>> develop
 end
