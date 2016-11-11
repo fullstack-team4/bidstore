@@ -31,7 +31,18 @@ Rails.application.routes.draw do
       post :pay_with_wechat
       post :apply_to_cancel
     end
-  end 
+  end
+
+
+  namespace :account do
+    resources :orders do
+      member do
+        post :pay_with_wechat
+        post :pay_with_alipay
+      end
+    end
+  end
+
 
   root 'products#index'
 

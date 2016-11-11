@@ -6,13 +6,12 @@ class Order < ApplicationRecord
   end
 
   belongs_to :user
+  has_many :product_lists
 
   validates :billing_name, presence: true
   validates :billing_address, presence: true
   validates :shipping_name, presence: true
   validates :shipping_address, presence: true
-
-  has_many :product_lists
 
   include AASM
   aasm do
@@ -43,4 +42,13 @@ class Order < ApplicationRecord
       transitions from: [:order_placed, :paid], to: :order_cancelled
     end
   end
+
+  def set_payment_with!(method)
+    self.update_columns(payment_method: method )
+  end
+
+  def pay!
+    self.update_columns(is_paid: true )
+  end
+
 end

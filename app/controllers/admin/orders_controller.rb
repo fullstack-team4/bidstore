@@ -29,7 +29,7 @@ class Admin::OederController < ApplicationController
   def return
     @order = Order.find(params[:id])
     @order.return_good!
-    redirect_to :good 
+    redirect_to :good
   end
 
 end
