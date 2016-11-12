@@ -8,6 +8,11 @@ class Admin::OrdersController < ApplicationController
     @orders = Order.order("id DESC")
   end
 
+  def show
+    @order = Order.find(params[:id])
+    @product_lists = @order.product_lists
+  end
+
   def ship
     @order = Order.find(params[:id])
     @order.ship!
@@ -29,7 +34,7 @@ class Admin::OrdersController < ApplicationController
   def return
     @order = Order.find(params[:id])
     @order.return_good!
-    redirect_to :good
+    redirect_to :back
   end
 
 end
