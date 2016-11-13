@@ -1,0 +1,61 @@
+<h1>Order Lists</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>
+        #
+      </th>
+      <th>
+        生成时间
+      </th>
+      <th>
+        订购者
+      </th>
+      <th>
+        订单状态
+      </th>
+      <th>
+        订单状态控制
+      </th>
+    </tr>
+  <tbody>
+    <% @orders.each do |order| %>
+    <tr>
+      <td>
+        <%= link_to(order.id, admin_order_path(order) ) %>
+        <%#= link_to(order.id, order_path(order.token)) %>
+      </td>
+      <td>
+        <%= order.created_at.to_s(:long) %>
+      </td>
+      <td>
+        <%= order.user.email %>
+      </td>
+      <td>
+        <%= order.aasm_state %>
+      </td>
+      <td>
+        <% case order.aasm_state %>
+                <% when "order_placed" %>
+                <%= link_to("取消订单", cancel_admin_order_path(order), method: :post, class: "btn btn-dark") %>
+                <% when "paid" %>
+                <%= link_to("出货", ship_admin_order_path(order), method: :post, class: "btn btn-dark") %>
+                <%= link_to("取消订单", cancel_admin_order_path(order), method: :post, class: "btn btn-dark") %>
+                <% when "shipping" %>
+                <a href="#" , class="btn btn-dark">运输途中</a>
+                <% when "shipped" %>
+                <%= link_to("退货", return_good_admin_order_path(order), method: :post, class: "btn btn-dark") %>
+                <% when "good_returned" %>
+                <%= link_to("删除订单", admin_order_path(order), method: :delete, class: "btn btn-dark") %>
+                <% when "order_cancelled" %>
+                <a href="#" , class="btn btn-danger" disable>已取消</a>
+                <%= link_to("删除订单", admin_order_path(order), method: :delete, class: "btn btn-dark") %>
+                <% when "sent_cancell_require" %>
+                <a href="#" , class="btn btn-danger" disable>买家申请取消订单</a>
+                <%= link_to("取消订单", cancel_admin_order_path(order), method: :post, class: "btn btn-dark") %>
+                <% end %>
+        </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
