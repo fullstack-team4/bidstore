@@ -2,6 +2,10 @@ class Cart < ApplicationRecord
   has_many :cart_items
   has_many :products, through: :cart_items, source: :product
 
+  def clean!
+    cart_items.destroy_all
+  end
+
   def add_product_to_cart(product)
     ci = cart_items.build
     ci.product = product
@@ -11,9 +15,13 @@ class Cart < ApplicationRecord
 
   def total_price
     sum = 0
-    cart.cart_items.each do |cart_item|
+    cart_items.each do |cart_item|
       sum += cart_item.quantity * cart_item.product.price
     end
     sum
+  end
+
+  def clean!
+    cart_items.destroy_all
   end
 end

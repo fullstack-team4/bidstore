@@ -7,8 +7,8 @@
 
 # 开发用帐号
 
-* Admin :
-* User :
+* Admin : email: example@gmail.com, password: 12345678
+* User : email: user1@gmail.com, password: 12345678
 
 # 其他
 
