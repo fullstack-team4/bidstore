@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 20161111082849) do
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.string   "token"
+    t.string   "aasm_state",       default: "order_placed"
     t.boolean  "is_paid",          default: false
     t.string   "payment_method"
-    t.string   "aasm_state",       default: "order_placed"
     t.index ["aasm_state"], name: "index_orders_on_aasm_state"
   end
 
