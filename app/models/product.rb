@@ -1,4 +1,16 @@
 class Product < ApplicationRecord
+
+
+  def sell!
+  self.is_hidden = false
+  self.save
+  end
+
+  def notsell!
+  self.is_hidden = true
+  self.save
+  end
+
   validates :title, presence: true
   validates :description, presence: true
   validates :price, numericality: { greater_than: 0 }
