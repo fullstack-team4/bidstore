@@ -37,9 +37,6 @@ Rails.application.routes.draw do
   end
 
 
-  resources :orders
-
-
   namespace :account do
     resources :orders do
       member do
@@ -49,9 +46,6 @@ Rails.application.routes.draw do
     end
   end
 
-
-
-
-  root 'products#index'
+  root 'welcome#index'
 
 end
