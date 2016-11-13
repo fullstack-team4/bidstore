@@ -1,3 +1,30 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+h1 {
+  margin: 120px auto;
+  text-align: center;
+  position: relative;
+  top: 24px;
+}
+
+.slogan {
+  margin: 60px auto;
+  text-align: center;
+  position: relative;
+  top: 12px;
+}
+
+.subtitle {
+  margin: 120px auto;
+  text-align: center;
+  position: relative;
+  top: 24px;
+}
+
+p {
+  margin: 120px auto;
+  text-align: center;
+  font-size: 18px;
+  top: 24px
+}

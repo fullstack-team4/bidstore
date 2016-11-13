@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :products
   end
 
+  resources :welcome
+
   root 'products#index'
 
 end
