@@ -1,0 +1,15 @@
+<h2>编辑个人资料</h2>
+<%= simple_form_for [:account, @user ] do |f| %>
+  <% if @user.profile.present? %>
+    <span>个人头像</span>
+    <%= image_tag(@user.profile.thumb.url) %>
+  <% end %>
+  <div class="user">
+    <%= f.input :name %>
+  <div class="user">
+    <%= f.input :profile, as: :file %>
+  <div class="user">
+    <%= f.input :idcard, as: :file %>
+  </div>
+    <%= f.submit "确认提交", class: "btn btn-primary", data: { disable_with: "提交中..." } %>
+<% end %>
