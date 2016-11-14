@@ -4,12 +4,3 @@
 <div class="job">
   <%= link_to("去认证身份", edit_account_user_path(current_user), class: "btn btn-primary pull-right") %>
 </div>
-<div class="row">
-  <div class="col-md-6">
-    <% if current_user.profile.present? %>
-      <%= image_tag(current_user.profile.thumb.url, class: "thumbnail") %>
-    <% else %>
-      <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
-    <% end %>
-  </div>
-</div>

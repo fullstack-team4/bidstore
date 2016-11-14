@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-          <li> <%= link_to("个人信息", "#") %> </li>
+          <li> <%= link_to("我的主页", account_user_path(current_user)) %> </li>
           <li> <%= link_to("我的出价", "#") %> </li>
           <li> <%= link_to("我的订单", account_orders_path) %> </li>
         </ul>

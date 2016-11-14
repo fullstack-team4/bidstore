@@ -1,4 +1,5 @@
 class Account::UsersController < ApplicationController
+  layout "account"
   def show
     @user = User.find(params[:id])
   end
