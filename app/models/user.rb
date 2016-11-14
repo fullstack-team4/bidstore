@@ -15,10 +15,7 @@ class User < ApplicationRecord
     is_admin
   end
 
-<<<<<<< HEAD
   has_many :orders
   has_many :bids
 
-=======
->>>>>>> develop
 end
