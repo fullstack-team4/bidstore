@@ -1,5 +1,7 @@
 class Product < ApplicationRecord
 
+  has_many :bids
+
 
   def sell!
   self.is_hidden = false
