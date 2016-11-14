@@ -29,14 +29,14 @@
         <%= order.created_at.to_s(:long) %>
       </td>
       <td>
-        <%= order.user.email %>
+        <%= order.billing_name %>
       </td>
       <td>
         <%= order.aasm_state %>
       </td>
       <td>
         <%= render "admin/orders/state_option", order: order %>
-        </td>
+      </td>
     </tr>
     <% end %>
   </tbody>

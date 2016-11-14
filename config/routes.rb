@@ -46,6 +46,15 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :products
+    resources :users do
+      member do
+        post :user
+        post :admin
+      end
+    end
+  end
 
 
   root 'products#index'
