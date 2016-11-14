@@ -9,8 +9,6 @@ class User < ApplicationRecord
 
   scope :all_except, -> (user) {where.not(id: user)}
 
-  has_many :orders
-
   def admin?
     is_admin
   end
