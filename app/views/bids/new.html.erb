@@ -1,0 +1,41 @@
+<h1>正在参与的拍卖</h1> <br><br>
+
+<div class="row">
+  <div class="col-md-6">
+    <% if @product.image.present? %>
+      <%= image_tag(@product.image.medium.url, class: "thumbnail") %>
+    <% else %>
+      <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <h4> 拍卖品名称 <%= @product.title %> </h4>
+    <div style="height:100px;">
+      <div class="col-md-6">
+        细节描述: <%= @product.description %>
+      </div>
+      <br>
+      <div class="col-md-6">
+        起拍价格: ¥ <%= @product.price %>
+      </div>
+      <br>
+      <div class="col-md-6">
+        最新出价: ¥ <%= @product.bids.last.amount %>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<%= simple_form_for [:product, @bid] do |f| %>
+
+  <div class="group">
+    <%= f.input :amount %>
+    <%= f.hidden_field :product_id, value: @product.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <%= f.submit "Submit", data: { disable_with: "Submitting..."} %>
+
+<% end %>

@@ -17,7 +17,7 @@
     <div class="product-price"> ￥ <%= @product.price %> </div>
     <div class="pull-right">
       <% if @product.quantity > 0 %>
-        <%= link_to("加入购物车", add_to_cart_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger")%>
+        <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
       <% else %>
         销售一空，无法购买
       <% end %>
