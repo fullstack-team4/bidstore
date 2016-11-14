@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bidstore 后台</title>
+  <title>Bidstore User 后台</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -12,9 +12,9 @@
     <div class="row">
       <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-          <li> <%= link_to("所有商品", admin_products_path) %> </li>
-          <li> <%= link_to("所有订单", admin_orders_path) %> </li>
-          <li> <%= link_to("所有用户", admin_users_path) %> </li>
+          <li> <%= link_to("我的主页", account_user_path(current_user)) %> </li>
+          <li> <%= link_to("我的出价", "#") %> </li>
+          <li> <%= link_to("我的订单", account_orders_path) %> </li>
         </ul>
       </div>
       <div class="col-md-10">
