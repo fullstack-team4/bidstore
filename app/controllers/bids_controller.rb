@@ -10,7 +10,7 @@ class BidsController < ApplicationController
     @bid = Bid.new(bid_params)
 
     if @bid.save
-      flash[:notice] = "竞价成功！！！."
+      # flash[:notice] = "竞价成功！！！."
       redirect_to new_product_bid_path
     else
       flash[:warning] = "竞价失败.请重新出价！！"

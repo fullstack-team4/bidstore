@@ -20,7 +20,15 @@
       </div>
       <br>
       <div class="col-md-6">
-        最新出价: ¥ <%= @product.bids.last.amount %>
+        <% if @product.bids.present? %>
+          <% if @product.bids.last.amount > @product.price %>
+            <span>最新出价: ¥ <%= @product.bids.last.amount %></span>
+          <% else %>
+            <span>报价有误，请重新出价</span>
+          <% end %>
+        <% else %>
+          <span>起拍价格: ¥ <%= @product.price %></span>
+        <% end %>
       </div>
 
     </div>
