@@ -13,6 +13,10 @@ class User < ApplicationRecord
     is_admin
   end
 
+  def verified?
+    is_verified
+  end
+  
   has_many :orders
   has_many :bids
 

@@ -54,6 +54,7 @@ Rails.application.routes.draw do
     resources :products
     resources :users do
       member do
+        post :verify
         post :user
         post :admin
       end

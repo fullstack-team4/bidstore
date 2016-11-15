@@ -1,0 +1,13 @@
+<h2>审核个人资料</h2>
+<%= simple_form_for [:account, @user ] do |f| %>
+  <div class="user">
+    <%= @user.name %>
+  <div class="user">
+      <span>生活照</span>
+      <%= image_tag(@user.profile.thumb.url) %>
+  <div class="user">
+      <span>身份证照片</span>
+      <%= image_tag(@user.idcard.thumb.url) %>
+  </div>
+    <%= link_to("审核通过", verify_admin_user_path(@user), :method => :post, class: "btn btn-primary", data: { disable_with: "已通过" } )%>
+<% end %>
