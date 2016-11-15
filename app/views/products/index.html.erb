@@ -1,3 +1,16 @@
+<h3>倒计时</h3> <br>
+<h4>
+  <div id="getting-started"></div>
+  <script type="text/javascript">
+    $("#getting-started")
+    .countdown("2016/12/16", function(event) {
+      $(this).text(
+        event.strftime('%D days %H:%M:%S')
+      );
+    });
+  </script>
+</h4>
+<br><br>
 <div class="row">
   <% @products.each do |product| %>
     <div class="col-xs-6 col-md-3">
