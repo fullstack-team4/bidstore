@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 
 
   namespace :account do
+    resources :bids
     resources :users
     resources :orders do
       member do
