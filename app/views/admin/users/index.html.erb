@@ -6,7 +6,9 @@
     <thead>
         <tr>
             <td>用户名称</td>
-            <td>管理</td>
+            <td>审核</td>
+            <td>管理员权限设定</td>
+            <td>审核状态</td>
             <td>创建时间</td>
 
         </tr>
@@ -21,11 +23,23 @@
             </td>
 
             <td>
+              <%= link_to("Verify", admin_user_path(user)) %>
+            </td>
+
+            <td>
                 <% if user.is_admin %>
                 <%= link_to("user", user_admin_user_path(user), :method => :post) %>
-                <%else %>
+                <% else %>
                 <%= link_to("admin", admin_admin_user_path(user), method: :post) %>
                 <% end %>
+            </td>
+
+            <td>
+              <% if user.is_verified %>
+                <%= "审核已通过" %>
+              <% else %>
+                <%= "审核尚未通过" %>
+              <% end %>
             </td>
 
             <td>
