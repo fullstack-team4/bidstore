@@ -1,4 +1,9 @@
 class Admin::ProductsController < ApplicationController
+  layout "admin"
+
+  before_action :authenticate_user!
+  before_action :admin_required
+
   def new
     @product = Product.new
   end
@@ -31,14 +36,24 @@ class Admin::ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def sell
+    @product = Product.find(params[:id])
+    @product.sell!
+    redirect_to :back
+  end
 
+  def notsell
+    @product = Product.find(params[:id])
+    @product.notsell!
+    redirect_to :back
+  end
 
 
 
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :quantity, :price)
+    params.require(:product).permit(:title, :description, :quantity, :price, :image, :is_hidden, :begintime, :endtime)
   end
 
 end

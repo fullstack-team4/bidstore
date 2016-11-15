@@ -18,6 +18,22 @@
     <%= f.input :price %>
   </div>
 
+  <div class="group">
+    <%= f.input :image, as: :file %>
+  </div>
+
+  <div class="group">
+    <%= f.input :is_hidden %>
+  </div>
+
+  <div class="group">
+    <%= f.input :begintime%>
+  </div>
+
+  <div class="group">
+    <%= f.input :endtime %>
+  </div>
+
   <%= f.submit "Submit", data: { disable_with: "Submitting..."} %>
 
 <% end %>

@@ -1,0 +1,6 @@
+<h1>我的主页</h1>
+<br><br>
+<p><%= current_user.email %>，欢迎回来！</p>
+<div class="job">
+  <%= link_to("去认证身份", edit_account_user_path(current_user), class: "btn btn-primary pull-right") %>
+</div>
