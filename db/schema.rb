@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114080344) do
+ActiveRecord::Schema.define(version: 20161115071948) do
 
   create_table "bids", force: :cascade do |t|
     t.integer  "product_id"
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 20161114080344) do
     t.datetime "updated_at",                 null: false
     t.string   "image"
     t.boolean  "is_hidden",   default: true
+    t.datetime "begintime"
+    t.datetime "endtime"
   end
 
   create_table "users", force: :cascade do |t|
