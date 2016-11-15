@@ -21,6 +21,7 @@
       <% else %>
         销售一空，无法购买
       <% end %>
+      <%= link_to("查看所有出价", product_bids_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
     </div>
   </div>
 </div>

@@ -2,6 +2,7 @@ class BidsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @product = Product.find(params[:product_id])
     @bids = Bid.all
   end
 
