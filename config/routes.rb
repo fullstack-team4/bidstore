@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :cart_items
 
   resources :products do
-    resources :bids 
+    resources :bids
     member do
       post :add_to_cart
     end
@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 
 
   namespace :account do
+    resources :bids
     resources :users
     resources :orders do
       member do
