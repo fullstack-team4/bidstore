@@ -1,40 +1,24 @@
-<h2 class="text-center">我的出价</h2>
-<table class="table">
+<h1 class="text-center">我的出价</h1>
+<br><br>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>#</th>
       <th>商品</th>
-      <th>出价次数</th>
-      <th>最后出价时间</th>
-      <th>我的最高出价</th>
-      <th>商品最终价格</th>
-      <th>商品状态</th>
+      <th>出价</th>
+      <th>创建时间</th>
+      <th>更新时间</th>
     </tr>
   </thead>
   <tbody>
-
+    <% current_user.bids.each do |bid| %>
     <tr>
       <td>#</td>
-      <td>
-        #
-      </td>
-      <td>
-      #
-      </td>
-      <td>
-      #
-      </td>
-      <td>
-      #
-      </td>
-      <td>
-        #
-      </td>
-      <td>
-        #
-      </td>
-
+      <td><%= bid.product_id %></td>
+      <td><%= bid.amount %></td>
+      <td><%= bid.created_at %></td>
+      <td><%= bid.updated_at %></td>
     </tr>
-
+    <% end %>
   </tbody>
 </table>
