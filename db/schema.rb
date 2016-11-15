@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115071948) do
+ActiveRecord::Schema.define(version: 20161115094523) do
 
   create_table "bids", force: :cascade do |t|
     t.integer  "product_id"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20161115071948) do
     t.string   "shipping_address"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.string   "token"
     t.string   "aasm_state",       default: "order_placed"
     t.boolean  "is_paid",          default: false
     t.string   "payment_method"
