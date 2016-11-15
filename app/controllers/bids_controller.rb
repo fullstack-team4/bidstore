@@ -10,40 +10,12 @@ class BidsController < ApplicationController
     @bid = Bid.new(bid_params)
 
     if @bid.save
-      # flash[:notice] = "竞价成功！！！."
+      flash[:notice] = "竞价成功！！！."
       redirect_to new_product_bid_path
     else
       flash[:warning] = "竞价失败.请重新出价！！"
       redirect_to new_product_bid_path
     end
-
-    # if @product.bids.present?
-    #   if @bid.amount > @product.bids.last.amount
-    #     @bid.save
-    #     flash[:notice] = "Bid has been successfully placed."
-    #     redirect_to product_bids_path
-    #   else
-    #     flash[:warning] = "竞价失败.请重新出价！！"
-    #     redirect_to new_product_bid_path
-    #   end
-    # else
-    #   if @bid.amount > @product.price
-    #     @bid.save
-    #     flash[:notice] = "Bid has been successfully placed."
-    #     redirect_to product_bids_path
-    #   else
-    #     flash[:warning] = "竞价失败.请重新出价！！"
-    #     redirect_to new_product_bid_path
-    #   end
-    # end
-
-    # if @bid.amount > @product.bi
-    #   flash[:notice] = "Bid has been successfully placed."
-    #   redirect_to product_bids_path
-    # else
-    #   flash[:warning] = "竞价失败.请重新出价！！"
-    #   redirect_to new_product_bid_path
-    # end
   end
 
 
@@ -58,6 +30,22 @@ class BidsController < ApplicationController
     @product = Product.find(params[:product_id])
     @bid = Bid.new
   end
+
+  # def check_price_is_greater_than_current_bid
+  #   if @product.bids.present?
+  #     if @bid.amount > @product.bids.last.amount
+  #       redirect_to new_product_bid_path
+  #     else
+  #       return false
+  #     end
+  #   else
+  #     if @bid.amount > @product.price
+  #       return true
+  #     else
+  #       return false
+  #     end
+  #   end
+  # end
 
   private
 
