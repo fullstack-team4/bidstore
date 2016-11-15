@@ -38,6 +38,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'letter_opener', group: :development
 gem 'aasm'
+gem 'pry'
 
 
 group :development, :test do
