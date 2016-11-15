@@ -48,10 +48,12 @@ class Admin::ProductsController < ApplicationController
     redirect_to :back
   end
 
+
+
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :quantity, :price, :image, :is_hidden)
+    params.require(:product).permit(:title, :description, :quantity, :price, :image, :is_hidden, :begintime, :endtime)
   end
 
 end
