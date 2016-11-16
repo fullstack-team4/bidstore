@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20161114080344) do
     t.string   "shipping_address"
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.string   "token"
     t.string   "aasm_state",       default: "order_placed"
     t.boolean  "is_paid",          default: false
     t.string   "payment_method"
