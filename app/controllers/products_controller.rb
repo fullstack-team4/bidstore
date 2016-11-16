@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, only: [:favor, :quit]
+
     def add_to_cart
       @product = Product.find(params[:id])
       if !current_cart.products.include?(@product)
