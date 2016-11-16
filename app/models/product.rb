@@ -21,8 +21,7 @@ class Product < ApplicationRecord
   has_many :bids
   has_many :product_relationships
   has_many :members, through: :product_relationships, source: :user
-
-
+  
   def sell!
   self.is_hidden = false
   self.save
