@@ -48,9 +48,21 @@ class Admin::ProductsController < ApplicationController
     redirect_to :back
   end
 
-  def start
+  def start_auction
     @product = Product.find(params[:id])
     @product.start_auction!
+    redirect_to :back
+  end
+
+  def deal
+    @product = Product.find(params[:id])
+    @product.deal!
+    redirect_to :back
+  end
+
+  def fail
+    @product = Product.find(params[:id])
+    @product.fail!
     redirect_to :back
   end
 
