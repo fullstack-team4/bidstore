@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     resources :users
     resources :products do
       member do
-        post :start
+        post :start_auction
+        post :fail
+        post :deal
       end
     end
     resources :orders do
