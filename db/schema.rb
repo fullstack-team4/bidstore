@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20161116033303) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal  "amount"
+    t.integer  "buyout"
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -69,6 +70,7 @@ ActiveRecord::Schema.define(version: 20161116033303) do
     t.boolean  "is_hidden",   default: true
     t.datetime "begintime"
     t.datetime "endtime"
+    t.integer  "buyout"
     t.string   "aasm_state",  default: "before_auction"
     t.index ["aasm_state"], name: "index_products_on_aasm_state"
   end

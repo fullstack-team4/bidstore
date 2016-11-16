@@ -18,6 +18,10 @@
     <%= f.input :price %>
   </div>
 
+  <div class="group">
+    <%= f.input :buyout %>
+  </div>
+
   <% if @product.image.present? %>
     <span>商品图片</span>
     <%= image_tag(@product.image.thumb.url) %>
