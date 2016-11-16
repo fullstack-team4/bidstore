@@ -12,13 +12,22 @@ class Account::OrdersController < ApplicationController
     # @product = @order.products
   end
 
-  def buyout
-    # @product = Product.find(params[:product_id])
-    # current_user.cart.add_product_to_cart(@product)
-
-  end
+  # def buyout
+  #   @product = Product.find(params[:product_id])
+  #   @order = Order.new
+  #   @order.user = current_user
+  #   @product_list = @order.product_lists.build
+  #   @product_list.product_id = @product.id
+  #   @product_list.save
+  #   @order.save
+  #
+  #   redirect_to account_order_path(@order), notice: "buyout"
+  #
+  # end
 
   def new
+
+
     @order = Order.new
     # @product = @order.products
   end

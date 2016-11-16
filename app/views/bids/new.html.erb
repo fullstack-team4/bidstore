@@ -37,7 +37,8 @@
           <% if @product.bids.last.amount > @product.price %>
             <span>最新出价: ¥ <%= @product.bids.last.amount %></span>
           <% else %>
-            <span>报价有误，请重新出价</span>
+            <!-- <span>报价有误，请重新出价</span> -->
+            <span>起拍价格: ¥ <%= @product.price %></span>
           <% end %>
         <% else %>
           <span>起拍价格: ¥ <%= @product.price %></span>
@@ -50,7 +51,7 @@
   <div>
     <%= link_to("查看所有出价", product_bids_path, :class => "btn btn-primary btn-lg btn-danger")%>
 
-    <%= link_to("一口价直接购买", new_account_order_path, :class => "btn btn-primary btn-lg btn-danger")%>
+    <%= link_to"一口价直接购买", add_to_cart_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger" %>
   </div>
 
 </div>
