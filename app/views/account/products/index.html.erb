@@ -6,8 +6,8 @@
       <th>#</th>
       <th>商品</th>
       <th>起拍价格</th>
-      <th>创建时间</th>
-      <th>更新时间</th>
+      <th>开拍时间</th>
+      <th>拍卖状态</th>
       <th>操作</th>
     </tr>
   </thead>
@@ -15,11 +15,11 @@
     <% current_user.participated_products.each do |product| %>
     <tr>
       <td>#</td>
-      <td><%= product.title %></td>
+      <td><%= link_to(product.title, product_path(product)) %></td>
       <td><%= product.price %></td>
       <td><%= product.begintime %></td>
       <td><%= product.aasm_state %></td>
-      <td><%= link_to("取消收藏", quit_product_path(product), :method => :post, :class => "btn btn-primary btn-lg btn-danger")%></td>
+      <td><%= link_to("取消收藏", quit_product_path(product), :method => :post, :class => "btn btn-default")%></td>
     </tr>
     <% end %>
   </tbody>
