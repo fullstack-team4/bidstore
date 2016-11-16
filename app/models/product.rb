@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
 
   has_many :bids
-  
+  has_many :cart_items
 
 
   def sell!

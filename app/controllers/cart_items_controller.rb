@@ -1,6 +1,19 @@
 class CartItemsController < ApplicationController
   before_action :authenticate_user!
 
+  def new
+    @cart_item = Cart_item.new
+  end
+
+  def create
+    @cart_item = Cart_item.new
+    @cart = current_cart
+    @product = @cart_item.product
+    @cart_item = @cart.cart_items.find_by(product_id: params[:id])
+    @cart_item.product.title = @product.title
+    @cart_item.product.buyout = @product.buyout
+  end
+
   def destroy
     @cart = current_cart
     @cart_item = @cart.cart_items.find_by(product_id: params[:id])
@@ -19,7 +32,7 @@ class CartItemsController < ApplicationController
       flash[:noitice] = "成功变更数量"
     else
       flash[:notice] = "数量不足以加入购物车"
-    end 
+    end
     redirect_to carts_path
   end
 
