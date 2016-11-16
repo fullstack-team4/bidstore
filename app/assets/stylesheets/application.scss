@@ -16,3 +16,41 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "font-awesome";
+
+ .jumbotron {
+   background-image:url('https://s3-us-west-2.amazonaws.com/feiben/homework/bidstore/impressionist_n09035-jpg-webrend-2000-11251.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+ }
+
+.title {
+  padding-top: 20px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.title {
+  color: yellow;
+}
+
+.ending {
+  padding-top: 120px;
+  padding-right: 130px;
+  padding-bottom: 120px;
+  padding-left: 130px;
+  background-image:url('https://s3-us-west-2.amazonaws.com/feiben/homework/bidstore/mao.jpg');
+  background-repeat: no-repeat;
+}
+
+.endingtitle {
+  padding-top: 20px;
+  padding-right: 0px;
+  padding-bottom: 20px;
+  padding-left: 0px;
+  background: rgba(255, 255, 255, 0.3);
+  font-size: 40px;
+  color: white;
+  text-align: center;
+}
