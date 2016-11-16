@@ -16,13 +16,13 @@ class Product < ApplicationRecord
   include AASM
 
   aasm do
-    state :before_auction
+    state :before_auction, initial: true
     state :during_auction
     state :sold
     state :unsold
 
     event :start_auction do
-      transitions from: :before_auction, to: :during_auction
+      transitions from: [:before_auction, :unsold], to: :during_auction
     end
 
     event :deal do
