@@ -34,10 +34,15 @@
     <div class="pull-right">
       <p>起拍时间 <%= @product.begintime %> </p>
       <p>结束时间 <%= @product.endtime %> </p>
-      <% if @product.quantity > 0 %>
-        <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
-      <% else %>
+
+      <% if @product.during_auction? %>
+        <% if @product.quantity > 0 %>
+          <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
+        <% else %>
         销售一空，无法购买
+        <% end %>
+      <% else %>
+        <%= link_to("参加拍卖", "#", :method => :post, :class => "btn btn-primary disabled btn-lg btn-danger")%>
       <% end %>
       <%= link_to("查看所有出价", product_bids_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
     </div>

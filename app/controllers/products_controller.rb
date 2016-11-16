@@ -23,7 +23,11 @@ class ProductsController < ApplicationController
     private
 
     def product_params
+<<<<<<< HEAD
       params.require(:product).permit(:title, :description, :product, :quantity, :price, :buyout, :image, :is_hidden, :begintime, :endtime)
+=======
+      params.require(:product).permit(:title, :description, :quantity, :price, :image, :is_hidden, :begintime, :endtime, :aasm_state)
+>>>>>>> dd641248f84c590b33b1ffcb70348c3d086c38c6
     end
 
 end

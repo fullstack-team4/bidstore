@@ -6,11 +6,11 @@
   <thead>
     <tr>
       <th>#</th>
-      <th width="220">Product Pic</th>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Buyout</th>
-      <th width="100"> Options</th>
+      <th width="220">产品图片</th>
+      <th>产品名称</th>
+      <th>底价</th>
+      <th width="100">操作</th>
+      <th>产品状态</th>
     </tr>
   </thead>
   <tbody>
@@ -41,6 +41,9 @@
 
         <td>
           <%= link_to("Edit", edit_admin_product_path(product)) %>
+        </td>
+        <td>
+          <%= render "admin/products/product_state", product: product %>
         </td>
       </tr>
     <% end %>
