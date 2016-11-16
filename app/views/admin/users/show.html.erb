@@ -3,11 +3,15 @@
   <div class="user">
     <%= @user.name %>
   <div class="user">
+    <% if @user.profile.present? %>
       <span>生活照</span>
       <%= image_tag(@user.profile.thumb.url) %>
+    <% end %>
   <div class="user">
+    <% if @user.idcard.present? %>
       <span>身份证照片</span>
       <%= image_tag(@user.idcard.thumb.url) %>
+    <% end %>
   </div>
     <%= link_to("审核通过", verify_admin_user_path(@user), :method => :post, class: "btn btn-primary", data: { disable_with: "已通过" } )%>
 <% end %>

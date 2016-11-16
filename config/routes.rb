@@ -14,12 +14,24 @@ Rails.application.routes.draw do
     resources :bids
     member do
       post :add_to_cart
+      post :favor
+      post :quit
     end
   end
 
+
+
+
+
   namespace :admin do
     resources :users
-    resources :products
+    resources :products do
+      member do
+        post :start_auction
+        post :fail
+        post :deal
+      end
+    end
     resources :orders do
       member do
         post :cancel
@@ -42,6 +54,7 @@ Rails.application.routes.draw do
   namespace :account do
     resources :bids
     resources :users
+    resources :products
     resources :orders do
       member do
         post :buyout

@@ -1,0 +1,24 @@
+<div style="padding:10px; float:right;">
+  <% case product.aasm_state %>
+  <% when "before_auction" %>
+    <%= link_to("开始拍卖",
+                start_auction_admin_product_path(product),
+                class: "btn btn-default btn-sm", method: :post)%>
+
+  <% when "during_auction" %>
+    <%= link_to("成交",
+                deal_admin_product_path(product),
+                class: "btn btn-default btn-sm", method: :post)%>
+    <%= link_to("停止拍卖",
+                fail_admin_product_path(product),
+                class: "btn btn-default btn-sm", method: :post)%>
+
+  <% when "sold" %>
+    <span class="label label-default">拍卖成功</span>
+
+  <% when "unsold" %>
+    <%= link_to("重新拍卖",
+                start_auction_admin_product_path(product),
+                class: "btn btn-default btn-sm", method: :post)%>
+  <% end %>
+</div>
