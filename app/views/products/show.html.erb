@@ -34,6 +34,7 @@
     <div class="pull-right">
       <p>起拍时间 <%= @product.begintime %> </p>
       <p>结束时间 <%= @product.endtime %> </p>
+      <%= link_to("加入收藏夹", favor_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger") %>
 
       <% if @product.during_auction? %>
         <% if @product.quantity > 0 %>
