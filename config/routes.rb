@@ -19,7 +19,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :products
+    resources :products do
+      member do
+        post :start
+      end
+    end
     resources :orders do
       member do
         post :cancel

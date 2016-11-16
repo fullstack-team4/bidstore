@@ -48,12 +48,19 @@ class Admin::ProductsController < ApplicationController
     redirect_to :back
   end
 
+  def start
+    @product = Product.find(params[:id])
+    @product.start_auction!
+    redirect_to :back
+  end
+
+
 
 
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :quantity, :price, :image, :is_hidden, :begintime, :endtime)
+    params.require(:product).permit(:title, :description, :quantity, :price, :image, :is_hidden, :begintime, :endtime, :aasm_state)
   end
 
 end
