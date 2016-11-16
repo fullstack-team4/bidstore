@@ -13,10 +13,10 @@
       </thead>
       <tbody>
 
-        <% product.each do |p| %>
+        <% @products.each do |p| %>
         <tr>
           <td>
-            <%= link_to(p.product.title, product_path(p.product)) %>
+            <%= p.product.title %>
           </td>
           <td>
             <%= p.product.buyout %>

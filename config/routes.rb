@@ -57,6 +57,7 @@ Rails.application.routes.draw do
     resources :products
     resources :orders do
       member do
+        post :buyout
         post :pay_with_wechat
         post :pay_with_alipay
       end
