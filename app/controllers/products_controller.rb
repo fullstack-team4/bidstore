@@ -19,6 +19,31 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
+    def favor
+      @product = Product.find(params[:id])
+      if !current_user.favor?(@product)
+        current_user.favor!(@product)
+        flash[:notice] = "收藏成功"
+      else
+        flash[:warning] = "已经在收藏夹中了"
+      end
+      redirect_to :back
+    end
+
+
+    def quit
+      @product = Product.find(params[:id])
+      if current_user.favor?(@product)
+        current_user.quit!(@product)
+        flash[:alert] = "取消成功"
+      else
+        flash[:warning] = "尚未加入收藏"
+      end
+      redirect_to :back
+    end
+
+
+
 
     private
 

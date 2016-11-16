@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: bids
+#
+#  id         :integer          not null, primary key
+#  product_id :integer
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  amount     :decimal(, )
+#
+
 class Bid < ApplicationRecord
   belongs_to :product
   belongs_to :user

@@ -14,8 +14,14 @@ Rails.application.routes.draw do
     resources :bids
     member do
       post :add_to_cart
+      post :favor
+      post :quit
     end
   end
+
+
+
+
 
   namespace :admin do
     resources :users
@@ -48,6 +54,7 @@ Rails.application.routes.draw do
   namespace :account do
     resources :bids
     resources :users
+    resources :products
     resources :orders do
       member do
         post :pay_with_wechat
