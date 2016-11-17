@@ -8,19 +8,20 @@
     <% end %>
   </div>
   <div class="col-md-6">
-    <h3>距离拍卖结束还有</h3> <br>
+    <!-- <h3>距离拍卖结束还有</h3> <br>
     <h4>
       <div id="getting-started"></div>
       <script type="text/javascript">
         $("#getting-started")
-        .countdown("2016/12/16", function(event) {
+        .countdown("", function(event) {
           $(this).text(
             event.strftime('%D days %H:%M:%S')
           );
         });
       </script>
     </h4>
-    <br><br>
+    <br><br> -->
+
     <h2> <%= @product.title %> </h2>
     <div style="height:100px;">
       <p>
@@ -32,8 +33,26 @@
     <div> <h4> 一口价 ¥ : <%= @product.buyout %> </h4> </div>
 
     <div class="pull-right">
+
       <p>起拍时间 <%= @product.begintime %> </p>
       <p>结束时间 <%= @product.endtime %> </p>
+      <%# binding.pry %>
+      <% t = Time.now %>
+      <% if @product.begintime.present? && t < @product.begintime %>
+        <%= @product.time_before_start(Time.now, Time.now-2.days-3.hours-4.minutes-5.seconds)%>
+      <% elsif @product.begintime < t && t < @product.endtime %>
+        <%= @product.time_before_end(Time.now, Time.now-2.days-3.hours-4.minutes-5.seconds) %>
+      <% elsif @product.endtime < t %>
+        <p>拍卖已结束</p>
+      <% end %>
+      <%# binding.pry %>
+
+      <%# if @product.time_left > 0 %>
+        <!-- <p>剩余时间 <%#= @product.time_left %> </p> -->
+      <%# else %>
+        <!-- <p>不在拍卖时间</p> -->
+      <%# end %>
+      <!-- <p><%#= TimeDifference %></p> -->
       <%= link_to("加入收藏夹", favor_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger") %>
 
       <% if @product.during_auction? %>

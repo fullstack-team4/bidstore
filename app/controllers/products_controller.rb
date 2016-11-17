@@ -1,13 +1,30 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, only: [:favor, :quit]
+
     def add_to_cart
       @product = Product.find(params[:id])
-      if !current_cart.products.include?(@product)
-        current_cart.add_product_to_cart(@product)
-        flash[:notice] = "已经将 #{@product.title} 加入购物车"
-      else
-        flash[:warning] = "购物车已有此物"
-      end
+      # @user = current_user
+      # @product.user = current_user
+      # @product.bid = @bid
+      #
+      # binding.pry
+      #
+      # if @product.endtime - Time.now < 0 #&& @product.bids.last.amout = @user.bids.last.amount
+      #   flash[:notice] = "恭喜！您已中标！请进行下一步操作！"
+      #   current_cart.add_product_to_cart(@product)
+      # else
+      #if @product.endtime-Time.now > 0 && @product.begintime-Time.now < 0
+        if !current_cart.products.include?(@product)
+          current_cart.add_product_to_cart(@product)
+          flash[:notice] = "已经将 #{@product.title} 加入购物车"
+        else
+          flash[:warning] = "购物车已有此物"
+        end
+      #else
+        #flash[:warning] = "拍卖结束或尚未开始，请关注竞拍时间！！"
+      #end
       redirect_to :back
+      # end
     end
 
     def index
