@@ -24,4 +24,12 @@ class ApplicationController < ActionController::Base
       redirect_to "/"
     end
   end
+
+  def require_is_verified
+    if !current_user.is_verified?
+      flash[:alert] = 'You are not verified'
+      redirect_to edit_account_user_path(current_user)
+    end
+  end
+
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114080344) do
+ActiveRecord::Schema.define(version: 20161116122913) do
 
   create_table "bids", force: :cascade do |t|
     t.integer  "product_id"
@@ -18,14 +18,16 @@ ActiveRecord::Schema.define(version: 20161114080344) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal  "amount"
+    t.integer  "buyout"
   end
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "cart_id"
     t.integer  "product_id"
-    t.integer  "quantity",   default: 1
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "quantity",       default: 1
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "product_buyout"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -56,6 +58,14 @@ ActiveRecord::Schema.define(version: 20161114080344) do
     t.integer  "quantity"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "product_id"
+  end
+
+  create_table "product_relationships", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -63,10 +73,15 @@ ActiveRecord::Schema.define(version: 20161114080344) do
     t.text     "description"
     t.integer  "quantity"
     t.integer  "price"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "image"
     t.boolean  "is_hidden",   default: true
+    t.datetime "begintime"
+    t.datetime "endtime"
+    t.integer  "buyout"
+    t.string   "aasm_state",  default: "before_auction"
+    t.index ["aasm_state"], name: "index_products_on_aasm_state"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,6 +101,7 @@ ActiveRecord::Schema.define(version: 20161114080344) do
     t.string   "profile"
     t.string   "name"
     t.string   "idcard"
+    t.boolean  "is_verified",            default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

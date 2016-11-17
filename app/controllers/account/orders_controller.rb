@@ -5,4 +5,42 @@ class Account::OrdersController < ApplicationController
   def index
     @orders = current_user.orders
   end
+
+  def create
+    @order = Order.new(order_params)
+    @order.user = current_user
+    # @product = @order.products
+  end
+
+  # def buyout
+  #   @product = Product.find(params[:product_id])
+  #   @order = Order.new
+  #   @order.user = current_user
+  #   @product_list = @order.product_lists.build
+  #   @product_list.product_id = @product.id
+  #   @product_list.save
+  #   @order.save
+  #
+  #   redirect_to account_order_path(@order), notice: "buyout"
+  #
+  # end
+
+  def new
+
+
+    @order = Order.new
+    # @product = @order.products
+  end
+
+  def show
+    @order = Order.find_by_token(params[:id])
+    @product_lists = @order.product_lists
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:billing_name, :billing_address, :shipping_name, :shipping_address, :is_paid, :payment_method, :aasm_state)
+  end
+
 end

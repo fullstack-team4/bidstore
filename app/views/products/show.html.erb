@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-md-6">
     <% if @product.image.present? %>
@@ -7,6 +8,19 @@
     <% end %>
   </div>
   <div class="col-md-6">
+    <h3>距离拍卖结束还有</h3> <br>
+    <h4>
+      <div id="getting-started"></div>
+      <script type="text/javascript">
+        $("#getting-started")
+        .countdown("2016/12/16", function(event) {
+          $(this).text(
+            event.strftime('%D days %H:%M:%S')
+          );
+        });
+      </script>
+    </h4>
+    <br><br>
     <h2> <%= @product.title %> </h2>
     <div style="height:100px;">
       <p>
@@ -15,11 +29,21 @@
     </div>
     <div> 数量 : <%= @product.quantity %> </div>
     <div class="product-price"> ￥ <%= @product.price %> </div>
+    <div> <h4> 一口价 ¥ : <%= @product.buyout %> </h4> </div>
+
     <div class="pull-right">
-      <% if @product.quantity > 0 %>
-        <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
-      <% else %>
+      <p>起拍时间 <%= @product.begintime %> </p>
+      <p>结束时间 <%= @product.endtime %> </p>
+      <%= link_to("加入收藏夹", favor_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger") %>
+
+      <% if @product.during_auction? %>
+        <% if @product.quantity > 0 %>
+          <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
+        <% else %>
         销售一空，无法购买
+        <% end %>
+      <% else %>
+        <%= link_to("参加拍卖", "#", :method => :post, :class => "btn btn-primary disabled btn-lg btn-danger")%>
       <% end %>
       <%= link_to("查看所有出价", product_bids_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
     </div>

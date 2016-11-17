@@ -21,4 +21,15 @@ class Admin::UsersController < ApplicationController
      redirect_to :back
    end
 
+   def verify
+     @user = User.find(params[:id])
+     @user.is_verified = true
+     @user.save
+     redirect_to :back
+   end
+
+   def show
+     @user = User.find(params[:id])
+   end
+
 end

@@ -1,0 +1,26 @@
+<h1 class="text-center">我的收藏</h1>
+<br><br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>商品</th>
+      <th>起拍价格</th>
+      <th>开拍时间</th>
+      <th>拍卖状态</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% current_user.participated_products.each do |product| %>
+    <tr>
+      <td>#</td>
+      <td><%= link_to(product.title, product_path(product)) %></td>
+      <td><%= product.price %></td>
+      <td><%= product.begintime %></td>
+      <td><%= product.aasm_state %></td>
+      <td><%= link_to("取消收藏", quit_product_path(product), :method => :post, :class => "btn btn-default")%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

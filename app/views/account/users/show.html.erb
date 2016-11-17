@@ -1,6 +1,33 @@
 <h1>我的主页</h1>
 <br><br>
 <p><%= current_user.email %>，欢迎回来！</p>
+
+<table class="table table-boldered">
+  <thead>
+    <tr>
+      <td>用户名称</td>
+      <td>审核状态</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>
+        <%= render_user_status(current_user) %>
+        <%= current_user.email %>
+      </td>
+
+      <td>
+        <% if current_user.is_verified %>
+          <%= "审核已通过" %>
+        <% else %>
+          <%= "审核尚未通过" %>
+        <% end %>
+      </td>
+
+    </tbody>
+</table>
+
 <div class="job">
   <%= link_to("去认证身份", edit_account_user_path(current_user), class: "btn btn-primary pull-right") %>
 </div>
