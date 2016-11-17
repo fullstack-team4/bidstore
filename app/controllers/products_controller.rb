@@ -2,7 +2,20 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:favor, :quit]
 
     def add_to_cart
+
+
+      price = 0
       @product = Product.find(params[:id])
+
+      # binding.pry
+
+      if params[:is_buyout].present? && params[:is_buyout] == "true"
+        price = @product.buyout
+      else
+        price = @product.bids.last.amount.round
+      end
+
+
       # @user = current_user
       # @product.user = current_user
       # @product.bid = @bid
@@ -15,7 +28,7 @@ class ProductsController < ApplicationController
       # else
       #if @product.endtime-Time.now > 0 && @product.begintime-Time.now < 0
         if !current_cart.products.include?(@product)
-          current_cart.add_product_to_cart(@product)
+          current_cart.add_product_to_cart(@product, price)
           flash[:notice] = "已经将 #{@product.title} 加入购物车"
         else
           flash[:warning] = "购物车已有此物"
