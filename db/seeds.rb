@@ -69,6 +69,7 @@ create_product = Product.create([title: "罗永浩的锤子",
                                  description: "打假维权不再烦恼",
                                  price: 666,
                                  quantity: 6,
+                                 buyout: 6666
                                  image: "http://image.nbd.com.cn/uploads/articles/thumbnails/1074/4.x_large.jpg",
                                  is_hidden:"false",
                                  aasm_state: "before_auction"])
@@ -78,6 +79,7 @@ create_product = Product.create([title: "韩寒的摄像机",
                                  description: "用作家的镜头讲你的故事",
                                  price: 9999,
                                  quantity: 5,
+                                 buyout: 99999
                                  image: "http://s.qdcdn.com/cl/12441845,800,450.jpg",
                                  is_hidden:"false",
                                  aasm_state: "before_auction"])
@@ -87,6 +89,7 @@ create_product = Product.create([title: "小S的牛仔裤",
                                  description: "好身材的黄金尺",
                                  price: 888,
                                  quantity: 100,
+                                 buyout: 8888
                                  image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
                                  is_hidden:"false",
                                  aasm_state: "before_auction"])
