@@ -15,9 +15,10 @@ class Cart < ApplicationRecord
     cart_items.destroy_all
   end
 
-  def add_product_to_cart(product)
+  def add_product_to_cart(product, price)
     ci = cart_items.build
     ci.product = product
+    ci.price = price
     ci.quantity = 1
     # ci.endtime = @product.endtime
     # ci.begintime = @product.begintime
