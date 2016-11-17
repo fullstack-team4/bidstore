@@ -18,19 +18,67 @@
 
 class Product < ApplicationRecord
 
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :price, numericality: { greater_than: 0 }
+  validates :quantity, numericality: { greater_than_or_equal_to: 0 }
+  validates :begintime, presence: true
+  validates :endtime, presence: true
+  mount_uploader :image, ImageUploader
+
+
   has_many :bids
   has_many :cart_items
   has_many :product_relationships
   has_many :members, through: :product_relationships, source: :user
 
+  def time_before_start(start_time, end_time)
+    seconds_diff = (Time.now - begintime).to_i.abs
+
+    hours = seconds_diff / 3600
+    seconds_diff -= hours * 3600
+
+    minutes = seconds_diff / 60
+    seconds_diff -= minutes * 60
+
+    seconds = seconds_diff
+
+    "距离开拍还有#{hours.to_s.rjust(2, '0')}小时#{minutes.to_s.rjust(2, '0')}分钟#{seconds.to_s.rjust(2, '0')}秒"
+  end
+
+  def time_before_end(start_time, end_time)
+    seconds_diff = (Time.now - endtime).to_i.abs
+
+    hours = seconds_diff / 3600
+    seconds_diff -= hours * 3600
+
+    minutes = seconds_diff / 60
+    seconds_diff -= minutes * 60
+
+    seconds = seconds_diff
+
+    "距离结束还有#{hours.to_s.rjust(2, '0')}小时#{minutes.to_s.rjust(2, '0')}分钟#{seconds.to_s.rjust(2, '0')}秒"
+  end
+
+
+  #  def time_left
+  #    t = endtime - Time.now
+  #    t
+  #  end
+  # start_time = DateTime.new(Time.now)
+  # end_time = DateTime.new(endtime)
+  # TimeDifference.between(start_time, end_time).humanize
+  # => {:years=>0, :months=>12, :weeks=>0, :days=>}
+
+
   def sell!
-  self.is_hidden = false
-  self.save
+    self.is_hidden = false
+    self.save
   end
 
   def notsell!
-  self.is_hidden = true
-  self.save
+    self.is_hidden = true
+    self.save
   end
 
 
@@ -58,11 +106,6 @@ class Product < ApplicationRecord
 
 
 
-  validates :title, presence: true
-  validates :description, presence: true
-  validates :price, numericality: { greater_than: 0 }
-  validates :quantity, numericality: { greater_than_or_equal_to: 0 }
-  mount_uploader :image, ImageUploader
 
 
 end

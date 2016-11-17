@@ -63,7 +63,9 @@ create_product = Product.create([title: "李笑来的法拉利",
                                  buyout:8000000,
                                  image: "http://m4.auto.itc.cn/c_zoom,w_800/800379.jpg",
                                  is_hidden:"false",
-                                 aasm_state: "before_auction"])
+                                 aasm_state: "before_auction",
+                                 begintime: "2016-11-15 18:09:00",
+                                 endtime: "2016-11-16 09:09:00"])
 puts "Product created"
 
 create_product = Product.create([title: "罗永浩的锤子",
@@ -73,7 +75,9 @@ create_product = Product.create([title: "罗永浩的锤子",
                                  buyout: 6666,
                                  image: "http://image.nbd.com.cn/uploads/articles/thumbnails/1074/4.x_large.jpg",
                                  is_hidden:"false",
-                                 aasm_state: "before_auction"])
+                                 aasm_state: "before_auction",
+                                 begintime: "2016-11-17 18:09:00",
+                                 endtime: "2016-11-18 09:09:00"])
 puts "Product created"
 
 create_product = Product.create([title: "韩寒的摄像机",
@@ -83,7 +87,9 @@ create_product = Product.create([title: "韩寒的摄像机",
                                  buyout: 99999,
                                  image: "http://s.qdcdn.com/cl/12441845,800,450.jpg",
                                  is_hidden:"false",
-                                 aasm_state: "before_auction"])
+                                 aasm_state: "before_auction",
+                                 begintime: "2016-11-20 18:09:00",
+                                 endtime: "2016-11-22 09:09:00"])
 puts "Product created"
 
 create_product = Product.create([title: "小S的牛仔裤",
@@ -93,5 +99,7 @@ create_product = Product.create([title: "小S的牛仔裤",
                                  buyout: 8888,
                                  image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
                                  is_hidden:"false",
-                                 aasm_state: "before_auction"])
+                                 aasm_state: "before_auction",
+                                 begintime: "2016-11-15 18:09:00",
+                                 endtime: "2016-11-25 09:09:00"])
 puts "Product created"
