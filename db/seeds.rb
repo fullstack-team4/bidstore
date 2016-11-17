@@ -90,7 +90,7 @@ create_product = Product.create([title: "小S的牛仔裤",
                                  description: "好身材的黄金尺",
                                  price: 888,
                                  quantity: 100,
-                                 buyout: 8888
+                                 buyout: 8888,
                                  image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
                                  is_hidden:"false",
                                  aasm_state: "before_auction"])
