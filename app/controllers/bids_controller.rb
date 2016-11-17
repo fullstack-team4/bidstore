@@ -2,6 +2,12 @@ class BidsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_is_verified, only:[:create, :new]
 
+  scope :live, -> (){ where('? < @product.endtime', DateTime.now)}
+
+  def is_live?
+    DateTime.now < endtime
+  end
+  
   def index
     @product = Product.find(params[:product_id])
     @bids = Bid.all
@@ -32,6 +38,8 @@ class BidsController < ApplicationController
     @product = Product.find(params[:product_id])
     @bid = Bid.new
   end
+
+
 
   # def check_price_is_greater_than_current_bid
   #   if @product.bids.present?
