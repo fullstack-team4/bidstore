@@ -1,24 +1,34 @@
-<div style="padding:10px; float:right;">
-  <% case product.aasm_state %>
-  <% when "before_auction" %>
-    <%= link_to("开始拍卖",
+<!-- <div style="padding:10px; float:right;"> -->
+  <%# case product.aasm_state %>
+  <%# when "before_auction" %>
+    <%#= link_to("开始拍卖",
                 start_auction_admin_product_path(product),
                 class: "btn btn-default btn-sm", method: :post)%>
 
-  <% when "during_auction" %>
-    <%= link_to("成交",
+  <%# when "during_auction" %>
+    <%#= link_to("成交",
                 deal_admin_product_path(product),
                 class: "btn btn-default btn-sm", method: :post)%>
-    <%= link_to("停止拍卖",
+    <%#= link_to("停止拍卖",
                 fail_admin_product_path(product),
                 class: "btn btn-default btn-sm", method: :post)%>
 
-  <% when "sold" %>
-    <span class="label label-default">拍卖成功</span>
+  <%# when "sold" %>
+    <!-- <span class="label label-default">拍卖成功</span> -->
 
-  <% when "unsold" %>
-    <%= link_to("重新拍卖",
+  <%# when "unsold" %>
+    <%#= link_to("重新拍卖",
                 start_auction_admin_product_path(product),
                 class: "btn btn-default btn-sm", method: :post)%>
+  <%# end %>
+<!-- </div> -->
+<div style="float:left">
+  <% t = Time.now %>
+  <% if t < product.begintime %>
+    <span class="label label-default">尚未开拍</span>
+  <% elsif product.begintime < t && t < product.endtime %>
+    <span class="label label-default">拍卖中</span>
+  <% elsif product.endtime < t %>
+    <span class="label label-default">拍卖结束</span>
   <% end %>
 </div>

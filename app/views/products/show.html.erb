@@ -24,27 +24,30 @@
 
     <h2> <%= @product.title %> </h2>
     <div style="height:100px;">
-      <p>
-        <%= @product.description %>
-      </p>
+      <p><%= @product.description %></p>
     </div>
-    <div> 数量 : <%= @product.quantity %> </div>
-    <div class="product-price"> ￥ <%= @product.price %> </div>
-    <div> <h4> 一口价 ¥ : <%= @product.buyout %> </h4> </div>
+    <div>
+      <p> 数量 : <%= @product.quantity %> </p>
+      <p> 底价 : ￥<%= @product.price %> </p>
+      <p> 一口价 : ¥<%= @product.buyout %></p>
+    </div>
 
-    <div class="pull-right">
-
+    <div>
       <p>起拍时间 <%= @product.begintime %> </p>
       <p>结束时间 <%= @product.endtime %> </p>
       <%# binding.pry %>
       <% t = Time.now %>
-      <% if @product.begintime.present? && t < @product.begintime %>
-        <%= @product.time_before_start(Time.now, Time.now-2.days-3.hours-4.minutes-5.seconds)%>
+      <% if t < @product.begintime %>
+        <p><%= @product.time_before_start(Time.now, Time.now-2.days-3.hours-4.minutes-5.seconds)%></p>
       <% elsif @product.begintime < t && t < @product.endtime %>
-        <%= @product.time_before_end(Time.now, Time.now-2.days-3.hours-4.minutes-5.seconds) %>
+        <p><%= @product.time_before_end(Time.now, Time.now-2.days-3.hours-4.minutes-5.seconds) %></p>
+        <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
       <% elsif @product.endtime < t %>
         <p>拍卖已结束</p>
       <% end %>
+      <%= link_to("查看所有出价", product_bids_path(@product), :method => :get, :class => "btn btn-primary btn-lg")%>
+      <%= link_to("加入收藏夹", favor_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg") %>
+
       <%# binding.pry %>
 
       <%# if @product.time_left > 0 %>
@@ -53,18 +56,18 @@
         <!-- <p>不在拍卖时间</p> -->
       <%# end %>
       <!-- <p><%#= TimeDifference %></p> -->
-      <%= link_to("加入收藏夹", favor_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger") %>
+      <%#= link_to("加入收藏夹", favor_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger") %>
 
-      <% if @product.during_auction? %>
-        <% if @product.quantity > 0 %>
-          <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
-        <% else %>
-        销售一空，无法购买
-        <% end %>
-      <% else %>
-        <%= link_to("参加拍卖", "#", :method => :post, :class => "btn btn-primary disabled btn-lg btn-danger")%>
-      <% end %>
-      <%= link_to("查看所有出价", product_bids_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
+      <%# if @product.during_auction? %>
+        <%# if @product.quantity > 0 %>
+          <%#= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
+        <%# else %>
+        <!-- 销售一空，无法购买 -->
+        <%# end %>
+      <%# else %>
+        <%#= link_to("参加拍卖", "#", :method => :post, :class => "btn btn-primary disabled btn-lg btn-danger")%>
+      <%# end %>
+      <%#= link_to("查看所有出价", product_bids_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
     </div>
   </div>
 </div>
