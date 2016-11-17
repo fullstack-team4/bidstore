@@ -19,7 +19,14 @@ class Cart < ApplicationRecord
     ci = cart_items.build
     ci.product = product
     ci.quantity = 1
+    # ci.endtime = @product.endtime
+    # ci.begintime = @product.begintime
+    # if @product.endtime-Time.now > 0 && @product.begintime-Time.now < 0
     ci.save
+    # else
+    #   flash[:warning] = "拍卖结束或尚未开始，请关注竞拍时间！！"
+    #   redirect_to new_product_bid_path
+    # end
   end
 
   def total_price
