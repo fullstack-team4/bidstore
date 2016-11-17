@@ -56,15 +56,18 @@
 
 </div>
 
-
-<%= simple_form_for [:product, @bid] do |f| %>
-
-  <div class="group">
-    <%= f.input :amount %>
-    <%= f.hidden_field :product_id, value: @product.id %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-  </div>
-
-  <%= f.submit "Submit", data: { disable_with: "Submitting..."} %>
-
+<% if @product.endtime > Time.now %>
+  <%= simple_form_for [:product, @bid] do |f| %>
+    <div class="group">
+      <%= f.input :amount %>
+      <%= f.hidden_field :product_id, value: @product.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+    </div>
+    <%= f.submit "Submit", data: { disable_with: "Submitting..."} %>
+  <% end %>
+<% elsif @product.bids.last.user == current_user %>
+  <p>恭喜！你已中标，请点击购买按钮！</p>
+  <%= link_to("购买", add_to_cart_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger") %>
+<% else %>
+  <p>很遗憾，您未中标！</p>
 <% end %>
