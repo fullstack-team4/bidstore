@@ -9,14 +9,12 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user = current_user
     @order.total = current_cart.total_price
-
     if @order.save
-
       current_cart.cart_items.each do |cart_item|
         product_list = ProductList.new
         product_list.order = @order
         product_list.product_name = cart_item.product.title
-        product_list.product_price = product.buyout
+        product_list.product_price = cart_item.product.buyout
         product_list.quantity = cart_item.quantity
         product_list.save
       end
@@ -60,4 +58,5 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:billing_name, :billing_address, :shipping_name, :shipping_address, :is_paid, :payment_method, :aasm_state)
   end
+
 end
