@@ -18,8 +18,6 @@ class OrdersController < ApplicationController
         product_list.quantity = cart_item.quantity
         product_list.save
       end
-    end
-
       current_cart.clean!
       OrderMailer.notify_order_placed(@order).deliver!
 
@@ -60,4 +58,5 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:billing_name, :billing_address, :shipping_name, :shipping_address, :is_paid, :payment_method, :aasm_state)
   end
+
 end
