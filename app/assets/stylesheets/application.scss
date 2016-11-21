@@ -24,6 +24,7 @@
  }
 
 .title {
+  font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
   padding-top: 20px;
   padding-right: 30px;
   padding-bottom: 20px;
@@ -34,6 +35,7 @@
 }
 
 .ending {
+  font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
   padding-top: 120px;
   padding-right: 130px;
   padding-bottom: 120px;
@@ -43,6 +45,7 @@
 }
 
 .endingtitle {
+  font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
   padding-top: 20px;
   padding-right: 0px;
   padding-bottom: 20px;
@@ -52,4 +55,10 @@
   font-size: 40px;
   color: teal;
   text-align: center;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
+    color: rgb(102, 102, 102);
+    font-size: 14px;
 }
