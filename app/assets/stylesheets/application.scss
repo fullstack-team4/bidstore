@@ -31,18 +31,18 @@
  }
 
 .title {
+  font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
   padding-top: 20px;
   padding-right: 30px;
   padding-bottom: 20px;
   padding-left: 30px;
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.title {
-  color: yellow;
+  margin: 10% 40%;
+  color: teal;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .ending {
+  font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
   padding-top: 120px;
   padding-right: 130px;
   padding-bottom: 120px;
@@ -56,13 +56,25 @@
 }
 
 .endingtitle {
+  font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
   padding-top: 20px;
   padding-right: 0px;
   padding-bottom: 20px;
   padding-left: 0px;
+<<<<<<< HEAD
   margin: 0 30%;
   background: rgba(255, 255, 255, 0.3);
+=======
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 30%;
+>>>>>>> 59545263c71368e53cf670f50ad926c3ab77c201
   font-size: 40px;
-  color: white;
+  color: teal;
   text-align: center;
+}
+
+body {
+    font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
+    color: rgb(102, 102, 102);
+    font-size: 14px;
 }

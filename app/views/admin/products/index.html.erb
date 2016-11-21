@@ -1,4 +1,4 @@
-<h1>所有产品</h1>
+<h1>所有商品</h1>
 <div class="pull-right" style="padding-bottom: 20px;">
   <%= link_to("新增产品", new_admin_product_path, class: "btn btn-primary btn-sm") %>
 </div>
@@ -11,7 +11,7 @@
       <th>底价</th>
       <th>一口价</th>
       <th width="100">操作</th>
-      <th>产品状态</th>
+      <th>拍卖状态</th>
     </tr>
   </thead>
   <tbody>
@@ -44,6 +44,7 @@
           <%= link_to("Edit", edit_admin_product_path(product)) %>
         </td>
         <td>
+
           <%= render "admin/products/product_state", product: product %>
         </td>
       </tr>

@@ -49,9 +49,12 @@
 
   </div>
   <div>
-    <%= link_to("查看所有出价", product_bids_path, :class => "btn btn-primary btn-lg btn-danger")%>
-
-    <%= link_to"一口价直接购买", add_to_cart_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg btn-danger" %>
+    <% if @product.endtime > Time.now %>
+      <%= link_to("查看所有出价", product_bids_path, :class => "btn btn-primary btn-lg btn-danger")%>
+      <%= link_to"一口价直接购买", new_order_path(product_id: @product.id, is_buyout: true),  :method => :get, :class => "btn btn-primary btn-lg btn-danger" %>
+    <% else %>
+      <p> 拍卖结束 </p>
+    <% end %>
   </div>
 
 </div>

@@ -5,27 +5,33 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
 
+  def new
+    @order = Order.new
+    # binding.pry
+    @product = Product.find(params[:product_id])
+  end
+
   def create
-    @order = Order.new(order_params)
+    @order = Order.create(order_params)
     @order.user = current_user
-    @order.total = current_cart.total_price
+    #binding.pry
+    @product = Product.find(params[:order][:product_id])
+
     if @order.save
-      current_cart.cart_items.each do |cart_item|
+
         product_list = ProductList.new
         product_list.order = @order
-        product_list.product_name = cart_item.product.title
-        product_list.product_price = cart_item.product.buyout
-        product_list.quantity = cart_item.quantity
+        product_list.product_name = @product.title
+        product_list.product_price = @product.buyout
         product_list.save
-      end
-    end
-
-      current_cart.clean!
+      #end
+      #current_cart.clean!
       OrderMailer.notify_order_placed(@order).deliver!
 
       redirect_to order_path(@order.token)
     else
-      render 'carts/checkout'
+      #render 'carts/checkout'
+      redirect_to order_path(@order.token)
     end
   end
 
@@ -58,6 +64,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:billing_name, :billing_address, :shipping_name, :shipping_address, :is_paid, :payment_method, :aasm_state)
+    params.require(:order).permit(:billing_name, :billing_address, :shipping_name, :shipping_address, :payment_method)
   end
+
 end

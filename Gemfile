@@ -39,6 +39,7 @@ gem 'mini_magick'
 gem 'letter_opener', group: :development
 gem 'aasm'
 gem 'pry'
+gem 'pry-nav'
 gem 'annotate'
 gem 'time_difference'
 
