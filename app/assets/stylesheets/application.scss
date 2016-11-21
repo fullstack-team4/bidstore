@@ -17,6 +17,13 @@
  @import "bootstrap";
  @import "font-awesome";
 
+ .borderless {
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+}
+
  .jumbotron {
    background-image:url('https://s3-us-west-2.amazonaws.com/feiben/homework/bidstore/impressionist_n09035-jpg-webrend-2000-11251.jpg');
    background-repeat: no-repeat;
@@ -44,11 +51,16 @@
   background-repeat: no-repeat;
 }
 
+.img-circle {
+  max-height: 120px;
+}
+
 .endingtitle {
   padding-top: 20px;
   padding-right: 0px;
   padding-bottom: 20px;
   padding-left: 0px;
+  margin: 0 30%;
   background: rgba(255, 255, 255, 0.3);
   font-size: 40px;
   color: white;

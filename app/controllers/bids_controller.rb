@@ -16,12 +16,20 @@ class BidsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
     @bid = Bid.new(bid_params)
+    @user = current_user
+    @endtime = @product.endtime
+    @begintime = @product.begintime
 
-    if @bid.save
-      flash[:notice] = "竞价成功！！！."
-      redirect_to new_product_bid_path
+    if @product.endtime-Time.now > 0 && @product.begintime-Time.now < 0
+      if @bid.save
+        flash[:notice] = "竞价成功！！！."
+        redirect_to new_product_bid_path
+      else
+        flash[:warning] = "竞价失败.请重新出价！！"
+        redirect_to new_product_bid_path
+      end
     else
-      flash[:warning] = "竞价失败.请重新出价！！"
+      flash[:warning] = "拍卖结束或尚未开始，请关注竞拍时间！！"
       redirect_to new_product_bid_path
     end
   end

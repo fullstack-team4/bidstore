@@ -12,6 +12,8 @@ class CartItemsController < ApplicationController
     @cart_item = @cart.cart_items.find_by(product_id: params[:id])
     @cart_item.product.title = @product.title
     @cart_item.product.buyout = @product.buyout
+    # @endtime = @product.endtime
+    # @begintime = @product.begintime
   end
 
   def destroy
