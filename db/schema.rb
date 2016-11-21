@@ -57,10 +57,9 @@ ActiveRecord::Schema.define(version: 20161117133424) do
     t.string   "product_name"
     t.integer  "product_price"
     t.integer  "quantity"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "product_id"
-    t.integer  "product_buyout"
   end
 
   create_table "product_relationships", force: :cascade do |t|
