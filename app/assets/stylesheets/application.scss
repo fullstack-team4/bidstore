@@ -17,6 +17,13 @@
  @import "bootstrap";
  @import "font-awesome";
 
+ .messages {
+   max-height: 400px;
+   overflow-y: auto;
+   margin-bottom: 1em;
+   margin-top: 1em;
+ }
+
  .jumbotron {
    background-image:url('https://s3-us-west-2.amazonaws.com/feiben/homework/bidstore/impressionist_n09035-jpg-webrend-2000-11251.jpg');
    background-repeat: no-repeat;

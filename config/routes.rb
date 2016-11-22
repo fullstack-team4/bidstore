@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :conversations
+  resources :conversations, only: [:index, :show, :destroy]
 
   namespace :bid do
     resources :orders do

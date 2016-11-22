@@ -1,21 +1,22 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
   before_action :get_mailbox
+  before_action :get_conversation, except: [:index]
 
   def index
     @conversations = @mailbox.inbox.page(params[:page])
   end
 
   def show
-    @conversation = Conversation.find(params[:id])
-    # 根据id查找到指定对话
-    @conversation = @question.conversations.find(params[:id])
-    @messages = @conversation.messages
-    # binding.pry
-
-    @new_answer = Answer.new
-
-    # binding.pry
+    # @conversation = Conversation.find(params[:id])
+    # # 根据id查找到指定对话
+    # @conversation = @question.conversations.find(params[:id])
+    # @messages = @conversation.messages
+    # # binding.pry
+    #
+    # @new_answer = Answer.new
+    #
+    # # binding.pry
   end
 
 
@@ -50,6 +51,7 @@ class ConversationsController < ApplicationController
     # binding.pry
     flash[:notice] = "回复成功"
     redirect_to :back
+  end
 
 
   private
@@ -58,4 +60,7 @@ class ConversationsController < ApplicationController
     @mailbox ||= current_user.mailbox
   end
 
+  def get_conversation
+    @conversation ||= @mailbox.conversations.find(params[:id])
+  end
 end
