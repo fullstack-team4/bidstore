@@ -22,13 +22,16 @@
     <%= f.input :buyout %>
   </div>
 
-  <% if @product.image.present? %>
+  <% if @product.photos.present? %>
     <span>商品图片</span>
-    <%= image_tag(@product.image.thumb.url) %>
+    <% @product.photos.each do |p| %>
+      <%= image_tag p.avatar.thumb.url %><br>
+    <% end %>
   <% end %>
 
   <div class="group">
-    <%= f.input :image, as: :file %>
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar, :multiple => true, name: "photos[avatar][]" %>
   </div>
 
   <div class="group">

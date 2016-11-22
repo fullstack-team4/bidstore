@@ -26,11 +26,13 @@ class Product < ApplicationRecord
   validates :endtime, presence: true
   mount_uploader :image, ImageUploader
 
-
+  has_many :photos
   has_many :bids
   has_many :cart_items
   has_many :product_relationships
   has_many :members, through: :product_relationships, source: :user
+
+  accepts_nested_attributes_for :photos
 
   def time_before_start(start_time, end_time)
     seconds_diff = (Time.now - begintime).to_i.abs
