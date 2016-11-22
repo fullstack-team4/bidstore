@@ -4,7 +4,7 @@ class BidsController < ApplicationController
 
   def index
     @product = Product.find(params[:product_id])
-    @bids = Bid.all
+    @bids = @product.bids.recent.paginate(:page => params[:page], :per_page => 5)
   end
 
   def create

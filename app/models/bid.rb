@@ -15,7 +15,7 @@ class Bid < ApplicationRecord
   belongs_to :user
   before_validation :check_price_is_greater_than_current_bid
   # validates :amount, numericality: {greater_than_or_equal_to: 1}
-
+  scope :recent, -> {order("created_at DESC")}
 
   # def check_price_is_greater_than_current_bid
   #   if product.bid.amount > product.price

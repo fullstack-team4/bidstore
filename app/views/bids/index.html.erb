@@ -3,14 +3,14 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>#</th>
+      <th>竞拍次数</th>
       <th>出价人</th>
       <th>出价</th>
     </tr>
   </thead>
   <tbody>
-    <% if @product.bids.present? %>
-      <% @product.bids.each do |bid| %>
+    <% if @bids.present? %>
+      <% @bids.each do |bid| %>
       <tr>
         <td><%= bid.id %></td>
         <td><%= bid.user.email %></td>
@@ -25,4 +25,8 @@
 <div class="pull-right">
   <%= link_to("查看商品详情", product_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
   <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
+</div>
+
+<div class="text-center">
+  <%= will_paginate @bids%>
 </div>
