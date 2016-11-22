@@ -42,6 +42,7 @@ gem 'pry'
 gem 'pry-nav'
 gem 'annotate'
 gem 'time_difference'
+gem 'mailboxer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
