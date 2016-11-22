@@ -1,4 +1,4 @@
-# == Schema Information
+  # == Schema Information
 #
 # Table name: bids
 #
@@ -25,6 +25,8 @@ class Bid < ApplicationRecord
   #     flash[:warning] = "出价过低，请重新出价！"
   #   end
   # end
+
+  scope :recent, -> { order("created_at DESC")}
 
   def check_price_is_greater_than_current_bid
     unless (product.bids.present? && amount > product.bids.last.amount) or (product.bids.blank? && amount > product.price)

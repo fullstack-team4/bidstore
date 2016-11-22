@@ -9,8 +9,8 @@
     </tr>
   </thead>
   <tbody>
-    <% if @product.bids.present? %>
-      <% @product.bids.each do |bid| %>
+    <% if @bids.present? %>
+      <% @bids.each do |bid| %>
       <tr>
         <td><%= bid.id %></td>
         <td><%= bid.user.email %></td>
@@ -22,6 +22,9 @@
     <% end %>
   </tbody>
 </table>
+<div class="text-center">
+  <%= will_paginate @bids %>
+</div>
 <div class="pull-right">
   <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
 </div>
