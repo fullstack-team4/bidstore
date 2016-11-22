@@ -1,4 +1,4 @@
-<% page_header "我的消息" %>
+<% page_header "我的消息" %><br>
 <p><%= link_to "发起对话", new_message_path, class: 'btn btn-lg btn-primary' %></p>
 
 <div class="row">
@@ -19,4 +19,5 @@
     </ul>
     <%= paginate @conversations %>
   </div>
+
 </div>

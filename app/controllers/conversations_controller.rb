@@ -1,14 +1,16 @@
 class ConversationsController < ApplicationController
+  # include ConversationsHelper
   before_action :authenticate_user!
   before_action :get_mailbox
   before_action :get_conversation, except: [:index, :empty_trash]
-  before_action :get_box, only: [:inbox]
+  before_action :get_box, only: [:index]
 
   # def index
   #   @conversations = @mailbox.inbox.page(params[:page])
   # end
 
   def index
+    # binding.pry
     if @box.eql? "inbox"
       @conversations = @mailbox.inbox
     elsif @box.eql? "sent"
@@ -93,7 +95,7 @@ class ConversationsController < ApplicationController
     flash[:success] = 'The conversation was marked as read.'
     redirect_to conversations_path
   end
-  
+
   private
 
   def get_box

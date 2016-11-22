@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :conversations, only: [:index, :show, :destroy] do
+  resources :conversations do
     member do
       post :reply
       post :restore
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       delete :empty_trash
     end
   end
+
   resources :messages, only: [:new, :create]
 
   namespace :bid do
