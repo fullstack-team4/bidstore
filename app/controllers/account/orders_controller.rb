@@ -25,12 +25,10 @@ class Account::OrdersController < ApplicationController
   #
   # end
 
-  def new
-
-
-    @order = Order.new
-    # @product = @order.products
-  end
+  # def new
+  #   @order = Order.new
+  #   # @product = @order.products
+  # end
 
   def show
     @order = Order.find_by_token(params[:id])

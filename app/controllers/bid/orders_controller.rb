@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class Bid::OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy, :pay_with_alipay, :pay_with_wechat]
 
   def index
@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
         product_list = ProductList.new
         product_list.order = @order
         product_list.product_name = @product.title
-        product_list.product_price = @product.buyout
+        product_list.product_price = @product.bids.last.amount
         product_list.save
       #end
       #current_cart.clean!
