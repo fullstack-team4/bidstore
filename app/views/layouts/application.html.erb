@@ -10,6 +10,7 @@
 
   <body>
 
+<<<<<<< HEAD
 
     <div class="container-fluid">
         <%= render "common/navbar" %>
@@ -26,8 +27,63 @@
         <!-- </div> -->
         <%= yield %>
     </div>
+=======
+      <div class="container-fluid">
+          <%= render "common/navbar" %>
+          <%= render "common/flashes" %>
+          <%= yield %>
+      </div>
 
-    <%= render "common/footer" %>
+    <%#= render "common/footer" %>
+    <footer>
+    <div class="footer-mailchimp">
+    <div class="container text-center">
+
+    </div>
+    </div>
+
+    <div class="footer-social">
+    <div class="container text-center">
+
+    <ul class="list-inline">
+
+    <li class="social-github">
+      <h1>
+        <a href="https://github.com/fullstack-team4/bidstore"><i class="fa fa-github"></i></a>
+      </h1>
+    </li>
+    <li class="social-twitter">
+      <h1>
+        <a href="https://twitter.com/sbootstrap"><i class="fa fa-weibo" aria-hidden="true"></i></a>
+      </h1>
+    </li>
+    <li class="social-facebook">
+    <h1>
+    <a href="https://www.facebook.com/StartBootstrap/"><i class="fa fa-qq" aria-hidden="true"></i></a>
+    </h1>
+    </li>
+    <li class="social-google-plus">
+    <h1>
+    <a href="https://plus.google.com/+Startbootstrap"><i class="fa fa-weixin" aria-hidden="true"></i></a>
+    </h1>
+    </li>
+    </ul>
+    <br><br>
+    <h4>欢迎随时联系我们!</h4>
+    </div>
+
+    </div>
+    <div class="footer-main">
+
+    </div>
+    <br><br><br>
+    <p class="text-center">Copyright ©2016 BidStore
+        <br>Design by FORTH
+    </p>
+    </footer>
+>>>>>>> develop
+
 
   </body>
+
 </html>

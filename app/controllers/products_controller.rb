@@ -39,6 +39,7 @@ class ProductsController < ApplicationController
 
     def show
       @product = Product.find(params[:id])
+      @bids = @product.bids.recent.paginate(:page => params[:page], :per_page => 5)    
     end
 
     def favor
@@ -62,6 +63,14 @@ class ProductsController < ApplicationController
         flash[:warning] = "尚未加入收藏"
       end
       redirect_to :back
+    end
+
+    def about
+      render "products/about"
+    end
+
+    def contact
+      render "products/contact"
     end
 
 

@@ -12,11 +12,15 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :bids
-    member do
+    member do      
       post :add_to_order
       post :add_to_cart
       post :favor
       post :quit
+    end
+    collection do
+      get :about
+      get :contact
     end
   end
 
