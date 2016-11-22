@@ -92,6 +92,15 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :products do
+      member do
+        post :sell
+        post :notsell
+      end
+    end
+  end
+
   root 'welcome#index'
 
 end
