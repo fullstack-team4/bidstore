@@ -22,6 +22,9 @@
     <% end %>
   </tbody>
 </table>
+<div class="text-center">
+  <%= will_paginate @bids %>
+</div>
 <div class="pull-right">
   <%= link_to("查看商品详情", product_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
   <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
