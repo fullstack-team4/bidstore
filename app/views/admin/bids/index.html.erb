@@ -1,0 +1,22 @@
+<h1>所有出价记录</h1>
+<br><br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>出价人</th>
+      <th>出价</th>
+      <th>商品</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @bids.each do |bid| %>
+      <tr>
+        <td><%= bid.id %></td>
+        <td><%= bid.user.email %></td>
+        <td><%= bid.amount %></td>
+        <td><%= bid.product_id %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>

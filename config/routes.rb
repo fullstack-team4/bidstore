@@ -81,6 +81,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :bids
     resources :products
     resources :users do
       member do
