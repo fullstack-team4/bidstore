@@ -4,9 +4,10 @@
     <thead>
         <tr>
             <td>用户名称</td>
-            <td>审核</td>
-            <td>管理员权限设定</td>
             <td>审核状态</td>
+            <td>审核控制</td>
+            <td>当前权限</td>
+            <td>权限设定</td>
             <td>创建时间</td>
 
         </tr>
@@ -19,9 +20,24 @@
                 <%= render_user_status(user) %>
                 <%= user.email %>
             </td>
+            <td>
+              <% if user.is_verified %>
+                <%= "审核已通过" %>
+              <% else %>
+                <%= "审核尚未通过" %>
+              <% end %>
+            </td>
 
             <td>
               <%= link_to("Verify", admin_user_path(user)) %>
+            </td>
+
+            <td>
+              <% if user.is_admin %>
+                <%= "管理员" %>
+              <% else %>
+                <%= "用户" %>
+              <% end %>
             </td>
 
             <td>
@@ -33,15 +49,7 @@
             </td>
 
             <td>
-              <% if user.is_verified %>
-                <%= "审核已通过" %>
-              <% else %>
-                <%= "审核尚未通过" %>
-              <% end %>
-            </td>
-
-            <td>
-                <%= user.created_at %>
+                <%= user.created_at.to_s(:short) %>
             </td>
         </tr>
         <% end %>
