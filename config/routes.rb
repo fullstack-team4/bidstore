@@ -94,12 +94,22 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :bids
     resources :products
     resources :users do
       member do
         post :verify
         post :user
         post :admin
+      end
+    end
+  end
+
+  namespace :admin do
+    resources :products do
+      member do
+        post :sell
+        post :notsell
       end
     end
   end
