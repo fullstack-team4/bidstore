@@ -1,4 +1,5 @@
 <% page_header "我的消息" %>
+<p><%= link_to "发起对话", new_message_path, class: 'btn btn-lg btn-primary' %></p>
 
 <ul class="list-group">
   <%= render partial: 'conversations/conversation', collection: @conversations %>
