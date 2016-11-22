@@ -42,6 +42,10 @@ gem 'pry'
 gem 'pry-nav'
 gem 'annotate'
 gem 'time_difference'
+gem 'mailboxer'
+gem 'kaminari', '~> 0.17.0'
+gem 'chosen-rails'
+gem 'erd'
 gem "will_paginate"
 
 group :development, :test do
