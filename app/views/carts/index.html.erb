@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-md-12">
 
-
     <% if current_cart.products.count > 0 %>
       <%= link_to("清空购物车", clean_carts_path,
                 method: :delete, class: "pull-right",
