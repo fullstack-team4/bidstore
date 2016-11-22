@@ -28,7 +28,7 @@ Rails.application.routes.draw do
         post :apply_to_cancel
       end
     end
-  end 
+  end
 
 
 
@@ -83,6 +83,15 @@ Rails.application.routes.draw do
         post :verify
         post :user
         post :admin
+      end
+    end
+  end
+
+  namespace :admin do
+    resources :products do
+      member do
+        post :sell
+        post :notsell
       end
     end
   end
