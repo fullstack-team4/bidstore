@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :conversations
+
   namespace :bid do
     resources :orders do
       member do
@@ -28,7 +30,7 @@ Rails.application.routes.draw do
         post :apply_to_cancel
       end
     end
-  end 
+  end
 
 
 
