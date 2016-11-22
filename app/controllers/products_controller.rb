@@ -64,6 +64,14 @@ class ProductsController < ApplicationController
       redirect_to :back
     end
 
+    def about
+      render "products/about"
+    end
+
+    def contact
+      render "products/contact"
+    end
+
 
 
 
