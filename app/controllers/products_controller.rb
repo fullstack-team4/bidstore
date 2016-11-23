@@ -39,7 +39,8 @@ class ProductsController < ApplicationController
 
     def show
       @product = Product.find(params[:id])
-      @bids = @product.bids.recent.paginate(:page => params[:page], :per_page => 5)    
+      @photos = @product.photos.all
+      @bids = @product.bids.recent.paginate(:page => params[:page], :per_page => 5)
     end
 
     def favor
@@ -79,7 +80,7 @@ class ProductsController < ApplicationController
     private
 
     def product_params
-      params.require(:product).permit(:title, :description, :quantity, :price, :buyout, :image, :is_hidden, :begintime, :endtime, :aasm_state)
+      params.require(:product).permit(:title, :description, :quantity, :price, :buyout, :image, :is_hidden, :begintime, :endtime, :aasm_state, :product_story)
     end
 
 end
