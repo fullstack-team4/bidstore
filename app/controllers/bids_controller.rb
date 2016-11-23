@@ -10,7 +10,10 @@ class BidsController < ApplicationController
   
   def index
     @product = Product.find(params[:product_id])
-    @bids = Bid.all
+    #@bids = Bid.all
+    #binding.pry
+    #@bids = @product.bids.order("created_at DESC")
+    @bids = @product.bids.recent.paginate(:page => params[:page], :per_page => 10)
   end
 
   def create
@@ -40,6 +43,8 @@ class BidsController < ApplicationController
     @bid = Bid.new(params[:id])
     @bid.user = current_user
     @bid.product = @product
+
+
   end
 
   def new

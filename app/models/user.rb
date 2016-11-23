@@ -33,6 +33,8 @@ class User < ApplicationRecord
 
   scope :all_except, -> (user) {where.not(id: user)}
 
+  acts_as_messageable
+
   def admin?
     is_admin
   end

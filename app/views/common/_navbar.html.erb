@@ -10,19 +10,30 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active">
-              <%= link_to("Products", products_path) %>
+              <%= link_to("Products", products_path) %>  
+            </li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <%= link_to("About US", about_products_path) %>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <%= link_to("Contact US", contact_products_path) %>
             </li>
           </ul>
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <%= link_to carts_path do %>
-                  <i class="fa fa-shopping-cart"></i>(<%= current_cart.cart_items.sum("quantity") %>)
-                <% end %>
+                <%#= link_to carts_path do %>
+                  <!-- <i class="fa fa-shopping-cart"></i>(<%#= current_cart.cart_items.sum("quantity") %>) -->
+                <%# end %>
               </li>
               <% if !current_user %>
                 <li><%= link_to("注册", new_user_registration_path) %></li>
                 <li><%= link_to(content_tag(:i, '登入', class: 'fa fa-sign-in'), new_user_session_path) %></li>
               <% else %>
+                <li><%= link_to("我的消息", conversations_path) %></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         Hi!,<%= current_user.email %>
@@ -35,7 +46,7 @@
                          </li>
                        <% end %>
                         <li>
-                            <li> <%= link_to("我的主页", account_user_path(current_user)) %>
+                            <li> <%= link_to("我的收藏", account_products_path(current_user)) %>
                             <li> <%= link_to(content_tag(:i, '登出', class: 'fa fa-sign-out'), destroy_user_session_path, method: :delete) %> </li>
                         </li>
                     </ul>

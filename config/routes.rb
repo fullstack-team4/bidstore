@@ -12,11 +12,38 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :bids
-    member do
+    member do      
       post :add_to_order
       post :add_to_cart
       post :favor
       post :quit
+    end
+    collection do
+      get :about
+      get :contact
+    end
+  end
+
+  resources :conversations do
+    member do
+      post :reply
+      post :restore
+      post :mark_as_read
+    end
+    collection do
+      delete :empty_trash
+    end
+  end
+
+  resources :messages, only: [:new, :create]
+
+  namespace :bid do
+    resources :orders do
+      member do
+        post :pay_with_alipay
+        post :pay_with_wechat
+        post :apply_to_cancel
+      end
     end
   end
 
@@ -67,12 +94,22 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :bids
     resources :products
     resources :users do
       member do
         post :verify
         post :user
         post :admin
+      end
+    end
+  end
+
+  namespace :admin do
+    resources :products do
+      member do
+        post :sell
+        post :notsell
       end
     end
   end
