@@ -1,12 +1,6 @@
 class BidsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_is_verified, only:[:create, :new]
-
-  scope :live, -> (){ where('? < @product.endtime', DateTime.now)}
-
-  def is_live?
-    DateTime.now < endtime
-  end
   
   def index
     @product = Product.find(params[:product_id])
