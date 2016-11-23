@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :bids
-    member do      
+    member do
+      post :send_message_before_auction      
       post :add_to_order
       post :add_to_cart
       post :favor
