@@ -35,9 +35,43 @@
      <%# binding.pry %>
          <% t = Time.now %>
            <% if t < @product.begintime %>
-             <p><%= @product.time_before_start(Time.now, Time.now-2.days-3.hours-4.minutes-5.seconds)%></p>
+             <p>
+               <% begin_time = @product.begintime.strftime("%Y/%m/%d %H:%M:%S") %>
+               <h3>距离拍卖开始还有</h3> <br>
+               <h4>
+                 <div id="getting-started-1"></div>
+                 <script type="text/javascript">
+                   // 把ruby的end_time转成js的变数(.to_json.html_safe), 才能在js中引用
+                   // 参考link: http://stackoverflow.com/questions/2464966/passing-ruby-variables-to-javascript-function-in-rails-view
+                   var BeginTime = <%= begin_time.to_json.html_safe %>
+                   $("#getting-started-1")
+                   .countdown(BeginTime, function(event) {
+                     $(this).text(
+                       event.strftime('%D days %H:%M:%S')
+                     );
+                   });
+                 </script>
+             </p>
            <% elsif @product.begintime < t && t < @product.endtime %>
-             <p><%= @product.time_before_end(Time.now, Time.now-2.days-3.hours-4.minutes-5.seconds) %></p>
+             <p>
+               <!-- https://hackhands.com/format-datetime-ruby/ -->
+               <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M:%S") %>
+               <h3>距离拍卖结束还有</h3> <br>
+               <h4>
+                 <div id="getting-started"></div>
+                 <script type="text/javascript">
+                   // 把ruby的end_time转成js的变数(.to_json.html_safe), 才能在js中引用
+                   // 参考link: http://stackoverflow.com/questions/2464966/passing-ruby-variables-to-javascript-function-in-rails-view
+                   var EndTime = <%= end_time.to_json.html_safe %>
+                   $("#getting-started")
+                   .countdown(EndTime, function(event) {
+                     $(this).text(
+                       event.strftime('%D days %H:%M:%S')
+                     );
+                   });
+                 </script>
+               </h4>
+             </p>
                <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
            <% elsif @product.endtime < t %>
              <p>拍卖已结束</p>
@@ -61,13 +95,17 @@
       <%#= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
     <%# end %>
 
-
-    <!-- <h3>距离拍卖结束还有</h3> <br>
+    <!-- https://hackhands.com/format-datetime-ruby/ -->
+    <!-- <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M:%S") %>
+    <h3>距离拍卖结束还有</h3> <br>
     <h4>
       <div id="getting-started"></div>
       <script type="text/javascript">
+        // 把ruby的end_time转成js的变数(.to_json.html_safe), 才能在js中引用
+        // 参考link: http://stackoverflow.com/questions/2464966/passing-ruby-variables-to-javascript-function-in-rails-view
+        var EndTime = <%= end_time.to_json.html_safe %>
         $("#getting-started")
-        .countdown("", function(event) {
+        .countdown(EndTime, function(event) {
           $(this).text(
             event.strftime('%D days %H:%M:%S')
           );
@@ -75,6 +113,26 @@
       </script>
     </h4>
     <br><br> -->
+
+    <!-- https://hackhands.com/format-datetime-ruby/ -->
+    <!-- <% begin_time = @product.begintime.strftime("%Y/%m/%d %H:%M:%S") %>
+    <h3>距离拍卖开始还有</h3> <br>
+    <h4>
+      <div id="getting-started-1"></div>
+      <script type="text/javascript">
+        // 把ruby的end_time转成js的变数(.to_json.html_safe), 才能在js中引用
+        // 参考link: http://stackoverflow.com/questions/2464966/passing-ruby-variables-to-javascript-function-in-rails-view
+        var BeginTime = <%= begin_time.to_json.html_safe %>
+        $("#getting-started-1")
+        .countdown(BeginTime, function(event) {
+          $(this).text(
+            event.strftime('%D days %H:%M:%S')
+          );
+        });
+      </script>
+    </h4>
+    <br><br> -->
+
 
 
       <%# binding.pry %>
