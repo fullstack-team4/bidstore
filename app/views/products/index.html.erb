@@ -9,6 +9,7 @@
     </head>
 
     <body>
+
       <div class="container-fluid">
           <%#= render "common/navbar" %>
           <%#= render "common/flashes" %>
@@ -19,6 +20,10 @@
             </div>
 
             <div class="col-md-10">
+              <div class = "row">
+                <h2 align="center"> 大咖私藏 </h2>
+                <p style="padding:10px;"></p>
+              </div>
             <% @products.each do |product| %>
             <div class="row">
               <div class="col-xs-6 col-md-3">
