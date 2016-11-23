@@ -2,12 +2,7 @@ class BidsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_is_verified, only:[:create, :new]
 
-  scope :live, -> (){ where('? < @product.endtime', DateTime.now)}
 
-  def is_live?
-    DateTime.now < endtime
-  end
-  
   def index
     @product = Product.find(params[:product_id])
     #@bids = Bid.all
@@ -25,7 +20,7 @@ class BidsController < ApplicationController
 
     if @product.endtime-Time.now > 0 && @product.begintime-Time.now < 0
       if @bid.save
-        flash[:notice] = "竞价成功！！！."
+        flash[:notice] = "竞价成功！！！"
         redirect_to new_product_bid_path
       else
         flash[:warning] = "竞价失败.请重新出价！！"
