@@ -76,15 +76,17 @@ class ProductsController < ApplicationController
     end
 
     def send_message_before_auction
+      #binding.pry
       @product = Product.find(params[:id])
-      if @product.begintime - Time.now == "00:30:00"
-        admin = User.first
-        users = @product.members
-        body = "距离商品#{@product}开拍还有30分钟"
-        subject = "距离商品#{@product}开拍还有30分钟"
+      # t = @product.begintime - Time.now
+      admin = User.first
+      users = @product.members
+      body = "距离商品#{@product.title}开拍还有30分钟"
+      subject = "距离商品#{@product.title}开拍还有30分钟"
+      # if t == 1800 && users.present?
         admin.send_message(users, body, subject)
         flash[:success] = "Message has been sent!"
-      end
+      # end
     end
 
 

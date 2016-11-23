@@ -17,8 +17,8 @@
           <div class="product_story">
             <p><%= @product.product_story %></p>
           </div>
-
-
+ <%= link_to('发消息', send_message_before_auction_product_path(@product), method: :post) %>
+ <%#= binding.pry %>
     </div>
   </div>
 
