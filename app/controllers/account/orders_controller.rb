@@ -35,6 +35,19 @@ class Account::OrdersController < ApplicationController
     @product_lists = @order.product_lists
   end
 
+  def return
+    @order = Order.find_by_token(params[:id])
+    @order.return_good!
+    redirect_to account_orders_path
+  end
+
+
+  def shipped
+    @order = Order.find_by_token(params[:id])
+    @order.deliver!
+    redirect_to account_orders_path
+  end
+
   private
 
   def order_params
