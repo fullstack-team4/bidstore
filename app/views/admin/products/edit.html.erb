@@ -26,6 +26,10 @@
     <%= f.input :buyout %>
   </div>
 
+  <div class="group">
+    <%= f.input :tag %>
+  </div>
+
   <% if @product.photos.present? %>
     <span>商品图片</span>
     <% @product.photos.each do |p| %>
