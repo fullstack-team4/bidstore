@@ -3,19 +3,20 @@
 <table class="table">
   <thead>
     <tr>
-      <th>商品</th>
+      <th>出价次数</th>
+      <th>商品编号</th>
       <th>出价</th>
-      <th>创建时间</th>
       <th>更新时间</th>
     </tr>
   </thead>
   <tbody>
     <% current_user.bids.each do |bid| %>
     <tr>
+      <td><%= bid.id %></td>
       <td><%= bid.product_id %></td>
       <td><%= bid.amount %></td>
-      <td><%= bid.created_at %></td>
-      <td><%= bid.updated_at %></td>
+      <td><%= bid.created_at.to_s(:short) %></td>
+      <td><%= bid.updated_at.to_s(:short) %></td>
     </tr>
     <% end %>
   </tbody>
