@@ -46,6 +46,7 @@ gem 'mailboxer'
 gem 'kaminari', '~> 0.17.0'
 gem 'chosen-rails'
 gem 'erd'
+gem 'whenever', :require => false
 gem 'will_paginate-bootstrap'
 
 group :development, :test do
