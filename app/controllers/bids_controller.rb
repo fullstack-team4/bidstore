@@ -1,14 +1,12 @@
 class BidsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_is_verified, only:[:create, :new]
-
-
   def index
     @product = Product.find(params[:product_id])
     #@bids = Bid.all
     #binding.pry
     #@bids = @product.bids.order("created_at DESC")
-    @bids = @product.bids.recent.paginate(:page => params[:page], :per_page => 10)
+    @bids = @product.bids.recent.paginate(:page => params[:page], :per_page => 8)
   end
 
   def create
@@ -45,6 +43,8 @@ class BidsController < ApplicationController
   def new
     @product = Product.find(params[:product_id])
     @bid = Bid.new
+    # @product.amount = @product.bids.amount
+    # @amount = @product.bids.amount
   end
 
 

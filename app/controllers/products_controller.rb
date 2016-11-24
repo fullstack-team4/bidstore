@@ -33,21 +33,18 @@ class ProductsController < ApplicationController
     end
 
     def index
-      # @products = Product.where(:is_hidden => false)
-      # @tag = Product.tag
       search = params[:tag]
       case search
       when "netceleb"
-    #   if @products.tag = "netceleb"
-        @products = Product.where(tag: "netceleb")
+        @products = Product.where(tag: "netceleb", :is_hidden => false)
       when "sportceleb"
-        @products = Product.where(tag: "sportceleb")
+        @products = Product.where(tag: "sportceleb", :is_hidden => false)
       when "movieceleb"
-        @products = Product.where(tag: "movieceleb")
+        @products = Product.where(tag: "movieceleb", :is_hidden => false)
       else
-        @products = Product.all
+        @products = Product.where(:is_hidden => false)
       end
-   end
+    end
 
 
     def show
@@ -98,11 +95,39 @@ class ProductsController < ApplicationController
     # def movieceleb
     #   @products = Product.where(tag: "movieceleb")
     # end
+    def send_message_before_auction
+      #binding.pry
+      @product = Product.find(params[:id])
+      # t = @product.begintime - Time.now
+      admin = User.first
+      users = @product.members
+      # body = "点击链接查看商品"link_to(@product.title, product_path(@product))
+      subject = "#{@product.title}马上开拍"
+      # if t <= 1800 && users.present?
+        admin.send_message(users, body, subject)
+        flash[:success] = "Message has been sent!"
+      # end
+    end
+
+
+    def send_message_after_auction
+      @product = Product.find(params[:id])
+      # t = Time.now - @product.endtime
+      admin = User.first
+      users = @product.members
+      body = "#{@product.title}已结束拍卖，感谢关注"
+      subject = "#{@product.title}已结束拍卖，感谢关注"
+      # if t >=0 && users.present?
+        admin.send_message(users, body, subject)
+        flash[:success] = "Message has been sent!"
+      # end
+    end
 
     private
 
     def product_params
       params.require(:product).permit(:title, :description, :quantity, :price, :buyout, :image, :is_hidden, :begintime, :endtime, :aasm_state, :product_story, :tag)
     end
+
 
 end

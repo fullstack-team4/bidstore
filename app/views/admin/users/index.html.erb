@@ -21,29 +21,29 @@
                 <%= user.email %>
             </td>
             <td>
-              <% if user.is_verified %>
+                <% if user.is_verified %>
                 <%= "审核已通过" %>
-              <% else %>
+            <% else %>
                 <%= "审核尚未通过" %>
-              <% end %>
+                <% end %>
             </td>
 
             <td>
-              <%= link_to("Verify", admin_user_path(user)) %>
+                <%= link_to("Verify", admin_user_path(user)) %>
             </td>
 
             <td>
-              <% if user.is_admin %>
+                <% if user.is_admin %>
                 <%= "管理员" %>
-              <% else %>
+            <% else %>
                 <%= "用户" %>
-              <% end %>
+                <% end %>
             </td>
 
             <td>
                 <% if user.is_admin %>
                 <%= link_to("user", user_admin_user_path(user), :method => :post) %>
-                <% else %>
+            <% else %>
                 <%= link_to("admin", admin_admin_user_path(user), method: :post) %>
                 <% end %>
             </td>
@@ -55,3 +55,7 @@
         <% end %>
     </tbody>
 </table>
+
+<div class="text-center">
+  <%= will_paginate@bids,renderer: BootstrapPagination::Rails %>
+</div>
