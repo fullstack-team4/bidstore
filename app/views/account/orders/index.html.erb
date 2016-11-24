@@ -3,7 +3,6 @@
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
       <th>订单</th>
       <th>是否付款</th>
       <th>付款方式</th>
@@ -15,7 +14,6 @@
   <tbody>
     <% @orders.each do |order| %>
     <tr>
-      <td>#</td>
       <td>
         <%= link_to(order.id, order_path(order.token)) %>
       </td>
