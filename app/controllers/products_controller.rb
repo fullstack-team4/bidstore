@@ -33,8 +33,21 @@ class ProductsController < ApplicationController
     end
 
     def index
-      @products = Product.where(:is_hidden => false)
-    end
+      # @products = Product.where(:is_hidden => false)
+      # @tag = Product.tag
+      search = params[:tag]
+      case search
+      when "netceleb"
+    #   if @products.tag = "netceleb"
+        @products = Product.where(tag: "netceleb")
+      when "sportceleb"
+        @products = Product.where(tag: "sportceleb")
+      when "movieceleb"
+        @products = Product.where(tag: "movieceleb")
+      else
+        @products = Product.all
+      end
+   end
 
 
     def show
@@ -74,6 +87,17 @@ class ProductsController < ApplicationController
       render "products/contact"
     end
 
+    # def netceleb
+    #   render "products/netceleb"
+    # end
+    #
+    # def sportceleb
+    #   @products = Product.where(tag: "sportceleb")
+    # end
+    #
+    # def movieceleb
+    #   @products = Product.where(tag: "movieceleb")
+    # end
     def send_message_before_auction
       #binding.pry
       @product = Product.find(params[:id])
