@@ -98,11 +98,39 @@ class ProductsController < ApplicationController
     # def movieceleb
     #   @products = Product.where(tag: "movieceleb")
     # end
+    def send_message_before_auction
+      #binding.pry
+      @product = Product.find(params[:id])
+      # t = @product.begintime - Time.now
+      admin = User.first
+      users = @product.members
+      body = "距离商品#{@product.title}开拍还有30分钟"
+      subject = "距离商品#{@product.title}开拍还有30分钟"
+      # if t <= 1800 && users.present?
+        admin.send_message(users, body, subject)
+        flash[:success] = "Message has been sent!"
+      # end
+    end
+
+
+    def send_message_after_auction
+      @product = Product.find(params[:id])
+      # t = Time.now - @product.endtime
+      admin = User.first
+      users = @product.members
+      body = "#{@product.title}已结束拍卖，感谢关注"
+      subject = "#{@product.title}已结束拍卖，感谢关注"
+      # if t >=0 && users.present?
+        admin.send_message(users, body, subject)
+        flash[:success] = "Message has been sent!"
+      # end
+    end
 
     private
 
     def product_params
       params.require(:product).permit(:title, :description, :quantity, :price, :buyout, :image, :is_hidden, :begintime, :endtime, :aasm_state, :product_story, :tag)
     end
+
 
 end

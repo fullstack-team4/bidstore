@@ -1,4 +1,9 @@
 <div class="container">
+  <br><br>
+  <div class="row">
+    <h2 align="center"> <%= @product.title %> </h2>
+  </div>
+  <br><br><br>
  <div class="row">
    <div class="col-md-6">
      <% if @photos.present? %>
@@ -8,85 +13,124 @@
              <div style="letter-spacing: -8px">
            <% else %>
              <%= image_tag p.avatar.thumb.url %>
-             <% end %>
            <% end %>
+         <% end %>
              </div>
-           <% else %>
+       <% else %>
            <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
          <% end %>
-         <div class="product_story">
-           <p><%= @product.product_story %></p>
+
+     </div>
+
+     <div class="col-md-6"><br>
+       <div class="well">
+         <div align="left">
+           <h4><%= @product.description %></h4>
+         </div>
+         <div >
+           <h4>一口价 : ¥<%= @product.buyout %>  ----  底价 : ￥<%= @product.price %></h4>
          </div>
        </div>
-
-<div class="col-md-6">
-     <h2 align="center"> <%= @product.title %> </h2>
-       <div align="center">
-         <p><%= @product.description %></p>
-       </div>
-       <div align="center">
-         <p> 数量 : <%= @product.quantity %> </p>
-         <p class="product-price"> 底价 : ￥<%= @product.price %> </p>
-         <p> 一口价 : ¥<%= @product.buyout %></p>
-       </div>
-       <div >
-         <p>起拍时间 <%= @product.begintime %> </p>
-         <p>结束时间 <%= @product.endtime %> </p>
-     <%# binding.pry %>
+       <div align="left">
+         <div class="well">
+           <div align="left">
+             <% begin_time = @product.begintime.strftime("%Y/%m/%d %H:%M") %>
+             <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M") %>
+             <p><h4>起拍 : <%= begin_time %></h4> </p>
+             <p><h4>结束 : <%= end_time %> </h4></p>
+           </div>
+         </div>
+         <div align="center">
+         <div class="lachang">
          <% t = Time.now %>
            <% if t < @product.begintime %>
              <p>
+               <!-- <div align="cneter"> -->
                <% begin_time = @product.begintime.strftime("%Y/%m/%d %H:%M:%S") %>
-               <h3>距离拍卖开始还有</h3> <br>
-               <h4>
+               <!-- <button type="button" class="btn btn-info"> -->
+
+                  <h3>距拍卖开始</h3>
+                <h2>
                  <div id="getting-started-1"></div>
                  <script type="text/javascript">
-                   // 把ruby的end_time转成js的变数(.to_json.html_safe), 才能在js中引用
-                   // 参考link: http://stackoverflow.com/questions/2464966/passing-ruby-variables-to-javascript-function-in-rails-view
                    var BeginTime = <%= begin_time.to_json.html_safe %>
                    $("#getting-started-1")
                    .countdown(BeginTime, function(event) {
                      $(this).text(
-                       event.strftime('%D days %H:%M:%S')
+                       event.strftime('%D 天 %H:%M:%S')
                      );
                    });
                  </script>
+               </h2>
+
              </p>
            <% elsif @product.begintime < t && t < @product.endtime %>
              <p>
                <!-- https://hackhands.com/format-datetime-ruby/ -->
                <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M:%S") %>
-               <h3>距离拍卖结束还有</h3> <br>
-               <h4>
+
+
+                <div class="lachang">
+                  <div align="center">
+                  <br>
+                  <h3>离结束还有</h3>
+                 <h2>
                  <div id="getting-started"></div>
                  <script type="text/javascript">
-                   // 把ruby的end_time转成js的变数(.to_json.html_safe), 才能在js中引用
-                   // 参考link: http://stackoverflow.com/questions/2464966/passing-ruby-variables-to-javascript-function-in-rails-view
                    var EndTime = <%= end_time.to_json.html_safe %>
                    $("#getting-started")
                    .countdown(EndTime, function(event) {
                      $(this).text(
-                       event.strftime('%D days %H:%M:%S')
+                       event.strftime('%D天:%H时:%M分:%S秒')
                      );
                    });
                  </script>
-               </h4>
+               </h2>
+                  </h2>
+                </div>
+                </div>
+
              </p>
-               <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
+
            <% elsif @product.endtime < t %>
              <p>拍卖已结束</p>
            <% end %>
+           </div>
+         </div>
+           <br><br><br>
            <div class="container">
              <div class="row">
-             <div class="col-sm-10"><%= link_to("查看所有出价", product_bids_path(@product), :method => :get, :class => "btn btn-primary btn-lg")%></div>
-             <div class="col-sm-10"><%= link_to("加入收藏夹", favor_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg") %></div>
+<%= link_to("开拍前发消息", send_message_before_auction_product_path(@product), method: :post) %>
+<%= link_to("拍卖结束后发消息", send_message_after_auction_product_path(@product), method: :post) %>
              </div>
            </div>
          </div>
        </div>
      </div>
+     <div class="row">
+       <div class="col-md-4">
+         <div class="product_story">
+           <p><%= @product.product_story %></p>
+         </div>
+       </div>
+       <div class="col-md-6">
+         <div align="right">
+           <%= link_to("查看所有出价", product_bids_path(@product), :method => :get, :class => "btn btn-primary btn-lg")%>
+           <%= link_to("加入收藏夹", favor_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg") %>
+           <% if t > @product.endtime %>
+             <button type="button" class="btn btn-info">拍卖结束</button>
+           <% else %>
+             <% if t < @product.begintime %>
+               <button type="button" class="btn btn-info">尚未开始</button>
+             <% else %>
+              <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
+            <% end %>
+          <% end %>
+       </div>
+       </div>
+     </div>
+ </div>
 
-   </div>
 
 
     <%# if @product.image.present? %>

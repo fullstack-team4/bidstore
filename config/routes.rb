@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :products do
     resources :bids
     member do
+      post :send_message_before_auction
+      post :send_message_after_auction
       post :add_to_order
       post :add_to_cart
       post :favor
@@ -48,10 +50,6 @@ Rails.application.routes.draw do
     end
   end
 
-
-
-
-
   namespace :admin do
     resources :users
     resources :products do
@@ -73,7 +71,6 @@ Rails.application.routes.draw do
 
   resources :orders do
     member do
-
       post :pay_with_alipay
       post :pay_with_wechat
       post :apply_to_cancel
@@ -90,6 +87,8 @@ Rails.application.routes.draw do
         #post :buyout
         post :pay_with_wechat
         post :pay_with_alipay
+        post :shipped
+        post :return
       end
     end
   end
