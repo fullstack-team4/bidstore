@@ -4,29 +4,6 @@
     <h2 align="center"> <%= @product.title %> </h2>
   </div>
   <br><br><br>
-  <div class="row row-pics">
-    <div class="col-lg-6">
-      <% if @photos.present? %>
-        <% @photos.each_with_index do |p, index| %>
-          <% if index == 0 %>
-            <%= image_tag p.avatar.medium.url %>
-              <div style="letter-spacing: -8px">
-            <% else %>
-              <%= image_tag p.avatar.thumb.url %>
-              <% end %>
-            <% end %>
-              </div>
-            <% else %>
-            <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
-          <% end %>
-          <div class="product_story">
-            <p><%= @product.product_story %></p>
-          </div>
- <%= link_to('发消息', send_message_before_auction_product_path(@product), method: :post) %>
- <%#= binding.pry %>
-    </div>
-  </div>
-
  <div class="row">
    <div class="col-md-6">
      <% if @photos.present? %>
@@ -101,7 +78,7 @@
                    $("#getting-started")
                    .countdown(EndTime, function(event) {
                      $(this).text(
-                       event.strftime('%D days %H:%M:%S')
+                       event.strftime('%D天:%H时:%M分:%S秒')
                      );
                    });
                  </script>

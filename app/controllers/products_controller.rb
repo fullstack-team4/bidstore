@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:favor, :quit]
-  before_action :get_mailbox
 
     def add_to_order
       @product = Product.find(params[:id])
@@ -107,10 +106,6 @@ class ProductsController < ApplicationController
 
     def product_params
       params.require(:product).permit(:title, :description, :quantity, :price, :buyout, :image, :is_hidden, :begintime, :endtime, :aasm_state, :product_story, :tag)
-    end
-
-    def get_mailbox
-      @mailbox ||= current_user.mailbox
     end
 
 
