@@ -35,6 +35,7 @@
                   <% end %>
                 <% end %>
                 <%= product.title %> ￥ <%= product.price %>
+                <div class=""><%= link_to("加入收藏夹", favor_product_path(@product), :method => :post, :class => "btn btn-primary btn-sm") %></div>
               </div>
               <% end %>
             </div>
