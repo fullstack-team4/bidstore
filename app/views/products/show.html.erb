@@ -34,19 +34,22 @@
        <div align="left">
          <div class="well">
            <div align="left">
-             <p><h4>起拍 : <%= @product.begintime %></h4> </p>
-             <p><h4>结束 : <%= @product.endtime %> </h4></p>
+             <% begin_time = @product.begintime.strftime("%Y/%m/%d %H:%M") %>
+             <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M") %>
+             <p><h4>起拍 : <%= begin_time %></h4> </p>
+             <p><h4>结束 : <%= end_time %> </h4></p>
            </div>
          </div>
-
+         <div align="center">
          <div class="lachang">
          <% t = Time.now %>
            <% if t < @product.begintime %>
              <p>
+               <!-- <div align="cneter"> -->
                <% begin_time = @product.begintime.strftime("%Y/%m/%d %H:%M:%S") %>
-               <button type="button" class="btn btn-info">
+               <!-- <button type="button" class="btn btn-info"> -->
+
                   <h3>距拍卖开始</h3>
-                <p><h4><span class="tian">天</span>时－分－秒 </h4></p>
                 <h2>
                  <div id="getting-started-1"></div>
                  <script type="text/javascript">
@@ -54,7 +57,7 @@
                    $("#getting-started-1")
                    .countdown(BeginTime, function(event) {
                      $(this).text(
-                       event.strftime('%D days %H:%M:%S')
+                       event.strftime('%D 天 %H:%M:%S')
                      );
                    });
                  </script>
@@ -93,6 +96,7 @@
              <p>拍卖已结束</p>
            <% end %>
            </div>
+         </div>
            <br><br><br>
            <div class="container">
              <div class="row">
@@ -112,7 +116,15 @@
          <div align="right">
            <%= link_to("查看所有出价", product_bids_path(@product), :method => :get, :class => "btn btn-primary btn-lg")%>
            <%= link_to("加入收藏夹", favor_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg") %>
-           <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
+           <% if t > @product.endtime %>
+             <button type="button" class="btn btn-info">拍卖结束</button>
+           <% else %>
+             <% if t < @product.begintime %>
+               <button type="button" class="btn btn-info">尚未开始</button>
+             <% else %>
+              <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
+            <% end %>
+          <% end %>
        </div>
        </div>
      </div>

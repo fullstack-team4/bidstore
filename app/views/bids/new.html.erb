@@ -54,7 +54,7 @@
                 $("#getting-started")
                 .countdown(EndTime, function(event) {
                   $(this).text(
-                    event.strftime('%D days %H:%M:%S')
+                    event.strftime('%D 天 %H:%M:%S')
                   );
                 });
               </script>
@@ -72,8 +72,7 @@
   <div class="row">
     <div class="col-md-6">
       <% if @product.endtime > Time.now %>
-        <%= link_to("查看所有出价", product_bids_path, :class => "btn btn-primary btn-lg btn-info")%>
-        <%= link_to"一口价直接购买", new_order_path(product_id: @product.id, is_buyout: true),  :method => :get, :class => "btn btn-primary btn-lg btn-danger" %>
+          <%= link_to"一口价直接购买", new_order_path(product_id: @product.id, is_buyout: true),  :method => :get, :class => "btn btn-primary btn-lg btn-danger" %>
       <% else %>
         <p> 拍卖结束 </p>
       <% end %>

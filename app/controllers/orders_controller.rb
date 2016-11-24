@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    # binding.pry
     @product = Product.find(params[:product_id])
   end
 
@@ -16,6 +15,7 @@ class OrdersController < ApplicationController
     @order.user = current_user
     #binding.pry
     @product = Product.find(params[:order][:product_id])
+
 
     if @order.save
 
