@@ -3,7 +3,6 @@
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
       <th>商品</th>
       <th>起拍价格</th>
       <th>开拍时间</th>
@@ -14,7 +13,6 @@
   <tbody>
     <% current_user.participated_products.each do |product| %>
     <tr>
-      <td>#</td>
       <td><%= link_to(product.title, product_path(product)) %></td>
       <td><%= product.price %></td>
       <td><%= product.begintime %></td>

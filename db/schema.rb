@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122050614) do
+ActiveRecord::Schema.define(version: 20161123110628) do
 
   create_table "bids", force: :cascade do |t|
     t.integer  "product_id"
@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(version: 20161122050614) do
     t.integer  "buyout"
     t.string   "aasm_state",    default: "before_auction"
     t.text     "product_story"
+    t.string   "tag"
     t.index ["aasm_state"], name: "index_products_on_aasm_state"
   end
 

@@ -3,7 +3,6 @@
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
       <th>商品</th>
       <th>出价</th>
       <th>创建时间</th>
@@ -13,7 +12,6 @@
   <tbody>
     <% current_user.bids.each do |bid| %>
     <tr>
-      <td>#</td>
       <td><%= bid.product_id %></td>
       <td><%= bid.amount %></td>
       <td><%= bid.created_at %></td>

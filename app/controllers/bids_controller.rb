@@ -1,13 +1,12 @@
 class BidsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_is_verified, only:[:create, :new]
-  
   def index
     @product = Product.find(params[:product_id])
     #@bids = Bid.all
     #binding.pry
     #@bids = @product.bids.order("created_at DESC")
-    @bids = @product.bids.recent.paginate(:page => params[:page], :per_page => 10)
+    @bids = @product.bids.recent.paginate(:page => params[:page], :per_page => 8)
   end
 
   def create
@@ -19,7 +18,7 @@ class BidsController < ApplicationController
 
     if @product.endtime-Time.now > 0 && @product.begintime-Time.now < 0
       if @bid.save
-        flash[:notice] = "竞价成功！！！."
+        flash[:notice] = "竞价成功！！！"
         redirect_to new_product_bid_path
       else
         flash[:warning] = "竞价失败.请重新出价！！"
