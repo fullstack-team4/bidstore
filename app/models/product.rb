@@ -34,6 +34,9 @@ class Product < ApplicationRecord
 
   accepts_nested_attributes_for :photos
 
+  acts_as_messageable
+
+
   def time_before_start(start_time, end_time)
     seconds_diff = (Time.now - begintime).to_i.abs
 

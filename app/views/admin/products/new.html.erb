@@ -1,49 +1,59 @@
-<h1> New Product </h1>
+<h1>
+    New Product
+</h1>
 
 <%= simple_form_for [:admin, @product] do |f| %>
 
-  <div class="group">
+<div class="group">
     <%= f.input :title %>
-  </div>
+</div>
 
-  <div class="group">
+<div class="group">
     <%= f.input :description %>
+</div>
+
+<div class="group">
+    <%= f.input :product_story %>
+</div>
+
+<div class="group">
   </div>
 
-  <div class="group">
-    <%= f.input :product_story %>
-  </div>
-  
   <div class="group">
     <%= f.input :quantity %>
-  </div>
+</div>
 
-  <div class="group">
+<div class="group">
     <%= f.input :price %>
-  </div>
+</div>
 
-  <div class="group">
+<div class="group">
     <%= f.input :buyout %>
+</div>
+
+<div class="group">
+  <div class="group">
+    <%= f.input :tag %>
   </div>
 
   <div class="group">
     <%#= f.input :image, as: :file %>
     <%= f.label :avatar %><br>
     <%= f.file_field :avatar, :multiple => true, name: "photos[avatar][]" %>
-  </div>
+</div>
 
-  <div class="group">
+<div class="group">
     <%= f.input :is_hidden %>
-  </div>
+</div>
 
-  <div class="group">
+<div class="group">
     <%= f.input :begintime %>
-  </div>
+</div>
 
-  <div class="group">
+<div class="group">
     <%= f.input :endtime %>
-  </div>
+</div>
 
-  <%= f.submit "Submit", data: { disable_with: "Submitting..."} %>
+<%= f.submit "Submit", data: { disable_with: "Submitting..."} %>
 
 <% end %>
