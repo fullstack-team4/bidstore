@@ -58,7 +58,9 @@
            <%= product.begintime.to_s(:short) %> </p>
            <%= product.endtime.to_s(:short) %> </p>
         <td>
-          <%= render "admin/products/product_state", product: product %>
+          <%= render "admin/products/product_state", product: product %><br>
+          <%= link_to("开拍前发消息", send_message_before_auction_product_path(product), method: :post) %><br>
+          <%= link_to("结束后发消息", send_message_after_auction_product_path(product), method: :post) %>
         </td>
 
       </tr>
