@@ -96,7 +96,8 @@
            <br><br><br>
            <div class="container">
              <div class="row">
-<%= link_to("发消息", send_message_before_auction_product(@product), method: :post) %>
+<%= link_to("开拍前发消息", send_message_before_auction_product_path(@product), method: :post) %>
+<%= link_to("拍卖结束后发消息", send_message_after_auction_product_path(@product), method: :post) %>
              </div>
            </div>
          </div>

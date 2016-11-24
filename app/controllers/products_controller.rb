@@ -91,15 +91,15 @@ class ProductsController < ApplicationController
 
     def send_message_after_auction
       @product = Product.find(params[:id])
-      t = Time.now - @product.endtime
+      # t = Time.now - @product.endtime
       admin = User.first
       users = @product.members
       body = "#{@product.title}已结束拍卖，感谢关注"
       subject = "#{@product.title}已结束拍卖，感谢关注"
-      if t >=0 && users.present?
+      # if t >=0 && users.present?
         admin.send_message(users, body, subject)
         flash[:success] = "Message has been sent!"
-      end
+      # end
     end
 
     private
