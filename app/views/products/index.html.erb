@@ -15,8 +15,13 @@
           <%#= render "common/flashes" %>
 
           <div class="row">
-            <div class="col-md-2">
-              Sidebar
+            <div class="col-md-2 sidebar">
+              <!-- left sidebar -->
+              <ul class="nav nav-pills nav-stacked" style="mex-width: 300px; padding-top:20px;">
+                <li><%= link_to("网红", products_path(tag:"netceleb")) %> </li>
+                <li><%= link_to("明星", products_path(tag:"movieceleb")) %> </li>
+                <li><%= link_to("健将", products_path(tag:"sportceleb")) %> </li>
+              </ul>
             </div>
 
             <div class="col-md-10">

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :bids
-    member do      
+    member do
       post :add_to_order
       post :add_to_cart
       post :favor
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get :contact
     end
   end
+
 
   resources :conversations do
     member do
