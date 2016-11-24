@@ -101,7 +101,8 @@ class ProductsController < ApplicationController
       # t = @product.begintime - Time.now
       admin = User.first
       users = @product.members
-      # body = "点击链接查看商品"link_to(@product.title, product_path(@product))
+      body = "#{@product.title}马上开拍"
+      # "点击链接查看商品"link_to(@product.title, product_path(@product))
       subject = "#{@product.title}马上开拍"
       # if t <= 1800 && users.present?
         admin.send_message(users, body, subject)
