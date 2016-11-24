@@ -33,21 +33,19 @@ class ProductsController < ApplicationController
     end
 
     def index
-      # @products = Product.where(:is_hidden => false)
-      # @tag = Product.tag
+      @products = Product.where(:is_hidden => false)
       search = params[:tag]
       case search
       when "netceleb"
-    #   if @products.tag = "netceleb"
         @products = Product.where(tag: "netceleb")
       when "sportceleb"
         @products = Product.where(tag: "sportceleb")
       when "movieceleb"
         @products = Product.where(tag: "movieceleb")
       else
-        @products = Product.all
+        @products = Product.where(:is_hidden => false)
       end
-   end
+    end
 
 
     def show
