@@ -27,6 +27,8 @@ class OrdersController < ApplicationController
       #end
       #current_cart.clean!
       OrderMailer.notify_order_placed(@order).deliver!
+        @product.is_hidden = true
+        @product.save
 
       redirect_to order_path(@order.token)
     else
