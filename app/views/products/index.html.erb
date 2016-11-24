@@ -34,9 +34,12 @@
                   <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
                   <% end %>
                 <% end %>
-                <%= product.title %> ￥ <%= product.price %>
-                <div class=""><%= link_to("加入收藏夹", favor_product_path(@product), :method => :post, :class => "btn btn-primary btn-sm") %></div>
-              </div>
+                  <%= product.title %> ￥<%= product.price %>
+                <%# binding.pry %>
+                  <div style='flaot:right; width:20px; height:20px;'>
+                    <div class="button"><%= link_to("收藏", favor_product_path(product), :method => :post, :class => "btn btn-primary btn-sm") %></div>
+                  </div>
+            </div>
               <% end %>
             </div>
           </div>
