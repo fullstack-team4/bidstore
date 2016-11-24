@@ -1,5 +1,5 @@
-<div style="padding:10px; float:right;">
-
+<div style="float:left">
+<h5>
   <% case order.aasm_state %>
   <% when "order_placed" %>
     <%= link_to("取消订单",
@@ -31,5 +31,5 @@
     <span class="label label-default">已退货</span>
 
   <% end %>
-
+</h5>
 </div>

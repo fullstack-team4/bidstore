@@ -6,7 +6,7 @@ class BidsController < ApplicationController
     #@bids = Bid.all
     #binding.pry
     #@bids = @product.bids.order("created_at DESC")
-    @bids = @product.bids.recent.paginate(:page => params[:page], :per_page => 10)
+    @bids = @product.bids.recent.paginate(:page => params[:page], :per_page => 8)
   end
 
   def create

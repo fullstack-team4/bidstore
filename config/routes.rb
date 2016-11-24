@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :bids
-    member do      
+    member do
       post :add_to_order
       post :add_to_cart
       post :favor
@@ -72,7 +72,6 @@ Rails.application.routes.draw do
 
   resources :orders do
     member do
-
       post :pay_with_alipay
       post :pay_with_wechat
       post :apply_to_cancel
@@ -89,6 +88,8 @@ Rails.application.routes.draw do
         #post :buyout
         post :pay_with_wechat
         post :pay_with_alipay
+        post :shipped
+        post :return
       end
     end
   end

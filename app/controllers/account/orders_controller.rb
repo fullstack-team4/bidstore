@@ -3,7 +3,7 @@ class Account::OrdersController < ApplicationController
   layout "account"
 
   def index
-    @orders = current_user.orders
+    @orders = current_user.orders.paginate(:page => params[:page], :per_page => 3)
   end
 
   def create
@@ -33,6 +33,19 @@ class Account::OrdersController < ApplicationController
   def show
     @order = Order.find_by_token(params[:id])
     @product_lists = @order.product_lists
+  end
+
+  def return
+    @order = Order.find_by_token(params[:id])
+    @order.return_good!
+    redirect_to account_orders_path
+  end
+
+
+  def shipped
+    @order = Order.find_by_token(params[:id])
+    @order.deliver!
+    redirect_to account_orders_path
   end
 
   private
