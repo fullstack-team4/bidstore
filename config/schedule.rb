@@ -7,11 +7,11 @@
 #
 set :output, "/path/to/my/cron_log.log"
 every 1.minutes do
-  runner "ProductsController.send_message_before_auction"
+  runner "Product.send_message_before_auction"
 end
 
 every 1.minutes do
-  runner "ProductsController.send_message_after_auction"
+  runner "Product.send_message_after_auction"
 end
 #
 # every 2.hours do
