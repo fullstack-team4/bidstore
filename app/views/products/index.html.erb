@@ -1,4 +1,3 @@
-
 <html>
   <head>
     <title> 大咖私藏 </title>
@@ -24,10 +23,6 @@
                 <li><%= link_to("明星", products_path(tag:"movieceleb"), :class => "btn btn-primary btn-sm") %> </li>
                 <li><%= link_to("健将", products_path(tag:"sportceleb"), :class => "btn btn-primary btn-sm") %> </li>
               </ul>
-            <div class="col-md-2">
-              <div class="row">
-                side   tag
-              </div>
             </div>
 
             <div class="col-md-10" >
@@ -39,6 +34,20 @@
           <div class="container">
             <div class="row">
               <% @products.each do |product| %>
+              <div class="col-xs-6 col-md-3">
+                    <%= link_to product_path(product) do %>
+                      <% if product.photos.present? %>
+                        <%= image_tag(product.photos[0].avatar.thumb.url, class: "xs") %>
+                      <% else %>
+                        <%= image_tag("http://placehold.it/50x50&text=No Pic", class: "xs") %>
+                      <% end %>
+                    <% end %>
+                      <%= product.title %> ￥ <%= product.price %>
+                        <div class="button"><%= link_to("收藏", favor_product_path(product), :method => :post, :class => "btn btn-primary btn-sm") %></div>
+              </div>
+              <% end %>
+
+              <!-- <% @products.each do |product| %>
                 <div class="col-xs-6 col-md-3">
                   <%= link_to product_path(product) do %>
                     <% if product.image.present? %>
@@ -46,21 +55,15 @@
                     <% else %>
                       <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
                     <% end %>
-              <div class="col-xs-6 col-md-3">
-                <%= link_to product_path(product) do %>
-                  <% if product.image.present? %>
-                    <%= image_tag(product.photos[0].avatar.thumb.url, class: "thumbnail") %>
-                  <% else %>
-                    <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
                   <% end %>
                   <%= product.title %> ￥ <%= product.price %>
                     <div class="button"><%= link_to("收藏", favor_product_path(product), :method => :post, :class => "btn btn-primary btn-sm") %></div>
                 </div>
-                  </div>
-              </div>
-              <% end %>
+              <% end %> -->
             </div>
 
+          </div>
+  <!-- 以上为主干图片-->
 
 
 
@@ -95,8 +98,6 @@
 
                   </div> -->
 
-        </div>
-<!-- 以上为主干图片-->
 
         </div>
         </div>

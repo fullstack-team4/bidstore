@@ -77,28 +77,37 @@
 }
 
 body {
+    padding-top: 50px;
     font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
     color: rgb(102, 102, 102);
     font-size: 14px;
 }
 
 
-$bgDefault      : #2f2533;
-$bgHighlight    : #332638;
-$colDefault     : #ecf0f1;
-$colHighlight   : #ecdbff;
+$bgDefault      : #000000;
+$bgHighlight    : #cc0000;
+$colDefault     : #ffffff;
+$colHighlight   : #ffffff;
 $dropDown       : false;
 .navbar-default {
   background-color: $bgDefault;
   border-color: $bgHighlight;
   .navbar-brand {
+    background-color: $bgDefault;
     color: $colDefault;
-    &:hover, &:focus {
-      color: $colHighlight; }}
+    &:hover,  &:focus {
+      color: $colHighlight;
+      background-color: $bgHighlight; }}
   .navbar-text {
     color: $colDefault; }
   .navbar-nav {
     > li {
+        background-color: $bgDefault;
+        color: $colDefault;
+        &:hover,  &:focus {
+          color: $colHighlight;
+          background-color: $bgHighlight; }
+
       > a {
         color: $colDefault;
         &:hover,  &:focus {
