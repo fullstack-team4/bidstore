@@ -34,6 +34,20 @@
           <div class="container">
             <div class="row">
               <% @products.each do |product| %>
+              <div class="col-xs-6 col-md-3">
+                    <%= link_to product_path(product) do %>
+                      <% if product.photos.present? %>
+                        <%= image_tag(product.photos[0].avatar.thumb.url, class: "xs") %>
+                      <% else %>
+                        <%= image_tag("http://placehold.it/50x50&text=No Pic", class: "xs") %>
+                      <% end %>
+                    <% end %>
+                      <%= product.title %> ￥ <%= product.price %>
+                        <div class="button"><%= link_to("收藏", favor_product_path(product), :method => :post, :class => "btn btn-primary btn-sm") %></div>
+              </div>
+              <% end %>
+
+              <!-- <% @products.each do |product| %>
                 <div class="col-xs-6 col-md-3">
                   <%= link_to product_path(product) do %>
                     <% if product.image.present? %>
@@ -45,7 +59,7 @@
                   <%= product.title %> ￥ <%= product.price %>
                     <div class="button"><%= link_to("收藏", favor_product_path(product), :method => :post, :class => "btn btn-primary btn-sm") %></div>
                 </div>
-              <% end %>
+              <% end %> -->
             </div>
 
           </div>

@@ -24,3 +24,9 @@ color: white
 .hammer {
   margin-left: 15%;
 }
+
+#nav-left{
+    float:left;
+    position:absolute;
+    *position:relative;
+}
