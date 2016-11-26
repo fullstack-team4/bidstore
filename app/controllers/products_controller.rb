@@ -19,12 +19,13 @@ class ProductsController < ApplicationController
       else
         price = @product.bids.last.amount.round
       end
-        if !current_cart.products.include?(@product)
-          current_cart.add_product_to_cart(@product, price)
-          flash[:notice] = "已经将 #{@product.title} 加入购物车"
-        else
-          flash[:warning] = "购物车已有此物"
-        end
+
+      if !current_cart.products.include?(@product)
+        current_cart.add_product_to_cart(@product, price)
+        flash[:notice] = "已经将 #{@product.title} 加入购物车"
+      else
+        flash[:warning] = "购物车已有此物"
+      end
       #else
         #flash[:warning] = "拍卖结束或尚未开始，请关注竞拍时间！！"
       #end
@@ -61,19 +62,19 @@ class ProductsController < ApplicationController
       else
         flash[:warning] = "已经在收藏夹中了"
       end
-      redirect_to :back
+        redirect_to :back
     end
 
 
     def quit
       @product = Product.find(params[:id])
       if current_user.favor?(@product)
-        current_user.quit!(@product)
-        flash[:alert] = "取消成功"
+         current_user.quit!(@product)
+         flash[:alert] = "取消成功"
       else
-        flash[:warning] = "尚未加入收藏"
+         flash[:warning] = "尚未加入收藏"
       end
-      redirect_to :back
+         redirect_to :back
     end
 
     def about

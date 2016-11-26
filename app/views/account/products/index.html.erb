@@ -1,24 +1,38 @@
 <h1 class="text-center">我的收藏</h1>
-<br><br>
-<table class="table">
-  <thead>
-    <tr>
-      <th>商品</th>
-      <th>起拍价格</th>
-      <th>开拍时间</th>
-      <th>拍卖状态</th>
-      <th>操作</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% current_user.participated_products.each do |product| %>
-    <tr>
-      <td><%= link_to(product.title, product_path(product)) %></td>
-      <td><%= product.price %></td>
-      <td><%= product.begintime %></td>
-      <td><%= product.aasm_state %></td>
-      <td><%= link_to("取消收藏", quit_product_path(product), :method => :post, :class => "btn btn-default")%></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="col-md-11 col-offset-1">
+    <p style="padding:20px;"></p>
+    <% if !@products.present? %>
+      <p style="padding:20px;"></p>
+      <span class="biaotou pull-left">尚无收藏记录，看看转转吧</span>
+    <% else %>
+
+      <table class="table table-striped ">
+        <thead class = "biaotou">
+          <tr>
+            <th width="15%">商品名</th>
+            <th width="15%">起拍价格</th>
+            <th width="15%">开拍时间</th>
+            <th width="15%">拍卖状态</th>
+            <th width="15%">关   注</th>
+        </tr>
+        </thead>
+
+        <tbody>
+          <% @products.each do |product| %>
+          <tr>
+            <td><%= link_to(product.title, product_path(product)) %></td>
+            <td><%= product.price %></td>
+            <td><%= product.begintime.to_s(:short) %></td>
+            <td><%= render "admin/products/product_state", product: product %></td>
+            <td><%= link_to("取消", quit_product_path(product), :method => :post, :class => "btn btn-default btn-sm")%></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+     <% end %>
+
+    <div class="text-center">
+      <%= will_paginate@products,renderer: BootstrapPagination::Rails %>
+    </div>
+
+  </div>

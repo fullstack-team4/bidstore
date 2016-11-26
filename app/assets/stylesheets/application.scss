@@ -17,6 +17,12 @@
  @import "bootstrap";
  @import "font-awesome";
  @import "chosen";
+
+.sidebar {
+  font-size: 18px;
+}
+
+
  .messages {
    max-height: 400px;
    overflow-y: auto;
