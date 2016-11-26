@@ -18,6 +18,10 @@
  @import "font-awesome";
  @import "chosen";
 
+.sidebar {
+  font-size: 18px;
+}
+
 footer {
   background-color: #000000;
   color: #ffffff;
@@ -26,7 +30,7 @@ footer {
 footer a {
   color: #666666;
   &:hover, &:focus {
-    color: #ffffff
+    color: #ffffff;
   }
 }
 

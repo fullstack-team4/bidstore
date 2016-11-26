@@ -1,36 +1,23 @@
 <html>
   <head>
     <title> 大咖私藏 </title>
-      <%#= csrf_meta_tags %>
-
-      <%#= stylesheet_link_tags 'application', media:'all', 'data-turbolinks-track': 'reload' %>
-      <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    </head>
+  </head>
 
     <body>
 <!-- 以下为主干 -->
-
-          <%#= render "common/navbar" %>
-          <%#= render "common/flashes" %>
-
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><%= link_to("网红", products_path(tag:"netceleb"), :class => "btn btn-primary btn-sm") %> </li>
-            <li class="breadcrumb-item"><%= link_to("明星", products_path(tag:"movieceleb"), :class => "btn btn-primary btn-sm") %> </li>
-            <li class="breadcrumb-item"><%= link_to("健将", products_path(tag:"sportceleb"), :class => "btn btn-primary btn-sm") %> </li>
-          </ol>
-
+      <div class="container-fluid">
               <!-- left sidebar -->
-
-            <div class="col-md-10" >
-              <div class = "row">
-                <h2 align="center"> 大咖私藏 </h2>
-                <p style="padding:10px;"></p>
-              </div>
-            </div>
           <div class="container">
+            <ol class="breadcrumb ">
+              <li><%= link_to("网红", products_path(tag:"netceleb")) %> </li>
+              <li><%= link_to("明星", products_path(tag:"movieceleb")) %> </li>
+              <li><%= link_to("健将", products_path(tag:"sportceleb")) %> </li>
+            </ol>
             <div class="row">
               <% @products.each do |product| %>
                 <div class="col-xs-6 col-md-3">
+                  <p style="padding:20px;"></p>
+
                     <%= link_to product_path(product) do %>
                       <% if product.photos.present? %>
                         <%= image_tag(product.photos[0].avatar.thumb.url, class: "thumbnail") %>
@@ -41,60 +28,11 @@
                       <%= product.title %> ￥ <%= product.price %>
                         <div class="button"><%= link_to("收藏", favor_product_path(product), :method => :post, :class => "btn btn-primary btn-sm") %></div>
                 </div>
+
               <% end %>
             </div>
           </div>
-
-              <!-- <% @products.each do |product| %>
-                <div class="col-xs-6 col-md-3">
-                  <%= link_to product_path(product) do %>
-                    <% if product.image.present? %>
-                      <%= image_tag(product.image.thumb.url, class: "thumbnail") %>
-                    <% else %>
-                      <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
-                    <% end %>
-                  <% end %>
-                  <%= product.title %> ￥ <%= product.price %>
-                    <div class="button"><%= link_to("收藏", favor_product_path(product), :method => :post, :class => "btn btn-primary btn-sm") %></div>
-                </div>
-              <% end %> -->
-
-
-  <!-- 以上为主干图片-->
-
-
-
-            <!--
-
-              <div class="container">
-
-
-
-
-
-                <div class="carousel-inner" role="listbox">
-
-                    <div class="row">
-                      <%# @products.each do |product| %>
-
-                          <%#= link_to product_path(product) do %>
-                          <%# if product.image.present? %>
-                            <%#= image_tag(product.photos[0].avatar.thumb.url, class: "thumbnail") %>
-                          <%# else %>
-                            <%#= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
-                            <%# end %>
-                          <%# end %>
-                          <%#= product.title %> ￥<%#= product.price %>
-                <%# binding.pry %>
-                            <div style='flaot:right; width:20px; height:20px;'>
-                          <div class="button"><%#= link_to("收藏", favor_product_path(product), :method => :post, :class => "btn btn-primary btn-sm") %></div>
-                        </div>
-                      </div>
-                      <%# end %>
-
-
-                  </div> -->
-
-
+        </div>
     </body>
+  <!-- 以上为主干图片-->
 </html>
