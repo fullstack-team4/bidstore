@@ -22,6 +22,22 @@
   font-size: 18px;
 }
 
+footer {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+footer a {
+  color: #666666;
+  &:hover, &:focus {
+    color: #ffffff
+  }
+}
+
+.abovefooter {
+   padding-top: 50px;
+   color: #ffffff;
+}
 
  .messages {
    max-height: 400px;
@@ -58,7 +74,7 @@
   font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
   padding-top: 120px;
   padding-right: 130px;
-  padding-bottom: 120px;
+  padding-bottom: 70px;
   padding-left: 130px;
   background-image:url('http://a3.qpic.cn/psb?/V13MJwM83ZGetu/XbK8QloQ3gKj9eXF4Hc5FsxdJ2wObB.JVknJrcOUXLY!/b/dK0AAAAAAAAA&bo=gAdYAgAAAAAFAP4!&rf=viewer_4&t=5');
   background-repeat: no-repeat;
@@ -83,7 +99,7 @@
 }
 
 body {
-    padding-top: 50px;
+    padding-top: 30px;
     font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
     color: rgb(102, 102, 102);
     font-size: 14px;
@@ -97,7 +113,7 @@ $colHighlight   : #ffffff;
 $dropDown       : true;
 .navbar-default {
   background-color: $bgDefault;
-  border-color: $bgHighlight;
+  border: 0px;
   .navbar-brand {
     background-color: $bgDefault;
     color: $colDefault;
@@ -150,7 +166,7 @@ $dropDown       : true;
       background-color: $colDefault; }}
   .navbar-collapse,
   .navbar-form {
-    border-color: $colDefault; }
+    border: $colDefault; }
   .navbar-link {
     color: $colDefault;
     &:hover {

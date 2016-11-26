@@ -1,29 +1,26 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-    <%= render "common/navbar" %>
-    <div class="row">
-      <div class="col-md-2 col-md-offset-1">
-        <ul class="nav nav-pills nav-stacked sidebar" style="max-width: 300px;">
-
-          <p style="padding:50px;"></p>
-
-          <li> <%= link_to("我的主页", account_user_path(current_user)) %> </li>
-          <li> <%= link_to("我的出价", account_bids_path(current_user)) %> </li>
-          <li> <%= link_to("我的订单", account_orders_path) %> </li>
-          <li> <%= link_to("我的收藏", account_products_path) %> </li>
-          <li> <%= link_to("我的信息", conversations_path) %> </li>  
-        </ul>
-      </div>
-      <div class="col-md-8">
-        <%= yield %>
+  <head>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="container">
+      <%= render "common/navbar" %>
+      <div class="row">
+        <div class="col-md-2">
+          <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li> <%= link_to("我的主页", account_user_path(current_user)) %> </li>
+            <li> <%= link_to("我的出价", account_bids_path(current_user)) %> </li>
+            <li> <%= link_to("我的订单", account_orders_path) %> </li>
+            <li> <%= link_to("我的收藏", account_products_path) %> </li>
+          </ul>
+        </div>
+        <div class="col-md-10">
+          <%= yield %>
+        </div>
       </div>
     </div>
-  </div>
-</body>
+    <%= render "common/footer" %>
+  </body>
 </html>

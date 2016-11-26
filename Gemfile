@@ -48,6 +48,7 @@ gem 'chosen-rails'
 gem 'erd'
 gem 'whenever', :require => false
 gem 'will_paginate-bootstrap'
+gem 'fog'
 
 
 group :development, :test do
