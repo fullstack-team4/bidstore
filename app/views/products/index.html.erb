@@ -9,21 +9,17 @@
 
     <body>
 <!-- 以下为主干 -->
-<div class="carousel-inner" role="listbox">
 
-      <div class="container-fluid">
           <%#= render "common/navbar" %>
           <%#= render "common/flashes" %>
 
-          <div class="row content">
-            <div class="col-md-2 sidebar " id="myScrollspy" >
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><%= link_to("网红", products_path(tag:"netceleb"), :class => "btn btn-primary btn-sm") %> </li>
+            <li class="breadcrumb-item"><%= link_to("明星", products_path(tag:"movieceleb"), :class => "btn btn-primary btn-sm") %> </li>
+            <li class="breadcrumb-item"><%= link_to("健将", products_path(tag:"sportceleb"), :class => "btn btn-primary btn-sm") %> </li>
+          </ol>
+
               <!-- left sidebar -->
-              <ul class="nav nav-pills nav-stacked" data-spy="affix">
-                <li><%= link_to("网红", products_path(tag:"netceleb"), :class => "btn btn-primary btn-sm") %> </li>
-                <li><%= link_to("明星", products_path(tag:"movieceleb"), :class => "btn btn-primary btn-sm") %> </li>
-                <li><%= link_to("健将", products_path(tag:"sportceleb"), :class => "btn btn-primary btn-sm") %> </li>
-              </ul>
-            </div>
 
             <div class="col-md-10" >
               <div class = "row">
@@ -34,18 +30,20 @@
           <div class="container">
             <div class="row">
               <% @products.each do |product| %>
-              <div class="col-xs-6 col-md-3">
+                <div class="col-xs-6 col-md-3">
                     <%= link_to product_path(product) do %>
                       <% if product.photos.present? %>
-                        <%= image_tag(product.photos[0].avatar.thumb.url, class: "xs") %>
+                        <%= image_tag(product.photos[0].avatar.thumb.url, class: "thumbnail") %>
                       <% else %>
-                        <%= image_tag("http://placehold.it/50x50&text=No Pic", class: "xs") %>
+                        <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
                       <% end %>
                     <% end %>
                       <%= product.title %> ￥ <%= product.price %>
                         <div class="button"><%= link_to("收藏", favor_product_path(product), :method => :post, :class => "btn btn-primary btn-sm") %></div>
-              </div>
+                </div>
               <% end %>
+            </div>
+          </div>
 
               <!-- <% @products.each do |product| %>
                 <div class="col-xs-6 col-md-3">
@@ -60,9 +58,8 @@
                     <div class="button"><%= link_to("收藏", favor_product_path(product), :method => :post, :class => "btn btn-primary btn-sm") %></div>
                 </div>
               <% end %> -->
-            </div>
 
-          </div>
+
   <!-- 以上为主干图片-->
 
 
@@ -99,8 +96,5 @@
                   </div> -->
 
 
-        </div>
-        </div>
-      </div>
     </body>
 </html>
