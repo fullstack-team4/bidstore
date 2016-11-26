@@ -3,7 +3,7 @@ class Admin::BidsController < ApplicationController
 
   def index
     @proucts = Product.all
-    @bids = Bid.all.paginate(:page => params[:page], :per_page => 8)
+    @bids = Bid.all.paginate(:page => params[:page], :per_page => 7)
   end
 
 end

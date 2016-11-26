@@ -3,7 +3,7 @@ class Account::OrdersController < ApplicationController
   layout "account"
 
   def index
-    @orders = current_user.orders.paginate(:page => params[:page], :per_page => 8)
+    @orders = current_user.orders.paginate(:page => params[:page], :per_page => 7)
   end
 
   def create
