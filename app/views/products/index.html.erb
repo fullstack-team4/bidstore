@@ -1,14 +1,53 @@
-<html>
+<!-- <html>
   <head>
     <title> 大咖私藏 </title>
   </head>
 
-    <body>
+    <body> -->
 <!-- 以下为主干 -->
-      <div class="container-fluid">
+      <!-- <div class="container-fluid"> -->
               <!-- left sidebar -->
           <div class="container">
-            <ol class="breadcrumb ">
+
+            <!--面包屑-->
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><%= link_to("网红", products_path(tag:"netceleb"), :class => "") %> </li>
+                <li class="breadcrumb-item"><%= link_to("明星", products_path(tag:"movieceleb"), :class => "") %> </li>
+                <li class="breadcrumb-item"><%= link_to("健将", products_path(tag:"sportceleb"), :class => "") %> </li>
+              </ol>
+
+              <!--标题-->
+                <div class = "row">
+                  <h2 align="center"> 大咖私藏 </h2>
+                  <p style="padding:10px;"></p>
+                </div>
+          </div>
+              <!--产品loop显示，含价格与收藏按键-->
+              <div class="cards-row">
+                <div class="container">
+                  <div class="row">
+              <!-- 产品图片，名称，价格 -->
+                  <% @products.each do |product| %>
+                    <div class="col-xs-6 col-md-3">
+                      <div class="thumbnail">
+                        <%= link_to product_path(product) do %>
+                          <% if product.photos.present? %>
+                            <%= image_tag(product.photos[0].avatar.thumb.url, class: "thumbnail pic-in-card") %>
+                          <% else %>
+                            <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail pic-in-card") %>
+                          <% end %>
+                        <% end %>
+                        <div class="caption">
+                          <h4>
+                              <%= product.title %> ￥ <%= product.price %>
+                          </h4>
+                          </div>
+                          <div class="button caption"><%= link_to("收藏", favor_product_path(product), :method => :post, :class => "btn btn-primary btn-sm form-inline") %></div>
+                        </div>
+                      </div>
+                    <% end %>
+
+            <!-- <ol class="breadcrumb ">
               <li><%= link_to("网红", products_path(tag:"netceleb")) %> </li>
               <li><%= link_to("明星", products_path(tag:"movieceleb")) %> </li>
               <li><%= link_to("健将", products_path(tag:"sportceleb")) %> </li>
@@ -29,10 +68,12 @@
                         <div class="button"><%= link_to("收藏", favor_product_path(product), :method => :post, :class => "btn btn-primary btn-sm") %></div>
                 </div>
 
-              <% end %>
+              <% end %> -->
             </div>
           </div>
         </div>
-    </body>
+
+    <!-- </div> -->
+  <!-- </body> -->
   <!-- 以上为主干图片-->
-</html>
+<!-- </html> -->

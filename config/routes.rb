@@ -74,6 +74,7 @@ Rails.application.routes.draw do
       post :pay_with_alipay
       post :pay_with_wechat
       post :apply_to_cancel
+      post :send_message_cancel
     end
   end
 
@@ -89,6 +90,7 @@ Rails.application.routes.draw do
         post :pay_with_alipay
         post :shipped
         post :return
+        post :send_message_cancel
       end
     end
   end
