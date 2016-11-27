@@ -1,0 +1,23 @@
+<% page_header "我的消息" %><br>
+<p><%= link_to "发起对话", new_admin_message_path, class: 'btn btn-lg btn-primary' %></p>
+
+<div class="row">
+  <div class="col-sm-3">
+    <ul class="nav nav-pills nav-stacked">
+      <%= mailbox_section '我收到的消息', @box %>
+      <%= mailbox_section '我发出的消息', @box %>
+      <%= mailbox_section '垃圾桶', @box %>
+    </ul>
+  </div>
+
+  <div class="col-sm-9">
+    <% if @box == '垃圾桶' %>
+      <p><%= link_to '清空垃圾桶', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <% end %>
+    <ul class="list-group">
+      <%= render partial: 'conversations/conversation', collection: @conversations %>
+    </ul>
+    <%= paginate @conversations %>
+  </div>
+
+</div>

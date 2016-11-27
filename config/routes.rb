@@ -40,6 +40,13 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:new, :create]
 
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+
+
   namespace :bid do
     resources :orders do
       member do
@@ -67,6 +74,18 @@ Rails.application.routes.draw do
         post :return
       end
     end
+    resources :conversations do
+      member do
+        post :reply
+        post :restore
+        post :mark_as_read
+      end
+      collection do
+        delete :empty_trash
+      end
+    end
+    resources :messages, only: [:new, :create]
+
   end
 
   resources :orders do
@@ -89,6 +108,25 @@ Rails.application.routes.draw do
         post :pay_with_alipay
         post :shipped
         post :return
+      end
+    end
+
+    resources :conversations do
+      member do
+        post :reply
+        post :restore
+        post :mark_as_read
+      end
+      collection do
+        delete :empty_trash
+      end
+    end
+
+    resources :messages, only: [:new, :create]
+
+    resources :notifications do
+      collection do
+        post :mark_as_read
       end
     end
   end

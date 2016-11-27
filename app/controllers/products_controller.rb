@@ -123,6 +123,7 @@ class ProductsController < ApplicationController
         admin.send_message(users, body, subject)
         flash[:success] = "Message has been sent!"
       # end
+      create
     end
 
     private
