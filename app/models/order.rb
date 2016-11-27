@@ -26,7 +26,7 @@ class Order < ApplicationRecord
 
   belongs_to :user
   has_many :product_lists
-
+  acts_as_messageable
 
   validates :billing_name, presence: true
   validates :billing_address, presence: true
