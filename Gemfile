@@ -49,6 +49,7 @@ gem 'erd'
 gem 'whenever', :require => false
 gem 'will_paginate-bootstrap'
 gem 'fog'
+gem 'roadie-rails', '~> 1.0'
 
 
 group :development, :test do

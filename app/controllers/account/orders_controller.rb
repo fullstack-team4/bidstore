@@ -48,6 +48,16 @@ class Account::OrdersController < ApplicationController
     redirect_to account_orders_path
   end
 
+  # def send_message_cancel
+  #   @order = Order.find_by_token(params[:id])
+  #   admin = User.first
+  #   body = ""
+  #   subject = "申请退货"
+  #   current_user.send_message(admin, body, subject)
+  #   flash[:success] = "Message has been sent!"
+  # end
+
+
   private
 
   def order_params
