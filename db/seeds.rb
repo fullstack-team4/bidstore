@@ -66,7 +66,7 @@ create_product = Product.create([title: "李笑来的法拉利",
                                  tag:"netceleb",
                                  aasm_state: "before_auction",
                                  begintime: "2016-11-15 18:09:00",
-                                 endtime: "2016-11-16 09:09:00" ])
+                                 endtime: "2016-12-16 09:09:00" ])
 puts "Product created"
 
 create_product = Product.create([title: "罗永浩的锤子",
@@ -79,7 +79,7 @@ create_product = Product.create([title: "罗永浩的锤子",
                                  tag:"netceleb",
                                  aasm_state: "before_auction",
                                  begintime: "2016-11-17 18:09:00",
-                                 endtime: "2016-11-18 09:09:00"])
+                                 endtime: "2016-12-18 09:09:00"])
 puts "Product created"
 
 create_product = Product.create([title: "韩寒的摄像机",
@@ -92,7 +92,7 @@ create_product = Product.create([title: "韩寒的摄像机",
                                  tag:"netceleb",
                                  aasm_state: "before_auction",
                                  begintime: "2016-11-20 18:09:00",
-                                 endtime: "2016-11-22 09:09:00"])
+                                 endtime: "2016-12-22 09:09:00"])
 puts "Product created"
 
 create_product = Product.create([title: "小S的牛仔裤",
@@ -105,12 +105,51 @@ create_product = Product.create([title: "小S的牛仔裤",
                                  tag:"movieceleb",
                                  aasm_state: "before_auction",
                                  begintime: "2016-11-15 18:09:00",
-                                 endtime: "2016-11-25 09:09:00"])
+                                 endtime: "2016-12-25 09:09:00"])
 puts "Product created"
 
-create_product = Product.create([title: "明星A的宝贝",
-                                 description: "QQQ",
-                                 price: 888,
+create_product = Product.create([title: "周星驰的剧本",
+                                 description: "印迹周氏幽默",
+                                 price: 18888,
+                                 quantity: 100,
+                                 buyout: 98888,
+                                 image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
+                                 is_hidden:"false",
+                                 tag:"movieceleb",
+                                 aasm_state: "before_auction",
+                                 begintime: "2016-11-15 18:09:00",
+                                 endtime: "2016-12-25 09:09:00"])
+puts "Product created"
+
+create_product = Product.create([title: "周杰伦钢琴.",
+                                 description: "岁月在音乐中流淌",
+                                 price: 200888,
+                                 quantity: 100,
+                                 buyout: 508888,
+                                 image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
+                                 is_hidden:"false",
+                                 tag:"movieceleb",
+                                 aasm_state: "before_auction",
+                                 begintime: "2016-11-15 18:09:00",
+                                 endtime: "2016-12-25 09:09:00"])
+puts "Product created"
+
+create_product = Product.create([title: "李宗盛吉他",
+                                 description: "以为自己懂了他的音乐，其实",
+                                 price: 8888,
+                                 quantity: 100,
+                                 buyout: 18888,
+                                 image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
+                                 is_hidden:"false",
+                                 tag:"movieceleb",
+                                 aasm_state: "before_auction",
+                                 begintime: "2016-11-15 18:09:00",
+                                 endtime: "2016-12-25 09:09:00"])
+puts "Product created"
+
+create_product = Product.create([title: "胡歌的相机",
+                                 description: "开启新的视角记录不同风景",
+                                 price: 18888,
                                  quantity: 100,
                                  buyout: 8888,
                                  image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
@@ -118,148 +157,109 @@ create_product = Product.create([title: "明星A的宝贝",
                                  tag:"movieceleb",
                                  aasm_state: "before_auction",
                                  begintime: "2016-11-15 18:09:00",
-                                 endtime: "2016-11-25 09:09:00"])
+                                 endtime: "2016-12-25 09:09:00"])
 puts "Product created"
 
-create_product = Product.create([title: "明星B的宝贝",
-                                 description: "QQQ",
+create_product = Product.create([title: "李娜的网球拍",
+                                 description: "独自上场惊艳人生",
+                                 price: 5888,
+                                 quantity: 100,
+                                 buyout: 18888,
+                                 image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
+                                 is_hidden:"false",
+                                 tag:"sportceleb",
+                                 aasm_state: "before_auction",
+                                 begintime: "2016-11-15 18:09:00",
+                                 endtime: "2016-12-25 09:09:00"])
+puts "Product created"
+
+create_product = Product.create([title: "郎平的排球",
+                                 description: "半世纪传奇",
+                                 price: 999,
+                                 quantity: 100,
+                                 buyout: 9999,
+                                 image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
+                                 is_hidden:"false",
+                                 tag:"sportceleb",
+                                 aasm_state: "before_auction",
+                                 begintime: "2016-11-15 18:09:00",
+                                 endtime: "2016-12-25 09:09:00"])
+puts "Product created"
+
+create_product = Product.create([title: "姚明的篮球",
+                                 description: "",
                                  price: 888,
                                  quantity: 100,
-                                 buyout: 8888,
+                                 buyout: 9999,
+                                 image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
+                                 is_hidden:"false",
+                                 tag:"sportceleb",
+                                 aasm_state: "before_auction",
+                                 begintime: "2016-11-15 18:09:00",
+                                 endtime: "2016-12-25 09:09:00"])
+puts "Product created"
+
+create_product = Product.create([title: "宁泽涛的耳机",
+                                 description: "全民老公听什么",
+                                 price: 2988,
+                                 quantity: 100,
+                                 buyout: 4988,
+                                 image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
+                                 is_hidden:"false",
+                                 tag:"sportceleb",
+                                 aasm_state: "before_auction",
+                                 begintime: "2016-11-15 18:09:00",
+                                 endtime: "2016-12-25 09:09:00"])
+puts "Product created"
+
+create_product = Product.create([title: "徐静蕾烧制的玻璃饰品",
+                                 description: "才女透明心",
+                                 price: 618,
+                                 quantity: 100,
+                                 buyout: 1888,
                                  image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
                                  is_hidden:"false",
                                  tag:"movieceleb",
                                  aasm_state: "before_auction",
                                  begintime: "2016-11-15 18:09:00",
-                                 endtime: "2016-11-25 09:09:00"])
+                                 endtime: "2016-12-25 09:09:00"])
 puts "Product created"
 
-create_product = Product.create([title: "明星C的宝贝",
-                                 description: "QQQ",
-                                 price: 888,
+create_product = Product.create([title: "卡戴珊的礼服",
+                                 description: "傲娇身材面对争议的人生",
+                                 price: 18888,
                                  quantity: 100,
-                                 buyout: 8888,
-                                 image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
-                                 is_hidden:"false",
-                                 tag:"movieceleb",
-                                 aasm_state: "before_auction",
-                                 begintime: "2016-11-15 18:09:00",
-                                 endtime: "2016-11-25 09:09:00"])
-puts "Product created"
-
-create_product = Product.create([title: "明星D的宝贝",
-                                 description: "QQQ",
-                                 price: 888,
-                                 quantity: 100,
-                                 buyout: 8888,
-                                 image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
-                                 is_hidden:"false",
-                                 tag:"movieceleb",
-                                 aasm_state: "before_auction",
-                                 begintime: "2016-11-15 18:09:00",
-                                 endtime: "2016-11-25 09:09:00"])
-puts "Product created"
-
-create_product = Product.create([title: "健将A的宝贝",
-                                 description: "QQQ",
-                                 price: 888,
-                                 quantity: 100,
-                                 buyout: 8888,
-                                 image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
-                                 is_hidden:"false",
-                                 tag:"sportceleb",
-                                 aasm_state: "before_auction",
-                                 begintime: "2016-11-15 18:09:00",
-                                 endtime: "2016-11-25 09:09:00"])
-puts "Product created"
-
-create_product = Product.create([title: "健将B的宝贝",
-                                 description: "QQQ",
-                                 price: 888,
-                                 quantity: 100,
-                                 buyout: 8888,
-                                 image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
-                                 is_hidden:"false",
-                                 tag:"sportceleb",
-                                 aasm_state: "before_auction",
-                                 begintime: "2016-11-15 18:09:00",
-                                 endtime: "2016-11-25 09:09:00"])
-puts "Product created"
-
-create_product = Product.create([title: "健将C的宝贝",
-                                 description: "QQQ",
-                                 price: 888,
-                                 quantity: 100,
-                                 buyout: 8888,
-                                 image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
-                                 is_hidden:"false",
-                                 tag:"sportceleb",
-                                 aasm_state: "before_auction",
-                                 begintime: "2016-11-15 18:09:00",
-                                 endtime: "2016-11-25 09:09:00"])
-puts "Product created"
-
-create_product = Product.create([title: "健将D的宝贝",
-                                 description: "QQQ",
-                                 price: 888,
-                                 quantity: 100,
-                                 buyout: 8888,
-                                 image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
-                                 is_hidden:"false",
-                                 tag:"sportceleb",
-                                 aasm_state: "before_auction",
-                                 begintime: "2016-11-15 18:09:00",
-                                 endtime: "2016-11-25 09:09:00"])
-puts "Product created"
-
-create_product = Product.create([title: "网红A的宝贝",
-                                 description: "QQQ",
-                                 price: 888,
-                                 quantity: 100,
-                                 buyout: 8888,
+                                 buyout: 38888,
                                  image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
                                  is_hidden:"false",
                                  tag:"netceleb",
                                  aasm_state: "before_auction",
                                  begintime: "2016-11-15 18:09:00",
-                                 endtime: "2016-11-25 09:09:00"])
+                                 endtime: "2016-12-25 09:09:00"])
 puts "Product created"
 
-create_product = Product.create([title: "网红B的宝贝",
-                                 description: "QQQ",
-                                 price: 888,
+create_product = Product.create([title: "TFboys的自行车",
+                                 description: "怀旧版的三小只在飞车中成长",
+                                 price: 1888,
                                  quantity: 100,
-                                 buyout: 8888,
+                                 buyout: 4888,
                                  image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
                                  is_hidden:"false",
                                  tag:"netceleb",
                                  aasm_state: "before_auction",
                                  begintime: "2016-11-15 18:09:00",
-                                 endtime: "2016-11-25 09:09:00"])
+                                 endtime: "2016-12-25 09:09:00"])
 puts "Product created"
 
-create_product = Product.create([title: "网红C的宝贝",
-                                 description: "QQQ",
-                                 price: 888,
+create_product = Product.create([title: "鹿晗的配饰",
+                                 description: "花样美男的终极武器",
+                                 price: 2999,
                                  quantity: 100,
-                                 buyout: 8888,
+                                 buyout: 4999,
                                  image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
                                  is_hidden:"false",
                                  tag:"netceleb",
                                  aasm_state: "before_auction",
                                  begintime: "2016-11-15 18:09:00",
-                                 endtime: "2016-11-25 09:09:00"])
-puts "Product created"
-
-create_product = Product.create([title: "网红D的宝贝",
-                                 description: "QQQ",
-                                 price: 888,
-                                 quantity: 100,
-                                 buyout: 8888,
-                                 image: "http://ww2.sinaimg.cn/mw690/6592c2e0jw1f85mgtlpqzj20qo0f0tb9.jpg",
-                                 is_hidden:"false",
-                                 tag:"netceleb",
-                                 aasm_state: "before_auction",
-                                 begintime: "2016-11-15 18:09:00",
-                                 endtime: "2016-11-25 09:09:00"])
+                                 endtime: "2016-12-25 09:09:00"])
 puts "Product created"

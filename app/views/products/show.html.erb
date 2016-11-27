@@ -2,53 +2,53 @@
 
   <div class="container">
     <div class="show1">
-  <br><br>
+      <br><br>
     <div class="row">
       <h2 align="center"> <%= @product.title %> </h2>
     </div>
-  <br>
-  <div class="well">
-     <div class="row" >
-       <div class="col-md-6">
-         <% if @photos.present? %>
-           <% @photos.each_with_index do |p, index| %>
-             <% if index == 0 %>
+    <br>
+    <div class="well">
+      <div class="row" >
+        <div class="col-md-6">
+          <% if @photos.present? %>
+            <% @photos.each_with_index do |p, index| %>
+              <% if index == 0 %>
                 <%= image_tag p.avatar.medium.url %>
-               <% else %>
-                 <%= image_tag p.avatar.thumb.url %>
-               <% end %>
-             <% end %>
-           <% else %>
-               <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
-           <% end %>
-         </div>
+              <% else %>
+                <%= image_tag p.avatar.thumb.url %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+          <% end %>
+        </div>
+          <div class="col-md-6"><br>
+            <div class="showbackground">
+              <div align="left">
+                <h4><%= @product.description %></h4>
+              </div>
+            <div>
+              <h5>
+                一口价 : ¥<%= @product.buyout %><br>
+                底价 :   ￥<%= @product.price %>
+              </h5>
+            </div>
+          </div>
+        </div>
+      <div class="row">
+       <div align="left">
          <div class="col-md-6"><br>
            <div class="showbackground">
              <div align="left">
-               <h4><%= @product.description %></h4>
-             </div>
-             <div >
-               <h5>
-                 一口价 : ¥<%= @product.buyout %><br>
-                 底价 :   ￥<%= @product.price %>
-               </h5>
-             </div>
-           </div>
-         </div>
-       <div class="row">
-         <div align="left">
-           <div class="col-md-6"><br>
-             <div class="showbackground">
-               <div align="left">
-                 <% begin_time = @product.begintime.strftime("%Y/%m/%d %H:%M") %>
-                 <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M") %>
-                 <p><h4>起拍 : <%= begin_time %></h4> </p>
-                 <p><h4>结束 : <%= end_time %> </h4></p>
-               </div>
-             </div>
-           </div>
-           <br>
-           <div align="left">
+                <% begin_time = @product.begintime.strftime("%Y/%m/%d %H:%M") %>
+                <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M") %>
+                  <p><h4>起拍 : <%= begin_time %></h4> </p>
+                  <p><h4>结束 : <%= end_time %> </h4></p>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div align="left">
             <div class="col-md-6">
               <div class="show2">
 
@@ -57,11 +57,10 @@
                <% t = Time.now %>
                  <% if t < @product.begintime %>
                    <p>
-
                      <% begin_time = @product.begintime.strftime("%Y/%m/%d %H:%M:%S") %>
                      <div align="center" >
-                        <h3>距拍卖开始</h3>
-                      <h2>
+                       <h3>距拍卖开始</h3>
+                       <h2>
                        <div id="getting-started-1"></div>
                        <script type="text/javascript">
                          var BeginTime = <%= begin_time.to_json.html_safe %>
@@ -75,14 +74,14 @@
                      </h2>
                    </div>
                    </p>
-                 <% elsif @product.begintime < t && t < @product.endtime %>
+                    <% elsif @product.begintime < t && t < @product.endtime %>
                    <p>
                      <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M:%S") %>
-                        <div align="center">
+                      <div align="center">
                         <h3>离结束还有</h3>
-                       <h2>
-                       <div id="getting-started"></div>
-                       <script type="text/javascript">
+                        <h2>
+                        <div id="getting-started"></div>
+                        <script type="text/javascript">
                          var EndTime = <%= end_time.to_json.html_safe %>
                          $("#getting-started")
                          .countdown(EndTime, function(event) {
@@ -90,13 +89,11 @@
                              event.strftime('%D天:%H时:%M分:%S秒')
                            );
                          });
-                       </script>
-                     </h2>
+                        </script>
                         </h2>
                       </div>
-
                    </p>
-                 <% elsif @product.endtime < t %>
+                    <% elsif @product.endtime < t %>
                    <p>拍卖已结束</p>
                  <% end %>
                  <!-- </div> -->
@@ -104,14 +101,17 @@
              <!-- </div> -->
 
            </div>
-           </div>
+          </div>
          </div>
              <br><br><br>
+
            </div>
          </div>
        </div>
      </div>
-     </div>
+    </div>
+  </div>
+
 
 
 
@@ -135,5 +135,7 @@
               <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
             <% end %>
           <% end %>
+          </div>
        </div>
-       </div>
+     </div>
+<p style="padding:70px;"></p>

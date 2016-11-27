@@ -28,7 +28,7 @@
                   <div class="row">
               <!-- 产品图片，名称，价格 -->
                   <% @products.each do |product| %>
-                    <div class="col-xs-6 col-md-3">
+                    <div class="col-xs-6 col-md-3" style="height: 450px;">
                       <div class="thumbnail">
                         <%= link_to product_path(product) do %>
                           <% if product.photos.present? %>
@@ -39,7 +39,8 @@
                         <% end %>
                         <div class="caption">
                           <h4>
-                              <%= product.title %> ￥ <%= product.price %>
+                              <div><%= product.title %></div>
+                              <div>￥<%= product.price %></div>
                           </h4>
                           </div>
                           <div class="button caption"><%= link_to("收藏", favor_product_path(product), :method => :post, :class => "btn btn-primary btn-sm form-inline") %></div>
@@ -72,6 +73,7 @@
             </div>
           </div>
         </div>
+        <p style="padding:105px;"></p>
 
     <!-- </div> -->
   <!-- </body> -->
