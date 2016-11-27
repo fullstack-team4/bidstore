@@ -19,12 +19,13 @@ class ProductsController < ApplicationController
       else
         price = @product.bids.last.amount.round
       end
-        if !current_cart.products.include?(@product)
-          current_cart.add_product_to_cart(@product, price)
-          flash[:notice] = "已经将 #{@product.title} 加入购物车"
-        else
-          flash[:warning] = "购物车已有此物"
-        end
+
+      if !current_cart.products.include?(@product)
+        current_cart.add_product_to_cart(@product, price)
+        flash[:notice] = "已经将 #{@product.title} 加入购物车"
+      else
+        flash[:warning] = "购物车已有此物"
+      end
       #else
         #flash[:warning] = "拍卖结束或尚未开始，请关注竞拍时间！！"
       #end
@@ -33,7 +34,17 @@ class ProductsController < ApplicationController
     end
 
     def index
-      @products = Product.where(:is_hidden => false)
+      search = params[:tag]
+      case search
+      when "netceleb"
+        @products = Product.where(tag: "netceleb", :is_hidden => false)
+      when "sportceleb"
+        @products = Product.where(tag: "sportceleb", :is_hidden => false)
+      when "movieceleb"
+        @products = Product.where(tag: "movieceleb", :is_hidden => false)
+      else
+        @products = Product.where(:is_hidden => false)
+      end
     end
 
 
@@ -51,19 +62,19 @@ class ProductsController < ApplicationController
       else
         flash[:warning] = "已经在收藏夹中了"
       end
-      redirect_to :back
+        redirect_to :back
     end
 
 
     def quit
       @product = Product.find(params[:id])
       if current_user.favor?(@product)
-        current_user.quit!(@product)
-        flash[:alert] = "取消成功"
+         current_user.quit!(@product)
+         flash[:alert] = "取消成功"
       else
-        flash[:warning] = "尚未加入收藏"
+         flash[:warning] = "尚未加入收藏"
       end
-      redirect_to :back
+         redirect_to :back
     end
 
     def about
@@ -74,14 +85,26 @@ class ProductsController < ApplicationController
       render "products/contact"
     end
 
+    # def netceleb
+    #   render "products/netceleb"
+    # end
+    #
+    # def sportceleb
+    #   @products = Product.where(tag: "sportceleb")
+    # end
+    #
+    # def movieceleb
+    #   @products = Product.where(tag: "movieceleb")
+    # end
     def send_message_before_auction
       #binding.pry
       @product = Product.find(params[:id])
       # t = @product.begintime - Time.now
       admin = User.first
       users = @product.members
-      body = "距离商品#{@product.title}开拍还有30分钟"
-      subject = "距离商品#{@product.title}开拍还有30分钟"
+      body = "#{@product.title}马上开拍"
+      # "点击链接查看商品"link_to(@product.title, product_path(@product))
+      subject = "#{@product.title}马上开拍"
       # if t <= 1800 && users.present?
         admin.send_message(users, body, subject)
         flash[:success] = "Message has been sent!"

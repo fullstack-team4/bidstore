@@ -1,33 +1,52 @@
-<h1>我的主页</h1>
-<br><br>
-<p><%= current_user.email %>，欢迎回来！</p>
+<div>
+  <h1>我的主页</h1>
+  <p style="padding:20px;"></p>
+    <div class="row">
 
-<table class="table table-boldered">
-  <thead>
-    <tr>
-      <td>用户名称</td>
-      <td>审核状态</td>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td>
-        <%= render_user_status(current_user) %>
-        <%= current_user.email %>
-      </td>
-
-      <td>
-        <% if current_user.is_verified %>
-          <%= "审核已通过" %>
+      <div class="col-md-2" >
+        <% if @user.profile.present? %>
+          <%= image_tag(current_user.profile.thumb.url, class:"img-circle") %>
         <% else %>
-          <%= "审核尚未通过" %>
+          <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "img-circle") %>
         <% end %>
-      </td>
+      </div>
 
-    </tbody>
-</table>
+      <p style="padding:20px;"></p>
 
-<div class="job">
-  <%= link_to("去认证身份", edit_account_user_path(current_user), class: "btn btn-default pull-right") %>
+      <div class="col-md-10">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><strong>用户名</strong></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td><strong>用户邮箱</strong></td>
+              <td><%= current_user.email %></td>
+            </tr>
+
+            <tr>
+              <td><strong>送货地址</strong></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <td><strong>用户状态</strong></td>
+              <td>
+                <% if current_user.is_verified %>
+                  <%= "认证用户" %>
+                <% else %>
+                  <%= "尚未认证" %>
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="job">
+          <%= link_to("修改用户信息", edit_account_user_path(current_user), class: "btn btn-default pull-right") %>
+       </div>
+     </div>
+  </div>
 </div>

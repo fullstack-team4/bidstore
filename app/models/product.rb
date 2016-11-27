@@ -36,6 +36,31 @@ class Product < ApplicationRecord
 
   acts_as_messageable
 
+  def send_message_before_auction(product, user)
+    t = product.begintime - Time.now
+    admin = User.first
+    users = product.members
+    # body = "点击链接查看商品"link_to(@product.title, product_path(@product))
+    subject = "#{product.title}马上开拍"
+    if t <= 1800 && users.present?
+      admin.send_message(users, body, subject)
+      flash[:success] = "Message has been sent!"
+    end
+  end
+
+
+  def send_message_after_auction(product, user)
+    t = Time.now - product.endtime
+    admin = User.first
+    users = product.members
+    body = "#{product.title}已结束拍卖，感谢关注"
+    subject = "#{product.title}已结束拍卖，感谢关注"
+    if t >=0 && users.present?
+      admin.send_message(users, body, subject)
+      flash[:success] = "Message has been sent!"
+    end
+  end
+
 
   def time_before_start(start_time, end_time)
     seconds_diff = (Time.now - begintime).to_i.abs

@@ -17,6 +17,28 @@
  @import "bootstrap";
  @import "font-awesome";
  @import "chosen";
+
+.sidebar {
+  font-size: 18px;
+}
+
+footer {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+footer a {
+  color: #666666;
+  &:hover, &:focus {
+    color: #ffffff;
+  }
+}
+
+.abovefooter {
+   padding-top: 50px;
+   color: #ffffff;
+}
+
  .messages {
    max-height: 400px;
    overflow-y: auto;
@@ -32,7 +54,7 @@
 }
 
  .jumbotron {
-   background-image:url('https://s3-us-west-2.amazonaws.com/feiben/homework/bidstore/impressionist_n09035-jpg-webrend-2000-11251.jpg');
+   background-image:url('http://y.photo.qq.com/img?s=99zcEYcbA&l=y.jpg');
    background-repeat: no-repeat;
    background-size: cover;
  }
@@ -52,9 +74,9 @@
   font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
   padding-top: 120px;
   padding-right: 130px;
-  padding-bottom: 120px;
+  padding-bottom: 70px;
   padding-left: 130px;
-  background-image:url('https://s3-us-west-2.amazonaws.com/feiben/homework/bidstore/mao.jpg');
+  background-image:url('http://a3.qpic.cn/psb?/V13MJwM83ZGetu/XbK8QloQ3gKj9eXF4Hc5FsxdJ2wObB.JVknJrcOUXLY!/b/dK0AAAAAAAAA&bo=gAdYAgAAAAAFAP4!&rf=viewer_4&t=5');
   background-repeat: no-repeat;
 }
 
@@ -77,28 +99,37 @@
 }
 
 body {
+    padding-top: 30px;
     font-family: "Helvetica Neue", "Microsoft Yahei", 微软雅黑;
     color: rgb(102, 102, 102);
     font-size: 14px;
 }
 
 
-$bgDefault      : #2f2533;
-$bgHighlight    : #332638;
-$colDefault     : #ecf0f1;
-$colHighlight   : #ecdbff;
-$dropDown       : false;
+$bgDefault      : #000000;
+$bgHighlight    : #cc0000;
+$colDefault     : #ffffff;
+$colHighlight   : #ffffff;
+$dropDown       : true;
 .navbar-default {
   background-color: $bgDefault;
-  border-color: $bgHighlight;
+  border: 0px;
   .navbar-brand {
+    background-color: $bgDefault;
     color: $colDefault;
-    &:hover, &:focus {
-      color: $colHighlight; }}
+    &:hover,  &:focus {
+      color: $colHighlight;
+      background-color: $bgHighlight; }}
   .navbar-text {
     color: $colDefault; }
   .navbar-nav {
     > li {
+        background-color: $bgDefault;
+        color: $colDefault;
+        &:hover,  &:focus {
+          color: $colHighlight;
+          background-color: $bgHighlight; }
+
       > a {
         color: $colDefault;
         &:hover,  &:focus {
@@ -135,7 +166,7 @@ $dropDown       : false;
       background-color: $colDefault; }}
   .navbar-collapse,
   .navbar-form {
-    border-color: $colDefault; }
+    border: $colDefault; }
   .navbar-link {
     color: $colDefault;
     &:hover {
