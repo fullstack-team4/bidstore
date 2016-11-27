@@ -1,28 +1,32 @@
-<!-- <meta http-equiv="refresh" content="30" /> -->
+
 <h1>拍卖出价中</h1> <br><br>
 <div class="container">
-  <div class="row">
-    <div class="col-md-6">
+  <div class="well">
+    <div class="row">
+    <div class="col-md-5">
       <% if @product.image.present? %>
         <%= image_tag(@product.image.medium.url, class: "thumbnail") %>
       <% else %>
         <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
       <% end %>
     </div>
-    <div class="col-md-6">
-      <div class="well">
-      <h3> <%= @product.title %> </h3>
-      <!-- <div style="height:100px;"> -->
+    <div class="col-md-7">
 
-         <%= @product.description %>
-       </div>
-       <!-- <div class="well"> -->
-
+      <div class="row">
+        <div class="bid1">
+          <div align="center">
+          <h3> <%= @product.title %> </h3>
+             <%= @product.description %>
+        </div>
+      </div>
+      </div>
         <br>
-
-        <div class="col-md-6">
-        <div class="well">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="bid2">
+        <!-- <div class="well"> -->
           <div align="left">
+
             <h4>起拍价格: ¥ <%= @product.price %> </h4>
             <br>
             <h4>一口价: ¥ <%= @product.buyout %> </h4>
@@ -38,14 +42,20 @@
                 <span>起拍价格: ¥ <%= @product.price %></span>
               <% end %>
             </h4>
+
             </div>
+            </div>
+          <!-- </div> -->
           </div>
-          </div>
+
+            <div class="col-md-3">
+              <div class="bid3">
+                <div align="center">
+
 
             <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M:%S") %>
 
-            <div class="col-md-6">
-             <button type="button" class="btn btn-class">
+
              <h3>离结束还有</h3><br>
               <!-- <p><h4><span class="tian">天</span>时－分－秒 </h4></p> -->
               <h2>
@@ -61,40 +71,58 @@
               </script>
               </h2>
               <br>
-              </button>
-            </div>
+
+
+
+          </div>
+          </div>
+        </div>
+
           <!-- </div> -->
         <!-- </div> -->
       <!-- </div> -->
     </div>
+
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="bid4">
+          <div align="left">
+        <% if @product.endtime > Time.now %>
+            <%= link_to"一口价直接购买", new_order_path(product_id: @product.id, is_buyout: true),  :method => :get, :class => "btn btn-primary btn-lg btn-danger" %>
+        <% else %>
+          <p> 拍卖结束 </p>
+        <% end %>
+      </div>
+      </div>
+      </div>
+
+      <div class="col-md-1">
+        <div class="bid5">
+        <% if @product.endtime > Time.now %>
+          <%= simple_form_for [:product, @bid] do |f| %>
+            <div class="group">
+              <%= f.input :amount %>
+              <%= f.hidden_field :product_id, value: @product.id %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+            </div>
+            <%= f.submit "出价", data: { disable_with: "Submitting..."} %>
+          <% end %>
+        <% elsif @product.bids.last.user == current_user %>
+          <p>恭喜！你已中标，请点击购买按钮！</p>
+          <%= link_to("购买", new_bid_order_path(product_id: @product.id), :method => :get, :class => "btn btn-primary btn-lg btn-danger") %>
+        <% else %>
+          <p>很遗憾，您未中标！</p>
+        <% end %>
+      </div>
+    </div>
+    </div>
+
+
+
+  </div>
   </div>
   <br><br><br>
 
-  <div class="row">
-    <div class="col-md-6">
-      <% if @product.endtime > Time.now %>
-          <%= link_to"一口价直接购买", new_order_path(product_id: @product.id, is_buyout: true),  :method => :get, :class => "btn btn-primary btn-lg btn-danger" %>
-      <% else %>
-        <p> 拍卖结束 </p>
-      <% end %>
-    </div>
 
-    <div class="col-md-4">
-      <% if @product.endtime > Time.now %>
-        <%= simple_form_for [:product, @bid] do |f| %>
-          <div class="group">
-            <%= f.input :amount %>
-            <%= f.hidden_field :product_id, value: @product.id %>
-            <%= f.hidden_field :user_id, value: current_user.id %>
-          </div>
-          <%= f.submit "出价", data: { disable_with: "Submitting..."} %>
-        <% end %>
-      <% elsif @product.bids.last.user == current_user %>
-        <p>恭喜！你已中标，请点击购买按钮！</p>
-        <%= link_to("购买", new_bid_order_path(product_id: @product.id), :method => :get, :class => "btn btn-primary btn-lg btn-danger") %>
-      <% else %>
-        <p>很遗憾，您未中标！</p>
-      <% end %>
-  </div>
-  </div>
 </div>
