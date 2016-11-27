@@ -187,7 +187,7 @@ create_product = Product.create([title: "郎平的排球",
 puts "Product created"
 
 create_product = Product.create([title: "姚明的篮球",
-                                 description: "",
+                                 description: "MVP的起点",
                                  price: 888,
                                  quantity: 100,
                                  buyout: 9999,
