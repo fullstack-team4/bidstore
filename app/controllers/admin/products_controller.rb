@@ -56,7 +56,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all.paginate(:page => params[:page], :per_page => 7)
+    @products = Product.all.paginate(:page => params[:page], :per_page => 6)
   end
 
   def sell
