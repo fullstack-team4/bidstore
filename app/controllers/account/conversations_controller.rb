@@ -9,11 +9,11 @@ class Account::ConversationsController < ApplicationController
   def index
     # binding.pry
     if @box.eql? "inbox"
-      @conversations = @mailbox.inbox
+      @conversations = current_user.mailbox.inbox
     elsif @box.eql? "sent"
-      @conversations = @mailbox.sentbox
+      @conversations = current_user.mailbox.sentbox
     else
-      @conversations = @mailbox.trash
+      @conversations = current_user.mailbox.trash
     end
 
     @conversations = @conversations.page(params[:page])
