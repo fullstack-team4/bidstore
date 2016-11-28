@@ -2,15 +2,20 @@
 <div class="container">
   <div class="well">
     <div class="row">
-    <div class="col-md-5">
-      <% if @product.image.present? %>
-        <%= image_tag(@product.image.medium.url, class: "thumbnail") %>
-      <% else %>
-        <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
-      <% end %>
-    </div>
-    <div class="col-md-7">
-
+      <div class="col-md-6">
+        <% if @product.photos.present? %>
+          <% @product.photos.each_with_index do |p, index| %>
+            <% if index == 0 %>
+              <%= image_tag p.avatar.medium.url %>
+            <% else %>
+              <%= image_tag p.avatar.thumb.url %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+        <% end %>
+      </div>
+    <div class="col-md-6"><br>
       <div class="row">
         <div class="bid1">
           <div align="center">
