@@ -15,19 +15,14 @@ class OrdersController < ApplicationController
     @order.user = current_user
     #binding.pry
     @product = Product.find(params[:order][:product_id])
-
-
     if @order.save
 
         product_list = ProductList.new
         product_list.order = @order
         product_list.product_name = @product.title
         product_list.product_price = @product.buyout
+        product_list.product = @product
         product_list.save
-      #end
-      #current_cart.clean!
-      OrderMailer.notify_order_placed(@order).deliver!
-
         @product.is_hidden = true
         @product.save
 
@@ -59,7 +54,7 @@ class OrdersController < ApplicationController
 
    def apply_to_cancel
      @order = Order.find(params[:id])
-     OrderMailer.apply_cancel(@order).deliver!
+     #OrderMailer.apply_cancel(@order).deliver!
      flash[:notice] = "已提交申请"
      redirect_to :back
    end
