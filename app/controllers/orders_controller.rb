@@ -42,6 +42,7 @@ class OrdersController < ApplicationController
      @order = Order.find_by_token(params[:id])
      @order.set_payment_with!("alipay")
      @order.make_payment!
+     @order.product_lists.first.product.sell_out!
      redirect_to order_path(@order.token), notice: "支付宝付款成功"
    end
 
@@ -49,6 +50,7 @@ class OrdersController < ApplicationController
      @order = Order.find_by_token(params[:id])
      @order.set_payment_with!("wechat")
      @order.make_payment!
+     @order.product_lists.first.product.sell_out!
      redirect_to order_path(@order.token), notice: "微信付款成功"
    end
 
