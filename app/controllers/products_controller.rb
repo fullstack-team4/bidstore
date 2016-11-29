@@ -133,11 +133,6 @@ class ProductsController < ApplicationController
       @product_lists.each do |pl|
         @products << pl.product
       end
-
-      # binding.pry
-      # @product_list_id = @valid_product_lists_ids
-      # @product_list_id = @product_id
-      # @products = @product_list.product(product_list_params[:id])
     end
 
     private
