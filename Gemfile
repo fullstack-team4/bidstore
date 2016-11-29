@@ -50,6 +50,7 @@ gem 'will_paginate-bootstrap'
 gem 'fog'
 gem 'roadie-rails', '~> 1.0'
 gem 'figaro'
+gem 'airbrake', '~> 5.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
