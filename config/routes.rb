@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     collection do
       get :about
       get :contact
+      get :history
     end
   end
 
@@ -76,6 +77,9 @@ Rails.application.routes.draw do
       post :apply_to_cancel
       post :send_message_cancel
     end
+    collection do
+      get :history
+    end
   end
 
 
@@ -115,6 +119,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :product_lists
 
   root 'welcome#index'
 

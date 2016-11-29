@@ -125,6 +125,21 @@ class ProductsController < ApplicationController
       # end
     end
 
+    def history
+      @paid_order_ids = Order.where(is_paid: true).ids
+      @valid_product_lists_ids = ProductList.where(order_id:@paid_order_ids).ids
+      @product_lists = ProductList.where(id:@valid_product_lists_ids)
+      @products = []
+      @product_lists.each do |pl|
+        @products << pl.product
+      end
+
+      # binding.pry
+      # @product_list_id = @valid_product_lists_ids
+      # @product_list_id = @product_id
+      # @products = @product_list.product(product_list_params[:id])
+    end
+
     private
 
     def product_params

@@ -23,6 +23,7 @@ class Bid::OrdersController < ApplicationController
         product_list.order = @order
         product_list.product_name = @product.title
         product_list.product_price = @product.bids.last.amount
+        product_list.product = @product
         product_list.save
       #end
       #current_cart.clean!

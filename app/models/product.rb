@@ -31,7 +31,7 @@ class Product < ApplicationRecord
   has_many :cart_items
   has_many :product_relationships
   has_many :members, through: :product_relationships, source: :user
-
+  has_many :product_lists
   accepts_nested_attributes_for :photos
 
   acts_as_messageable
