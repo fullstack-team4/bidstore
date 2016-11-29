@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :cart_items
 
+  # resources :products
+
   resources :products do
     resources :bids
     member do

@@ -132,6 +132,10 @@ class Product < ApplicationRecord
       transitions from: :during_auction, to: :unsold
     end
 
+    event :sell_out do
+      transitions from: :before_auction, to: :sold
+    end
+
   end
 
 
