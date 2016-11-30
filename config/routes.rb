@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   # resources :products
 
   resources :products do
+    collection do
+      get :search
+    end
     resources :bids
     member do
       post :send_message_before_auction
@@ -25,6 +28,7 @@ Rails.application.routes.draw do
     collection do
       get :about
       get :contact
+      get :search
       get :history
     end
   end
@@ -60,8 +64,9 @@ Rails.application.routes.draw do
         post :start_auction
         post :fail
         post :deal
-      end
+
     end
+  end
     resources :orders do
       member do
         post :cancel

@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :validate_search_key, only: [:search]
   before_action :authenticate_user!, only: [:favor, :quit]
 
     def add_to_order
@@ -141,6 +142,14 @@ class ProductsController < ApplicationController
       # end
     end
 
+
+    def search
+      if @query_string.present?
+        search_result = Product.ransack(@search_criteria).result(distinct: true)
+        @products_search = search_result.paginate(page: params[:page], per_page: 20)
+      end
+   end
+
     # def history
     #   @paid_order_ids = Order.where(is_paid: true).ids
     #   @valid_product_lists_ids = ProductList.where(order_id:@paid_order_ids).ids
@@ -153,6 +162,17 @@ class ProductsController < ApplicationController
 
     def history
       @products = Product.where(aasm_state: "sold")
+    end
+
+    protected
+
+    def validate_search_key
+      @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+      @search_criteria = search_criteria(@query_string)
+    end
+
+    def search_criteria(query_string)
+      { title_cont: query_string}
     end
 
     private

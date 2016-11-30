@@ -50,6 +50,7 @@ gem 'will_paginate-bootstrap'
 gem 'fog'
 gem 'roadie-rails', '~> 1.0'
 gem 'figaro'
+gem "ransack"
 gem 'airbrake', '~> 5.6'
 
 group :development, :test do
