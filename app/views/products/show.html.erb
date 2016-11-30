@@ -1,6 +1,20 @@
 <!-- <meta http-equiv="refresh" content="30" /> -->
 
+<!--header start-->
+<header>
+  <section class="add-sm-h-padding">
+    <br>
+    <br>
+  <h2 class="container text-center"> <%= @product.title %> </h2>
+    <br>
+    <br>
+  </section>
+</header>
+
+
   <div class="container">
+
+
     <div class="show1">
       <br><br>
     <div class="row">
@@ -81,7 +95,11 @@
                     <% elsif @product.begintime < t && t < @product.endtime %>
                    <p>
                      <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M:%S") %>
-                      <div align="center">
+
+                    <div align="center">
+                      <% if @product.aasm_state == "sold" %>
+                        <span>拍卖已结束</span>
+                      <% else %>
                         <h3>离结束还有</h3>
                         <h2>
                         <div id="getting-started"></div>
@@ -95,7 +113,9 @@
                          });
                         </script>
                         </h2>
-                      </div>
+                      <% end %>
+                    </div>
+
                    </p>
                     <% elsif @product.endtime < t %>
                    <p>拍卖已结束</p>
@@ -131,12 +151,18 @@
            <%= link_to("查看所有出价", product_bids_path(@product), :method => :get, :class => "btn btn-primary btn-lg")%>
            <%= link_to("加入收藏夹", favor_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg") %>
            <% if t > @product.endtime %>
-             <button type="button" class="btn btn-info">拍卖结束</button>
+             <p></p><!--拍卖结束-->
            <% else %>
              <% if t < @product.begintime %>
-               <button type="button" class="btn btn-info">尚未开始</button>
+               <p>尚未开始</p>
              <% else %>
-              <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
+             <% if @product.aasm_state == "sold" %>
+               <span>拍卖已结束</span>
+             <% else %>
+               <div class="group">
+                 <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
+               </div>
+             <% end %>
             <% end %>
           <% end %>
           </div>

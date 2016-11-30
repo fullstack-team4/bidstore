@@ -25,10 +25,14 @@
 <div>
     <% t = Time.now %>
     <% if t < product.begintime %>
-    <span class="label label-default">尚未开拍</span>
+      <span class="label label-default">尚未开拍</span>
     <% elsif product.begintime < t && t < product.endtime %>
-    <span class="label label-default">拍卖中</span>
+      <% if product.aasm_state == "sold" %>
+        <span class="label label-default">拍卖结束</span>
+      <% else %>
+        <span class="label label-default">拍卖中</span>
+      <% end %>
     <% elsif product.endtime < t %>
-    <span class="label label-default">拍卖结束</span>
+      <span class="label label-default">拍卖结束</span>
     <% end %>
 </div>
