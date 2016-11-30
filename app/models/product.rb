@@ -31,7 +31,7 @@ class Product < ApplicationRecord
   has_many :cart_items
   has_many :product_relationships
   has_many :members, through: :product_relationships, source: :user
-
+  has_many :product_lists
   accepts_nested_attributes_for :photos
 
   acts_as_messageable
@@ -130,6 +130,10 @@ class Product < ApplicationRecord
 
     event :fail do
       transitions from: :during_auction, to: :unsold
+    end
+
+    event :sell_out do
+      transitions from: :before_auction, to: :sold
     end
 
   end

@@ -15,19 +15,14 @@ class OrdersController < ApplicationController
     @order.user = current_user
     #binding.pry
     @product = Product.find(params[:order][:product_id])
-
-
     if @order.save
 
         product_list = ProductList.new
         product_list.order = @order
         product_list.product_name = @product.title
         product_list.product_price = @product.buyout
+        product_list.product = @product
         product_list.save
-      #end
-      #current_cart.clean!
-      #OrderMailer.notify_order_placed(@order).deliver!
-
         @product.is_hidden = true
         @product.save
 
@@ -47,6 +42,7 @@ class OrdersController < ApplicationController
      @order = Order.find_by_token(params[:id])
      @order.set_payment_with!("alipay")
      @order.make_payment!
+     @order.product_lists.first.product.sell_out!
      redirect_to order_path(@order.token), notice: "支付宝付款成功"
    end
 
@@ -54,6 +50,7 @@ class OrdersController < ApplicationController
      @order = Order.find_by_token(params[:id])
      @order.set_payment_with!("wechat")
      @order.make_payment!
+     @order.product_lists.first.product.sell_out!
      redirect_to order_path(@order.token), notice: "微信付款成功"
    end
 

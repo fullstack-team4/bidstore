@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :cart_items
 
+  # resources :products
+
   resources :products do
     collection do
       get :search
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
       get :about
       get :contact
       get :search
+      get :history
     end
   end
 
@@ -81,6 +84,9 @@ Rails.application.routes.draw do
       post :apply_to_cancel
       post :send_message_cancel
     end
+    collection do
+      get :history
+    end
   end
 
 
@@ -120,6 +126,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :product_lists
 
   root 'welcome#index'
 

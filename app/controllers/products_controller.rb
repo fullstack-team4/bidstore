@@ -48,6 +48,22 @@ class ProductsController < ApplicationController
       end
     end
 
+    # def index
+    #   @products = Product.where(aasm_state: "before_auction")
+    #
+    #   search = params[:tag]
+    #   case search
+    #   when "netceleb"
+    #     @products = Product.where(tag: "netceleb")
+    #   when "sportceleb"
+    #     @products = Product.where(tag: "sportceleb")
+    #   when "movieceleb"
+    #     @products = Product.where(tag: "movieceleb")
+    #   else
+    #     @products = Product.all
+    #   end
+    # end
+
 
     def show
       @product = Product.find(params[:id])
@@ -134,16 +150,30 @@ class ProductsController < ApplicationController
       end
    end
 
-   protected
+    # def history
+    #   @paid_order_ids = Order.where(is_paid: true).ids
+    #   @valid_product_lists_ids = ProductList.where(order_id:@paid_order_ids).ids
+    #   @product_lists = ProductList.where(id:@valid_product_lists_ids)
+    #   @products = []
+    #   @product_lists.each do |pl|
+    #     @products << pl.product
+    #   end
+    # end
 
-   def validate_search_key
-     @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
-     @search_criteria = search_criteria(@query_string)
-   end
+    def history
+      @products = Product.where(aasm_state: "sold")
+    end
 
-   def search_criteria(query_string)
-     { title_cont: query_string}
-   end
+    protected
+
+    def validate_search_key
+      @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+      @search_criteria = search_criteria(@query_string)
+    end
+
+    def search_criteria(query_string)
+      { title_cont: query_string}
+    end
 
     private
 
