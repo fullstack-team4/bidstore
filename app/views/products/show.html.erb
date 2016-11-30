@@ -10,17 +10,9 @@
     <br>
   </section>
 </header>
+<!--header finished-->
 
 
-  <div class="container">
-
-
-    <div class="show1">
-      <br><br>
-    <div class="row">
-      <h2 align="center"> <%= @product.title %> </h2>
-    </div>
-    <br>
     <div class="well">
       <div class="row" >
 
@@ -38,10 +30,14 @@
             <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
           <% end %>
         </div>
-
         <!-- 左侧 中部 产品故事-->
+        <div>
+          <% @product.product_story %>
+        </div>
+
+        <!-- 右侧 信息与按钮-->
           <div class="col-md-6"><br>
-            <div class="showbackground">
+
               <div align="left">
                 <h4><%= @product.description %></h4>
               </div>
@@ -51,7 +47,7 @@
                 底价 :   ￥<%= @product.price %>
               </h5>
             </div>
-          </div>
+
         </div>
       <div class="row">
        <div align="left">
