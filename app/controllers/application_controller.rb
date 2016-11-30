@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
+  before_action :get_notification
   helper_method :current_cart
 
   rescue_from ActiveRecord::RecordNotFound do
@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
 
   def current_cart
     @current_cart ||= find_cart
+  end
+
+  def get_notification
+    @notifications ||= Notification.where(users: current_user).unread
   end
 
   private
@@ -39,5 +43,6 @@ class ApplicationController < ActionController::Base
       redirect_to edit_account_user_path(current_user)
     end
   end
+
 
 end
