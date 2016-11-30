@@ -57,6 +57,10 @@ Rails.application.routes.draw do
         post :start_auction
         post :fail
         post :deal
+      collection do
+        get :search
+
+
       end
     end
     resources :orders do
