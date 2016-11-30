@@ -125,6 +125,26 @@ class ProductsController < ApplicationController
       # end
     end
 
+
+    def search
+      if @query_string.present?
+        search_result = Product.ransack(@search_criteria).result(distinct: true)
+        @products_search = search_result.paginate(page: params[:page], per_page: 20)
+        set_page_title "搜索 #{@query_string}"
+      end
+   end
+
+   protected
+
+   def validate_search_key
+     @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+     @search_criteria = search_criteria(@query_string)
+   end
+
+   def search_criteria(query_string)
+     { name_cont: query_string, aasm_state_in: %w(online offline)}
+   end
+
     private
 
     def product_params
