@@ -110,11 +110,11 @@
         <% if @product.endtime > Time.now %>
           <%= simple_form_for [:product, @bid] do |f| %>
             <div class="group">
-              <%= f.input :amount %>
+              <%= f.input :amount, input_html: { min: '0', step: 'any' } %>
               <%= f.hidden_field :product_id, value: @product.id %>
               <%= f.hidden_field :user_id, value: current_user.id %>
             </div>
-            <%= f.submit "出价", data: { disable_with: "Submitting..."} %>
+            <%= f.submit "出价" %>
           <% end %>
         <% elsif @product.bids.last.user == current_user %>
           <p>恭喜！你已中标，请点击购买按钮！</p>
