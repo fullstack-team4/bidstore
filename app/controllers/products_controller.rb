@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :validate_search_key, only: [:search]
   before_action :authenticate_user!, only: [:favor, :quit]
 
     def add_to_order
@@ -130,7 +131,6 @@ class ProductsController < ApplicationController
       if @query_string.present?
         search_result = Product.ransack(@search_criteria).result(distinct: true)
         @products_search = search_result.paginate(page: params[:page], per_page: 20)
-        set_page_title "搜索 #{@query_string}"
       end
    end
 
@@ -142,7 +142,7 @@ class ProductsController < ApplicationController
    end
 
    def search_criteria(query_string)
-     { name_cont: query_string, aasm_state_in: %w(online offline)}
+     { title_cont: query_string}
    end
 
     private
