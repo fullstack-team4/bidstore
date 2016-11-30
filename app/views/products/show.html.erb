@@ -1,6 +1,20 @@
 <!-- <meta http-equiv="refresh" content="30" /> -->
 
+<!--header start-->
+<header>
+  <section class="add-sm-h-padding">
+    <br>
+    <br>
+  <h2 class="container text-center"> <%= @product.title %> </h2>
+    <br>
+    <br>
+  </section>
+</header>
+
+
   <div class="container">
+
+
     <div class="show1">
       <br><br>
     <div class="row">
@@ -137,10 +151,10 @@
            <%= link_to("查看所有出价", product_bids_path(@product), :method => :get, :class => "btn btn-primary btn-lg")%>
            <%= link_to("加入收藏夹", favor_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg") %>
            <% if t > @product.endtime %>
-             <button type="button" class="btn btn-info">拍卖结束</button>
+             <p></p><!--拍卖结束-->
            <% else %>
              <% if t < @product.begintime %>
-               <button type="button" class="btn btn-info">尚未开始</button>
+               <p>尚未开始</p>
              <% else %>
              <% if @product.aasm_state == "sold" %>
                <span>拍卖已结束</span>
