@@ -92,15 +92,23 @@
       <div class="col-md-4">
         <div class="bid4">
           <div align="left">
-            <% if @product.bids.last.amount > @product.buyout %>
-              <span>请用出价的方式竞拍</span>
-            <% else %>
-              <% if @product.endtime > Time.now %>
-                  <%= link_to"一口价直接购买", new_order_path(product_id: @product.id, is_buyout: true),  :method => :get, :class => "btn btn-primary btn-lg btn-danger" %>
+              <% if @product.bids.present? %>
+                <% if @product.bids.last.amount > @product.buyout %>
+                  <span>请用出价的方式竞拍</span>
+                <% else %>
+                  <% if @product.endtime > Time.now %>
+                      <%= link_to"一口价直接购买", new_order_path(product_id: @product.id, is_buyout: true),  :method => :get, :class => "btn btn-primary btn-lg btn-danger" %>
+                  <% else %>
+                    <p> 拍卖结束 </p>
+                  <% end %>
+                <% end %>
               <% else %>
-                <p> 拍卖结束 </p>
+                <% if @product.endtime > Time.now %>
+                    <%= link_to"一口价直接购买", new_order_path(product_id: @product.id, is_buyout: true),  :method => :get, :class => "btn btn-primary btn-lg btn-danger" %>
+                <% else %>
+                  <p> 拍卖结束 </p>
+                <% end %>
               <% end %>
-            <% end %>
       </div>
       </div>
       </div>
