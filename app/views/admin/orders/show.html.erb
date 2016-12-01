@@ -12,9 +12,6 @@
                     <th>
                         单价
                     </th>
-                    <th>
-                        数量
-                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -26,21 +23,13 @@
                     <td>
                         <%= product_list.product_price %>
                     </td>
-                    <td>
-                        <%= product_list.quantity %>
-                    </td>
                 </tr>
                 <% end %>
             </tbody>
         </table>
         <div class="total clearfix">
             <span class="pull-right">
-                <span>
-                    总计
-                    <%= @order.total %>
-                    CNY
-                </span>
-            </div>
+        </div>
 
             <hr>
 
