@@ -16,12 +16,12 @@
       </thead>
 
       <tbody>
-        <% current_user.bids.each do |bid| %>
+        <% @bids.each do |bid| %>
         <tr>
           <td><%= bid.id %></td>
           <td><%= bid.product_id %></td>
           <td><%= bid.amount %></td>
-          <td><%= bid.updated_at.to_s(:short) %></td>
+          <td><%= bid.created_at.to_s(:short) %></td>
         </tr>
         <%end %>
       </tbody>
