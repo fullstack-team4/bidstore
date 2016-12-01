@@ -35,6 +35,7 @@ class ProductsController < ApplicationController
     end
 
     def index
+      @products = Product.where(aasm_state: "before_auction")
       search = params[:tag]
       case search
       when "netceleb"
