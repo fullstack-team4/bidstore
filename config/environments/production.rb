@@ -81,6 +81,16 @@ Rails.application.configure do
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: ENV['SUBMAIL_SMTP_ADDRESS'],
+    port:    ENV['SUBMAIL_SMTP_PORT'],
+    domain:  ENV['SUBMAIL_SMTP_SERVER'],
+    user_name: ENV['SUBMAIL_SMTP_USERNAME'],
+    password:  ENV['SUBMAIL_SMTP_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true   }
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end

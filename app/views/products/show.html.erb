@@ -4,28 +4,17 @@
 <header>
   <section class="add-sm-h-padding">
     <br>
-    <br>
   <h2 class="container text-center"> <%= @product.title %> </h2>
-    <br>
     <br>
   </section>
 </header>
+<!--header finished-->
 
-
+<section>
   <div class="container">
-
-
-    <div class="show1">
-      <br><br>
-    <div class="row">
-      <h2 align="center"> <%= @product.title %> </h2>
-    </div>
-    <br>
-    <div class="well">
-      <div class="row" >
-
-        <!-- 左侧 上部 产品图片-->
-        <div class="col-md-6">
+<!-- 左侧 上部 产品图片-->
+    <div class="col-fixed-left" >
+      <div>
           <% if @photos.present? %>
             <% @photos.each_with_index do |p, index| %>
               <% if index == 0 %>
@@ -34,138 +23,126 @@
                 <%= image_tag p.avatar.thumb.url %>
               <% end %>
             <% end %>
-          <% else %>
-            <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+            <% else %>
+              <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
           <% end %>
         </div>
-
-        <!-- 左侧 中部 产品故事-->
-          <div class="col-md-6"><br>
-            <div class="showbackground">
-              <div align="left">
-                <h4><%= @product.description %></h4>
-              </div>
-            <div>
-              <h5>
-                一口价 : ¥<%= @product.buyout %><br>
-                底价 :   ￥<%= @product.price %>
-              </h5>
-            </div>
-          </div>
+          <!-- 左侧 中部 产品故事-->
+        <div class="text-center">
+          <%= @product.product_story %>
         </div>
-      <div class="row">
-       <div align="left">
-         <div class="col-md-6"><br>
-           <div class="showbackground">
-             <div align="left">
-                <% begin_time = @product.begintime.strftime("%Y/%m/%d %H:%M") %>
-                <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M") %>
-                  <p><h4>起拍 : <%= begin_time %></h4> </p>
-                  <p><h4>结束 : <%= end_time %> </h4></p>
-              </div>
-            </div>
-          </div>
-          <br>
-          <div align="left">
-            <div class="col-md-6">
-              <div class="show2">
-
-              <button type="button">
-               <!-- <div class="showbackground"> -->
-               <% t = Time.now %>
-                 <% if t < @product.begintime %>
-                   <p>
-                     <% begin_time = @product.begintime.strftime("%Y/%m/%d %H:%M:%S") %>
-                     <div align="center" >
-                       <h3>距拍卖开始</h3>
-                       <h2>
-                       <div id="getting-started-1"></div>
-                       <script type="text/javascript">
-                         var BeginTime = <%= begin_time.to_json.html_safe %>
-                         $("#getting-started-1")
-                         .countdown(BeginTime, function(event) {
-                           $(this).text(
-                             event.strftime('%D D %H:%M:%S')
-                           );
-                         });
-                       </script>
-                     </h2>
-                   </div>
-                   </p>
-                    <% elsif @product.begintime < t && t < @product.endtime %>
-                   <p>
-                     <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M:%S") %>
-
-                    <div align="center">
-                      <% if @product.aasm_state == "sold" %>
-                        <span>拍卖已结束</span>
-                      <% else %>
-                        <h3>离结束还有</h3>
-                        <h2>
-                        <div id="getting-started"></div>
-                        <script type="text/javascript">
-                         var EndTime = <%= end_time.to_json.html_safe %>
-                         $("#getting-started")
-                         .countdown(EndTime, function(event) {
-                           $(this).text(
-                             event.strftime('%D天:%H时:%M分:%S秒')
-                           );
-                         });
-                        </script>
-                        </h2>
-                      <% end %>
-                    </div>
-
-                   </p>
-                    <% elsif @product.endtime < t %>
-                   <p>拍卖已结束</p>
-                 <% end %>
-                 <!-- </div> -->
-               </button>
-             <!-- </div> -->
-
-           </div>
-          </div>
-         </div>
-             <br><br><br>
-
-           </div>
-         </div>
-       </div>
-     </div>
     </div>
-  </div>
+  <!--左侧结束-->
+        <!-- 右侧 信息与按钮-->
 
 
+<div class="row col-fixed-right">
+  <div class="col-md-12 ">
+    <div class="text-center add-sm-h-padding right1">
+      <h3><%= @product.description %></h3>
+    </div>
+
+      <div class="col-md-6 right2">
+        <br>
+        <p> 一口价 : ¥<%= @product.buyout %> </p>
+        <p> 底价 : ￥<%= @product.price %> </p>
+        <br>
+      </div>
+
+      <div class="col-md-6 right3">
+        <br>
+        <% begin_time = @product.begintime.strftime("%Y/%m/%d %H:%M") %>
+        <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M") %>
+        <p>起拍 : <%= begin_time %></p>
+        <p>结束 : <%= end_time %> </p>
+        <br>
+      </div>
 
 
-
-     <div class = "container">
-       <div class="col-md-5">
-         <div class="product_story">
-           <p><%= @product.product_story %></p>
-         </div>
-       </div>
-       <div class="col-md-6">
-         <div align="right">
-           <%= link_to("查看所有出价", product_bids_path(@product), :method => :get, :class => "btn btn-primary btn-lg")%>
-           <%= link_to("加入收藏夹", favor_product_path(@product), :method => :post, :class => "btn btn-primary btn-lg") %>
-           <% if t > @product.endtime %>
-             <p></p><!--拍卖结束-->
-           <% else %>
-             <% if t < @product.begintime %>
-               <p>尚未开始</p>
-             <% else %>
-             <% if @product.aasm_state == "sold" %>
-               <span>拍卖已结束</span>
-             <% else %>
-               <div class="group">
-                 <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
-               </div>
-             <% end %>
-            <% end %>
+    <div class="col-md-12 add-sm-h-padding">
+      <div class="countdownpanel">
+        <% t = Time.now %>
+        <% if t < @product.begintime %>
+        <p>
+          <% begin_time = @product.begintime.strftime("%Y/%m/%d %H:%M:%S") %>
+            <div align="center" >
+              <h3>距拍卖开始</h3>
+              <h2>
+              <div id="getting-started-1"></div>
+                <script type="text/javascript">
+                    var BeginTime = <%= begin_time.to_json.html_safe %>
+                      $("#getting-started-1")
+                     .countdown(BeginTime, function(event) {
+                       $(this).text(event.strftime('%D D %H:%M:%S')
+                         );
+                       });
+                </script>
+              </h2>
+            </div>
+          </p>
+            <% elsif @product.begintime < t && t < @product.endtime %>
+         <p>
+           <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M:%S") %>
+            <div class="countpanel">
+              <h3>离结束还有</h3>
+              <h2>
+              <div id="getting-started"></div>
+              <script type="text/javascript">
+               var EndTime = <%= end_time.to_json.html_safe %>
+               $("#getting-started")
+               .countdown(EndTime, function(event) {
+                 $(this).text(
+                   event.strftime('%D天:%H时:%M分:%S秒')
+                 );
+               });
+              </script>
+              </h2>
+            </div>
+            <br><br>
+         </p>
+         <% elsif @product.endtime < t %>
+         <div class="joinbidlg">拍卖已结束</div>
           <% end %>
-          </div>
-       </div>
-     </div>
+          <% if t > @product.endtime %>
+            <div class="joinbidlg">拍卖已结束</div>
+            <% else %>
+            <% if t < @product.begintime %>
+            <div class="joinbidlg">拍卖即将开始</div>
+            <% else %>
+            <!-- <div class="joinbidlg"> -->
+            <a href="<%= new_product_bid_path(@product) %>" class="buy_it">
+              <div class="joinbidlg">
+                参加拍卖
+              </div>
+            </a>
+
+            <!-- </div> -->
+          <% end %>
+          <% end %>
+        </div>
+        <br><br>
+    </div>
+
+
+       <div class="col-md-5 btn-block-md">
+         <!-- <a href="<%#= product_bids-path(@product) %>" class="buy_it" method="get"> -->
+           <!-- <div class="favormd">
+             查看所有出价
+           </div> -->
+          <%= link_to("查看所有出价", product_bids_path(@product), :method => :get)%>
+        </div>
+        <div class="col-md-5 col-md-offset-2 btn-block-md">
+          <!-- <a href="<%#= favor_product_path(@product) %>" class="buy_it" method="post"> -->
+            <!-- <div class="favormd">
+              加入收藏夹
+            </div> -->
+          <%= link_to("加入收藏夹", favor_product_path(@product), :method => :post) %>
+        </div>
+
+
+</div>
+</div>
+</div>
+</div>
+</section>
 <p style="padding:70px;"></p>

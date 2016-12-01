@@ -15,8 +15,9 @@
                   shipped_account_order_path(order.token),
                   class: "btn btn-default btn-sm",:method => :post) %>
 
-    <% when "shipped" %>
-      <%= link_to("申请退货",
+    <%when "shipped" %>
+      <span class="label label-default">收货</span>
+      <%#= link_to("收货",
                   conversations_path,
                   class: "btn btn-default btn-sm",:method => :post) %>
 
