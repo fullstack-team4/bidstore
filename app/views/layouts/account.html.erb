@@ -13,18 +13,16 @@
           <p style="padding:50px;"></p>
 
           <li> <%= link_to("我的主页", account_user_path(current_user)) %> </li>
-          <li> <%= link_to("我的出价", account_bids_path(current_user)) %> </li>
+          <li> <%= link_to("我的出价", account_bids_path) %> </li>
           <li> <%= link_to("我的订单", account_orders_path) %> </li>
           <li> <%= link_to("我的收藏", account_products_path) %> </li>
-          <li> <%= link_to("我的信息", conversations_path) %> </li>
         </ul>
       </div>
       <div class="col-md-8">
         <%= yield %>
         </div>
       </div>
-    </div>
-    <p style="padding:80px;"></p>
-    <%= render "common/accountfooter" %>
+
+    <%= render "common/footer" %>
   </body>
 </html>

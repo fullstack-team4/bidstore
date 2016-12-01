@@ -103,6 +103,11 @@ class ProductsController < ApplicationController
       render "products/contact"
     end
 
+    def onboarding
+      render "products/onboarding"
+    end
+
+
     # def netceleb
     #   render "products/netceleb"
     # end
