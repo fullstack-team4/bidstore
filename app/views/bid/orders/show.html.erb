@@ -13,16 +13,16 @@
         </thead>
         <tbody>
 
-          <% @product_lists.each do |product_list| %>
+          <%# @product_lists.each do |product_list| %>
             <tr>
               <td>
-                <%= product_list.product_name %>
+                <%= @product_list.product_name %>
               </td>
               <td>
-                <%= product_list.product_price %>
+                <%= @product_list.product_price %>
               </td>
             </tr>
-          <% end %>
+          <%# end %>
 
         </tbody>
       </table>

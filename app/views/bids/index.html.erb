@@ -1,3 +1,4 @@
+<div class="container">
 <h1>所有出价记录</h1>
 <br><br>
 <table class="table table-bordered">
@@ -13,7 +14,7 @@
         <% @bids.each do |bid| %>
         <tr>
             <td><%= bid.id %></td>
-            <td><%= bid.user.email %></td>
+            <td><%= bid.user.email[/\S\S\S\S/] %><span>****</span></td>
             <td><%= bid.amount %></td>
         </tr>
         <% end %>
@@ -31,3 +32,4 @@
     <%= link_to("查看商品详情", product_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
     <%= link_to("参加拍卖", new_product_bid_path(@product), :method => :get, :class => "btn btn-primary btn-lg btn-danger")%>
   </div>
+</div>
