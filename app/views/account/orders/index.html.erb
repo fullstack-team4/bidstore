@@ -8,12 +8,15 @@
         <table class="table table-striped ">
           <thead class = "biaotou">
             <tr>
-                <th width="15%">编号</th>
-                <th width="15%">付款</th>
-                <th width="15%">付款方式</th>
+                <th width="10%">编号</th>
+                <th with="25">
+                  商品
+                </th>
+                <th width="10%">付款</th>
+                <th width="10%">方式</th>
                 <th width="15%">订单状态</th>
                 <th width="20%">更新时间</th>
-                <th width="20%">商品状态</th>
+                <th width="15%">商品状态</th>
             </tr>
           </thead>
 
@@ -22,6 +25,9 @@
               <tr>
                 <td>
                   <%= link_to(order.id, order_path(order.token)) %>
+                </td>
+                <td>
+                  <%= order.product_lists.first.product.title %>
                 </td>
                 <td>
                   <% if order.is_paid %>
@@ -37,7 +43,7 @@
                   <%= order.aasm_state %>
                 </td>
                 <td>
-                  <%= order.updated_at.to_s(:short) %>
+                  <%= order.created_at.to_s(:short) %>
                 </td>
                 <td>
                   <%= render "account/orders/state_option", order: order %>

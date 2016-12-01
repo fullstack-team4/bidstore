@@ -43,6 +43,7 @@ class BidsController < ApplicationController
   def new
     @product = Product.find(params[:product_id])
     @bid = Bid.new
+
     # @product.amount = @product.bids.amount
     # @amount = @product.bids.amount
   end
