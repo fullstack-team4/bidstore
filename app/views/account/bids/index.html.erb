@@ -9,7 +9,7 @@
        <thead class = "biaotou">
          <tr>
            <th width="15%">出价次数</th>
-           <th width="15%">商品编号</th>
+           <th width="15%">商品</th>
            <th width="15%">出价</th>
            <th width="15%">更新时间</th>
          </tr>
@@ -19,7 +19,7 @@
         <% @bids.each do |bid| %>
         <tr>
           <td><%= bid.id %></td>
-          <td><%= bid.product_id %></td>
+          <td><%= bid.product.title %></td>
           <td><%= bid.amount %></td>
           <td><%= bid.created_at.to_s(:short) %></td>
         </tr>
