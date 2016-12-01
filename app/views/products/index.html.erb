@@ -2,9 +2,10 @@
 
   <!--面包屑-->
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><%= link_to("网红", products_path(tag:"netceleb"), :class => "") %> </li>
-    <li class="breadcrumb-item"><%= link_to("明星", products_path(tag:"movieceleb"), :class => "") %> </li>
-    <li class="breadcrumb-item"><%= link_to("健将", products_path(tag:"sportceleb"), :class => "") %> </li>
+    <li class="breadcrumb-item"><%= link_to("全部", products_path) %> </li>
+    <li class="breadcrumb-item"><%= link_to("网红", products_path(tag:"netceleb")) %> </li>
+    <li class="breadcrumb-item"><%= link_to("明星", products_path(tag:"movieceleb")) %> </li>
+    <li class="breadcrumb-item"><%= link_to("健将", products_path(tag:"sportceleb")) %> </li>
   </ol>
 
   <!--标题-->
@@ -34,7 +35,10 @@
               <div class="caption">
                   <div><%= product.title %></div>
                   <div>￥<%= product.price %></div>
-                <div class="btn-favor"><%= link_to("收藏宝贝", favor_product_path(product), :method => :post, :class => " btn-primary btn-sm") %></div>
+                <div class="btn-favor">
+                  <%= link_to("收藏宝贝", favor_product_path(product), :method => :post, :class => " btn-primary btn-sm") %>
+                  <%= link_to("查看产品", product_path(product), :method => :get, :class => " btn-danger btn-sm") %>
+                </div>
               </div>
             </div>
           </div>
