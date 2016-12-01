@@ -102,8 +102,12 @@
             <div class="bid4">
               <div align="left">
                 <% if @product.endtime > Time.now %>
-                  <% if @product.bids.last.amount > @product.buyout %>
-                    <P> 请竞价购买</p>
+                  <% if @product.bids.present? %>
+                    <% if @product.bids.last.amount > @product.buyout %>
+                      <P> 请竞价购买</p>
+                    <% else %>
+                      <%= link_to"一口价直接购买", new_order_path(product_id: @product.id, is_buyout: true),  :method => :get, :class => "btn btn-primary btn-lg btn-danger" %>
+                    <% end %>
                   <% else %>
                     <%= link_to"一口价直接购买", new_order_path(product_id: @product.id, is_buyout: true),  :method => :get, :class => "btn btn-primary btn-lg btn-danger" %>
                   <% end %>
@@ -119,4 +123,5 @@
     </div>
   </div>
 </section>
-<p style="padding:90px;"></p>
+<br><br><br>
+<!-- <p style="padding:90px;"></p> -->
