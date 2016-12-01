@@ -411,6 +411,7 @@ DEPENDENCIES
   kaminari (~> 0.17.0)
   letter_opener
   listen (~> 3.0.5)
+  mail
   mailboxer
   mini_magick
   pg
