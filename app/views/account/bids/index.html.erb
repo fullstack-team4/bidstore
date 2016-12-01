@@ -1,3 +1,4 @@
+<div class="container">
   <h1 class="text-center">我的出价</h1>
   <div class="col-md-11 col-offset-1">
     <p style="padding:20px;"></p>
@@ -27,11 +28,11 @@
       </tbody>
     </table>
     <% end %>
+    <br><br><br><br><br>  <br><br><br><br><br>
   <div>
-
-  <div class="text-center">
-    <%= will_paginate@bids,renderer: BootstrapPagination::Rails %>
+    <div class="text-center">
+      <%= will_paginate@bids,renderer: BootstrapPagination::Rails %>
+    </div>
   </div>
-
-
+</div>
 </div>

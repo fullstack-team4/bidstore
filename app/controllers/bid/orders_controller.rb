@@ -17,6 +17,7 @@ class Bid::OrdersController < ApplicationController
     #binding.pry
     @product = Product.find(params[:order][:product_id])
 
+    #binding.pry
     if @order.save
 
         product_list = ProductList.new
@@ -32,16 +33,18 @@ class Bid::OrdersController < ApplicationController
         @product.is_hidden = true
         @product.save
 
-      redirect_to order_path(@order.token)
+      redirect_to bid_order_path(@order.token)
     else
       #render 'carts/checkout'
-      redirect_to order_path(@order.token)
+      #redirect_to order_path(@order.token)
+      render :new
     end
   end
 
   def show
     @order = Order.find_by_token(params[:id])
-    @product_lists = @order.product_lists
+    @product_list = @order.product_lists.first
+    # @product_list.product_price = @product.bids.last.amount
   end
 
    def pay_with_alipay
