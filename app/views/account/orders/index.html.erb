@@ -37,7 +37,7 @@
                   <%= order.aasm_state %>
                 </td>
                 <td>
-                  <%= order.updated_at.to_s(:short) %>
+                  <%= order.created_at.to_s(:short) %>
                 </td>
                 <td>
                   <%= render "account/orders/state_option", order: order %>
