@@ -13,9 +13,6 @@ Rails.application.routes.draw do
   # resources :products
 
   resources :products do
-    collection do
-      get :search
-    end
     resources :bids
     member do
       post :send_message_before_auction
@@ -30,6 +27,7 @@ Rails.application.routes.draw do
       get :contact
       get :search
       get :history
+      get :onboarding
     end
   end
 
@@ -128,6 +126,7 @@ Rails.application.routes.draw do
   end
 
   resources :product_lists
+
 
   root 'welcome#index'
 
