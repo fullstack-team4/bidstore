@@ -42,7 +42,7 @@
         </h2>
 
         <div class="order-form">
-          <%= simple_form_for(@order) do |f| %>
+          <%= simple_form_for [:bid, @order] do |f| %>
 
             <legend>
               订购人

@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     collection do
       get :about
       get :contact
+      get :search
       get :history
+      get :onboarding
     end
   end
 
@@ -60,8 +62,9 @@ Rails.application.routes.draw do
         post :start_auction
         post :fail
         post :deal
-      end
+
     end
+  end
     resources :orders do
       member do
         post :cancel
@@ -123,6 +126,7 @@ Rails.application.routes.draw do
   end
 
   resources :product_lists
+
 
   root 'welcome#index'
 
