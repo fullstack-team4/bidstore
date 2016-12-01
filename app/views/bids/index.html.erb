@@ -13,7 +13,7 @@
         <% @bids.each do |bid| %>
         <tr>
             <td><%= bid.id %></td>
-            <td><%= bid.user.email %></td>
+            <td><%= bid.user.email[/\S\S\S\S/] %><span>****</span></td> 
             <td><%= bid.amount %></td>
         </tr>
         <% end %>
