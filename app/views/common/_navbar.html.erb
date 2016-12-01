@@ -2,24 +2,39 @@
   <div class="desktop-search">
     <a href="/" class="logo-home-link">大咖私藏</a>
   <div style="" id="search-form-container">
-  <form action="/search" method="get" class="search-form custom">
+  <%#= form_tag search_products_path , method: :get, class: "search-form custom" do %>
+  <form action="/products/search" method="get" class="search-form custom">
     <div class="search-input">
-      <span class="search-icon"><i class="icon-search">&nbsp;</i>
+      <span class="search-icon"><i class="fa fa-search">&nbsp;</i>
       </span>
       <span style="position: relative; display: inline-block;">
-        <input autocomplete="off" class="typeahead basic-text-input brandon-family tt-input" data-ie-placeholder-text="Search for lots and charities" id="keywords" name="keywords" placeholder="Search for lots and charities" type="text" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <input type="text" class="js-term search-field__input-field" name="q" value="<%= params[:q] %>" placeholder="请输入商品名称">
+        <!-- <input autocomplete="off" class="typeahead basic-text-input brandon-family tt-input" data-ie-placeholder-text="Search for lots and charities" id="keywords" name="keywords" placeholder="Search for lots and charities" type="text" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;"> -->
         <pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: brandon-grotesque, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; word-spacing: 0px; letter-spacing: normal; text-indent: 20px; text-rendering: auto; text-transform: none;">
         </pre>
-        <div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
+        <!-- <div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
           <div class="tt-dataset tt-dataset-empty_query"></div>
           <div class="tt-dataset tt-dataset-catalog_items"></div>
           <div class="tt-dataset tt-dataset-organizations"></div>
-        </div>
+        </div> -->
       </span>
 
+      <!-- +<div class="header-categories__search form-inline">
+       +    <%= form_tag search_products_path , method: :get, class: "navbar-form " do %>
+       +    <div style="margin:0;padding:0;display:inline"><input name="utf8" value="✓" type="hidden"></div>
+       +  <div class="search-field__input ">
+       +    <input type="text" class="js-term search-field__input-field" name="q" value="<%= params[:q] %>" placeholder="请输入商品名称">
+       +    <button class="search-field__button" type="submit">
+       +      <i class="fa fa-search"></i>
+       +    </button>
+       +  </div>
+       +  <% end %>
+       +</div> -->
+
       <span class="search-actions">
-        <a class="close-search"><i class="icon-remove">&nbsp;</i></a>
+        <a class="close-search"><i class="fa fa-search">&nbsp;</i></a>
       </span>
+      <%# end %>
     </div>
   </form>
   </div>
