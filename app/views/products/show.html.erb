@@ -84,6 +84,9 @@
          <p>
            <% end_time = @product.endtime.strftime("%Y/%m/%d %H:%M:%S") %>
             <div class="countpanel">
+              <% if @product.aasm_state == "sold" %>
+                <p>拍卖已结束</p>
+            <% else %>
               <h3>离结束还有</h3>
               <h2>
               <div id="getting-started"></div>
@@ -97,26 +100,33 @@
                });
               </script>
               </h2>
+            <% end %>
             </div>
+
             <br><br>
          </p>
          <% elsif @product.endtime < t %>
-         <div class="joinbidlg">拍卖已结束</div>
-          <% end %>
-          <% if t > @product.endtime %>
-            <div class="joinbidlg">拍卖已结束</div>
+           <div class="joinbidlg">拍卖已结束</div>
+         <% end %>
+            <% if t > @product.endtime %>
+              <div class="joinbidlg">拍卖已结束</div>
             <% else %>
-            <% if t < @product.begintime %>
-            <div class="joinbidlg">拍卖即将开始</div>
-            <% else %>
-            <!-- <div class="joinbidlg"> -->
-            <a href="<%= new_product_bid_path(@product) %>" class="buy_it">
-              <div class="joinbidlg">
-                参加拍卖
-              </div>
+              <% if t < @product.begintime %>
+                <div class="joinbidlg">拍卖即将开始</div>
+              <% else %>
+                <% if @product.aasm_state == "sold" %>
+                  <div align = "center" %>
+                    <P>被抢购了！</p>
+                  </div>
+                 <% else %>
+                    <a href="<%= new_product_bid_path(@product) %>" class="buy_it">
+                      <div class="joinbidlg">
+                        参加拍卖
+                      </div>
+                  <% end %>
             </a>
 
-            <!-- </div> -->
+
           <% end %>
           <% end %>
         </div>
