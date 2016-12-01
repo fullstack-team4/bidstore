@@ -14,4 +14,5 @@ module Bidstore
     # config.active_record.default_timezone = :local
     config.time_zone = "Beijing"
   end
+
 end

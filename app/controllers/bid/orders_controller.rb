@@ -28,7 +28,7 @@ class Bid::OrdersController < ApplicationController
         product_list.save
       #end
       #current_cart.clean!
-      #OrderMailer.notify_order_placed(@order).deliver!
+      # OrderMail.notify_order_placed(@order).deliver!
 
         @product.is_hidden = true
         @product.save

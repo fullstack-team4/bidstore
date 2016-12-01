@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'service@bidstore.com'
+  default from: 'service@bidstore.online'
   layout 'mailer'
 end
