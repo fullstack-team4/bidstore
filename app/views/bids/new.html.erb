@@ -53,10 +53,12 @@
               </div>
             </div>
           </div>
-
-          <div class="col-md-8">
+        </div>
+        <!-- <div class="row"> -->
+          <div class="col-md-5">
             <div class="bidding-price">
               <p>起拍价格: ¥ <%= @product.price %> </p>
+              <p>一口价: ¥ <%= @product.buyout %> </p>
               <p>
                 <% if @product.bids.present? %>
                   <% if @product.bids.last.amount > @product.price %>
@@ -94,23 +96,32 @@
           </div>
 
           <div class="col-md-4">
-            <h4>不再等待 直接拥有</h4>
-            <h4>一口价: ¥ <%= @product.buyout %> </h4>
+            <!-- <h4>不再等待 直接拥有</h4> -->
+            <!-- <h4>一口价: ¥ <%#= @product.buyout %> </h4> -->
             <br>
             <div class="bid4">
               <div align="left">
                 <% if @product.endtime > Time.now %>
-                  <%= link_to"一口价直接购买", new_order_path(product_id: @product.id, is_buyout: true),  :method => :get, :class => "btn btn-primary btn-lg btn-danger" %>
+                  <% if @product.bids.present? %>
+                    <% if @product.bids.last.amount > @product.buyout %>
+                      <P> 请竞价购买</p>
+                    <% else %>
+                      <%= link_to"一口价直接购买", new_order_path(product_id: @product.id, is_buyout: true),  :method => :get, :class => "btn btn-primary btn-lg btn-danger" %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to"一口价直接购买", new_order_path(product_id: @product.id, is_buyout: true),  :method => :get, :class => "btn btn-primary btn-lg btn-danger" %>
+                  <% end %>
                 <% else %>
                   <p> 拍卖结束 </p>
                 <% end %>
               </div>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
       </div>
       <br>
     </div>
   </div>
 </section>
-<p style="padding:90px;"></p>
+<br><br><br>
+<!-- <p style="padding:90px;"></p> -->

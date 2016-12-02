@@ -8,8 +8,8 @@ ActiveSupport.on_load(:action_controller) do
   wrap_parameters format: [:json]
 end
 
-WillPaginate::ViewHelpers.pagination_options[:previous_label] = "上一页"
-WillPaginate::ViewHelpers.pagination_options[:next_label] = "下一页"
+WillPaginate::ViewHelpers.pagination_options[:previous_label]
+WillPaginate::ViewHelpers.pagination_options[:next_label] 
 # To enable root element in JSON for ActiveRecord objects.
 # ActiveSupport.on_load(:active_record) do
 #   self.include_root_in_json = true

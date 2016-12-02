@@ -35,6 +35,7 @@ class ProductsController < ApplicationController
     end
 
     def index
+      @products = Product.where(aasm_state: "before_auction")
       search = params[:tag]
       case search
       when "netceleb"
@@ -67,7 +68,7 @@ class ProductsController < ApplicationController
 
     def show
       @product = Product.find(params[:id])
-      # @product = Product.where(aasm_state: "before_auction")
+      #@product = Product.where(aasm_state: "before_auction")
       @photos = @product.photos.all
       @bids = @product.bids.recent.paginate(:page => params[:page], :per_page => 5)
     end

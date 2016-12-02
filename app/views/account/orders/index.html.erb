@@ -3,7 +3,7 @@
 
   <div class="col-md-11 col-offset-1">
       <p style="padding:20px;"></p>
-        <% if !current_user.orders.present? %>
+        <% if !@orders.present? %>
           <p style="padding:20px;"></p>
           <span class="biaotou pull-left">尚无订单记录，参与竞价订购吧</span>
         <% else %>
