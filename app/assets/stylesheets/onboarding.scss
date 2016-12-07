@@ -1,0 +1,29 @@
+.hiw-faq {
+    // margin-top: 100px;
+    clear: left;
+    background: #FBFBFB;
+    padding: 80px 80px 40px;
+}
+.hiw-faq-block-container {
+    display: flex;
+    // justify-content: space-around;
+    // max-width: 1300px;
+    padding: 0 80px 40px;
+}
+.hiw-faq-block {
+    // width: 50%;
+    margin-bottom: 40px;
+}
+.hiw-faq-block h3 {
+    font-family: "Microsoft YaHei", "Helvetica Neue", "Benton Sans","Helvetica","sans-serif";
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.8em;
+    // display: block;
+}
+.hiw-faq-block p {
+    font-family: "Benton Sans","Helvetica","sans-serif";
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 26px;
+}
